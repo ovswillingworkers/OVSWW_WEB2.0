@@ -1,0 +1,640 @@
+@font-face{
+    font-family:myfont;
+    src:url("../../public/assets/fonts/Ramadhan_Mubarak.ttf");
+  }
+
+
+  
+  .home-container{
+    position: absolute;
+    background-color: #cdcdcd !important;
+  }
+
+
+
+.programs{
+  padding: 0 20%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  background:rgb(235, 241, 239);
+  color:black;
+  padding-bottom: 20px;
+}
+
+
+
+  .overlay {
+    background-size: cover;
+
+    transition: background-image 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 20px;
+    // margin-top: 200px;
+    height: 750px;
+  
+    font-size: 1.5em;
+  
+    h1 {
+      font-family: myFont;
+      color:rgb(3, 144, 13);
+      text-stroke: 2px rgb(2, 227, 58);
+      
+      text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+      font-size: 6.5rem;
+      line-height: 1em;
+      overflow: hidden;
+      z-index:10;
+    }
+  
+    p{
+      z-index:10;
+      text-stroke: 2px black;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+      background-color: #0201011c;
+    }
+
+    Button {
+      border-radius: 20px 20px 20px 20px;
+      background: transparent;
+      color: black !important;
+      border-color: black !important;
+      font-size: 0.55em;
+      font-weight: 600;
+      overflow: hidden;
+      z-index: 8;
+      background: yellow;
+      width: 160px;
+      height: 40px;
+      z-index:10 !important;
+    
+     &:hover{
+        text-decoration:none;
+        background-color: rgb(251, 201, 2);
+        cursor: pointer;
+      }
+  
+      &:active{
+        text-decoration: none;
+      }
+    }
+  }
+  
+  .layer {
+    opacity: 0.6;
+    position: absolute;
+  
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 4;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+
+    .overlay {
+      height: 500px !important;
+      font-size: 1em;
+
+      h1 {
+        font-size: 4em;
+      }
+
+      a {
+        border-radius: 20px 20px 0 20px;
+        background: transparent;
+        color: black;
+        border-color: yellow;
+        font-size: 0.9em;
+        font-weight: 600;
+        overflow: hidden;
+        z-index: 8;
+        background: yellow;
+        width: 100px;
+        height: 20px;
+        a:link {
+          text-decoration: none;
+        }
+    
+        a:visited{
+          text-decoration: none;
+        }
+    
+        a:hover{
+          text-decoration: none;
+        }
+    
+        a:active{
+          text-decoration: none;
+        }
+      }
+
+
+
+    }
+  }
+  
+
+
+  .sop-info{
+    height:auto;
+    padding: 0 20%;
+    background:rgb(235, 241, 239);
+    
+background: linear-gradient(180deg, rgba(235, 241, 239,1) 0%, rgba(191,238,203,1) 100%);
+    color:rgb(0, 101, 0);
+    }
+    
+      .sop-statement-title{
+        text-align:left !important;
+        font-size:1.5em !important;
+        font-weight:450;
+        padding-left:10px;
+      }
+    
+    .programs{
+      button{
+        background:#00ba9c !important;
+        border-radius: 20px;
+        height:20px;
+        width:120px;
+      }
+    }
+    .sop-statement-text{
+      position:inherit;
+    
+      width:80%;
+      height:90%;
+     font-size:2em;
+      padding:15px;
+    
+    }
+    
+    .sop-quote{
+      
+      background:green;
+      color:white;
+      padding:10px;
+      margin-top:-240px;
+      margin-left:25vw;
+      z-index:1;
+    
+    
+    
+     
+      line-height: 30px;
+      border-radius:20px;
+    }
+     
+    
+    .last-quote{
+      color:black;
+      text-align:center;
+      align-items:center;
+      background: url('../../public/assets/smile.jpg') no-repeat center;
+      background-size:cover;
+      margin-top:20px;
+      margin-bottom:2vw;
+      display:flex;
+      justify-content:center;
+      
+      height:350px;
+    
+    
+    
+     h4{
+      width:50vw;
+      background:yellow;
+      height:auto;
+      overflow:hidden;
+     }
+    }
+    
+    .banner{
+      display:flex;
+      flex-direction:row;
+      position:absolute;
+        //font-size: 1.2em;
+      left:0;
+      margin-left:10%;
+      margin-top:-200px;
+      z-index:6;
+      justify-content:center;
+      align-items:center;
+      color:black;
+      
+      button{
+        width:100%;
+        height: 100%;
+        background:rgba(0, 0, 0, 0.39);
+
+      
+      }
+    }
+    
+    .coach-info{
+      text-align:left !important;
+    }
+    
+    .banner-one {
+      display: flex;
+      flex-direction: column;
+      width:40vw;
+      height: 250px;
+      background: url('../../public/assets/donate.jpg') no-repeat center top;
+      background-size: cover;
+      font-weight: 600;
+     
+      text-align: center;
+      justify-content: center;
+      // align-item: center;
+     
+     button{
+
+      &:hover{
+        background: rgba(255, 196, 0, 0.211);
+      }
+     }
+     
+    }
+    
+    .donate-banner{
+      height:100%;
+      // background: #a1a1a159;
+      padding:20px;
+      padding-right:40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color:rgb(255, 255, 255);
+      font-size: medium;
+
+      p,h3{
+        background-color: #0000006e;
+      }
+      &:hover{
+        
+       font-size: large;
+       font-weight: bold;
+        p,h3{
+          background:rgba(109, 109, 109, 0.628);
+         
+        }
+      }
+    }
+    
+    .program-banner{
+      height:100%;
+    color:white;
+    //  background: #00e33f61;
+      padding:20px;
+      padding-right:40px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      font-size: medium;
+      
+      &:hover{
+        
+        font-size: large;
+        font-weight: bold;
+         p,h3{
+           background:rgba(109, 109, 109, 0.628);
+          
+         }
+       }
+    }
+    .banner-two {
+      display: flex;
+      flex-direction: column;
+      width: 40vw;
+      height: 250px;
+      background: url('../../public/assets/donate1.jpg') no-repeat center center;
+      background-size: cover;
+      font-weight: 600;
+      //font-size: 1.2em;
+      text-align: center;
+      justify-content: center;
+      // align-item: center;
+      color: rgb(255, 255, 255);
+      font-size: medium;
+      p,h3{
+        background:rgba(60, 60, 60, 0.832)
+      }
+      
+      button{
+        &:hover{
+          background: rgba(3, 247, 27, 0.187);
+         
+        }
+       }
+     
+    }
+    
+    
+    .sop{
+    
+     height:100%;
+      display: flex;
+      flex-direction: column;
+    
+      // overflow:hidden;
+    
+      .sop-wrap{
+      
+        padding-top:20px;
+        position:relative;
+      
+      }
+     
+    }
+    
+    
+    
+      @media screen and (max-width: 768px) {
+    
+
+    
+        .last-quote{
+          justify-content:center;
+          align-items:center;
+          // margin-left:5vw;
+          // margin-top:20px;
+          // margin-bottom:2vw;
+        
+          width:100%;
+          height:40vh;
+          img{
+            width:80%;
+            height:10%;
+          }
+        }
+        
+        .sop{
+          font-size: calc(14px + 6 * ((100vw - 320px) / 680));
+          margin-bottom:0px !important;
+    
+         
+        }
+    
+        .sop-info{
+          height:auto !important;
+          padding:0;
+        }
+    
+        .sop-statement-text{
+          position:inherit;
+          font-size: calc(2.1em + 6 * ((100vw - 320px) / 680));
+          width:80%;
+          height:90%;
+         
+          padding:15px;
+      
+        }
+    
+    
+        .sop-quote{
+      
+          background:green !important;
+          color:white;
+          padding:10px;
+          margin-top:-240px;
+          margin-left:15vw;
+          z-index:1;
+         width:80vw !important;
+        
+        
+         
+          line-height: 30px;
+          border-radius:20px;
+        }
+         
+        
+    
+    
+        .coach-info{
+          text-align:end !important;
+        }
+        
+        .banner{
+          
+          flex-direction:column;
+          position:relative;
+          margin-top:0px;
+          margin-left:0px;
+        }
+        
+        .banner-one {
+          display: flex;
+          flex-direction: column;
+          width: 100vw;
+          height: 200px;
+          text-shadow: 0 0 20px white;
+          font-weight: 600;
+          //font-size: 1.2em;
+          text-align: center;
+          justify-content: center;
+          // align-item: center;
+          color: white;
+          h3 {
+            //font-size: 3em;
+            overflow:hidden;
+          }
+          h3 {
+           
+            overflow:hidden;
+            z-index: 10;
+            color: black;
+            text-shadow: 1px -1px 20px #d5ffda;
+          }
+        }
+        
+        .donate-banner{
+          height:100%;
+        // background: #fff40059;
+          padding:20px;
+          padding-right:40px;
+        
+        
+        }
+        
+        .program-banner{
+          height:100%;
+        
+       
+          padding:20px;
+          padding-right:40px;
+        }
+        .banner-two {
+          display: flex;
+          flex-direction: column;
+          width: 100vw;
+          height: 200px;
+          text-shadow: 0 0 20px white;
+          font-weight: 600;
+          //font-size: 1.2em;
+          text-align: center;
+          justify-content: center;
+          // align-item: center;
+          color: white;
+          h3 {
+            //font-size: 3em;
+            overflow:hidden;
+          }
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+      }
+    
+    
+      .Programs-item{
+     
+        margin-top:50px;
+    
+        
+      }
+    
+      .hands-info{
+        margin-bottom:50px;
+      }
+    
+    
+    
+      .sop-img{
+       
+        width:100%;
+        height:450px !important;
+    
+      }
+    
+      
+    
+    
+    
+    
+      .bus-icon{
+      path{
+        fill:#000000 !important;
+      }
+    
+      rect{
+        fill:white !important;
+      }
+    
+      circle{
+        fill:white !important;
+      }
+    }
+    
+      .bus-icon {
+     //   fill:#00f0f8;
+       width:80px;
+       //g{fill:yellow;}
+       transform: scaleX(-1);
+    
+    
+      }
+    
+      .coach-icon{
+        fill:#000000;
+        width:80px;
+        transform: scaleX(-1);
+        
+      }
+    
+      .hands-icon{
+        fill:#000000;
+        width:80px;
+        
+      }
+    
+    
+      .sop{
+        
+       
+        display: flex;
+        flex-direction: column;
+        overflow:hidden;
+      }
+    
+      .sop-wrap{
+        display:flex;
+        flex-direction:row;
+        overflow:hidden;
+      }
+       .sop-wrap> div {
+        flex: 50%; /* or - flex: 0 50% - or - flex-basis: 50% - */
+    
+       
+        margin-bottom: 10px;
+      
+      }
+    
+    .sop-img{
+      background:url("../../public/assets/sop2.jpg") no-repeat top; 
+      background-size:cover;
+    
+    
+    }
+    
+    
+    .sop-statement{
+      justify-content:center;
+      overflow:hidden;
+    
+      .sop-statement-title{
+        text-align:left !important;
+        font-size:1.1em;
+        font-weight:450;
+        padding-left:10px;
+      }
+     
+    
+    
+    
+    
+    }
+    
+    
+    
+    // NEEDS MEDIA
+    
+    
+    
+    
+    .banner{
+     a{
+      background:transparent;
+      outline:none;
+      border:none;
+      height:100%;
+      color:black;
+      link { text-decoration: none; }
+    
+    
+    visited { text-decoration: none; }
+    
+    
+    hover { text-decoration: none; }
+    
+    
+    active{ text-decoration: none; }
+    }
+    }

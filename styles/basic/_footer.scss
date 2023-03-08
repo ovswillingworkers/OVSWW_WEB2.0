@@ -1,0 +1,48 @@
+.footer {
+    width: 100vw;
+    background-color: rgb(99, 99, 99);
+    color: white !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    word-wrap: break-word;
+    a{
+        color:white;
+
+        :hover{
+            color:blue;
+        }
+    }
+    h4 {
+      overflow: hidden;
+    }
+  
+    // Mobile styles (screen width less than 768px)
+    @media (max-width: 767px) {
+      // Make the font size smaller and the spacing tighter on small screens
+      font-size: 0.8em;
+  
+  
+      // Stack the elements vertically
+      flex-direction: column;
+    }
+  
+    // Tablet and desktop styles (screen width greater than or equal to 768px)
+    @media (min-width: 768px) {
+      // Increase the font size and spacing on larger screens
+      font-size: 1em;
+
+  
+      // Align the elements horizontally
+      flex-direction: row;
+  
+      // Use flexbox to distribute the space evenly among the elements
+    //   > div {
+    //     flex: 1;
+    //     text-align: center;
+    //   }
+    }
+  }
+  
