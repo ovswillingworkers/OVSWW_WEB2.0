@@ -8,9 +8,11 @@ import w2 from "../public/assets/w2.jpg";
 import w3 from "../public/assets/w3.jpg";
 import w4 from "../public/assets/w4.jpg";
 import w1 from "../public/assets/welcome.jpg";
+
 import { useRouter } from "next/navigation";
 import Image from 'next/image'
 import getConfig from 'next/config';
+import { Footer } from "./Footer";
 
 
 
@@ -84,7 +86,7 @@ const Home = () => {
         >
       
   
-          <div className="layer"></div>
+          <div className="home-intro"></div>
 
           <h1>Willing Workers</h1>
           <p>
@@ -331,8 +333,8 @@ const Home = () => {
           {/* <img src={Smileimg} alt="" className="src" /> */}
           <h4>Dedicated to making a difference in our community.</h4>
         </div>
-{/* 
-        <Footer /> */}
+
+        <Footer />
       </div>
     </div>
   );

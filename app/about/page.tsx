@@ -11,7 +11,9 @@ import '../../styles/global.scss';
 // import styled from "styled-components";
 import naturewalk from "../../public/assets/nature_walk.jpg";
 import helpingHands from "../../public/assets/hands.jpg";
-import Image from "next/image"
+
+import Image from "next/image";
+import { Footer } from "../Footer";
 // import { Footer } from "./Footer";
 
 function About() {
@@ -37,6 +39,8 @@ function About() {
                 sizes="100vw"
                 />
             </figure>
+
+
 
             <p>
             <h1>"Our Mission"</h1>
@@ -75,28 +79,28 @@ function About() {
         </div>
 
         <div className="about-container-contacts">
-          <h3>Schedule a tour today</h3>
-          <h4 style={{ color: "gray;" }}>
+          <h1 >Schedule a tour today</h1>
+          <p >
             Willing Workers is currently giving tours following CDC guidelines.
             Masks are mandatory during your visit.
-          </h4>
+          </p>
           <br></br>
-          <h3>
+          <h5>
             {" "}
             4813 W. Washington Blvd.<br></br>
             Los Angeles , Los Angeles 90016
-          </h3>
+          </h5>
           <br></br>
 
-          <h3>Telephone: (323) 937-5950</h3>
-          <h3>
+          <h5>Telephone: (323) 937-5950</h5>
+          <h5>
             Monday - Friday <br></br> 7am-3pm
-          </h3>
+          </h5>
           <br></br>
         </div>
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

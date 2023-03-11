@@ -9,11 +9,11 @@ const nextConfig = {
     return config
   },
 
-  images: {
-    domains: ['localhost'],
-    path: '/public/assets/',
-    formats: ["image/webp"],
-  },
+  // images: {
+  //   domains: ['localhost'],
+  //   path: '/public/assets/',
+  //   formats: ["image/webp"],
+  // },
     
   experimental: {
     appDir: true,

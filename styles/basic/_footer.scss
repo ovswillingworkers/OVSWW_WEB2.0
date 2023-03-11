@@ -1,48 +1,55 @@
-.footer {
-    width: 100vw;
-    background-color: rgb(99, 99, 99);
-    color: white !important;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    word-wrap: break-word;
-    a{
-        color:white;
+.Footer {
+  width: 100vw;
+  height: 100%;
+  background-color: rgb(99, 99, 99);
+  z-index: 12;
+  color: white !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  word-wrap: break-word;
+  a {
+    color: white;
 
-        :hover{
-            color:blue;
-        }
-    }
-    h4 {
-      overflow: hidden;
-    }
-  
-    // Mobile styles (screen width less than 768px)
-    @media (max-width: 767px) {
-      // Make the font size smaller and the spacing tighter on small screens
-      font-size: 0.8em;
-  
-  
-      // Stack the elements vertically
-      flex-direction: column;
-    }
-  
-    // Tablet and desktop styles (screen width greater than or equal to 768px)
-    @media (min-width: 768px) {
-      // Increase the font size and spacing on larger screens
-      font-size: 1em;
-
-  
-      // Align the elements horizontally
-      flex-direction: row;
-  
-      // Use flexbox to distribute the space evenly among the elements
-    //   > div {
-    //     flex: 1;
-    //     text-align: center;
-    //   }
+    &:hover {
+      color: blue;
     }
   }
-  
+  h4 {
+    overflow: hidden;
+  }
+  h1{
+    font-family: myfont;
+    font-size: 3.5em;
+   
+    color: #ffffff;
+ 
+     text-shadow: 0 0 2px #000000, 0 0 2px #000000, 0 0 12px #000000, 0 0 12px #000000, 0 0 8px #1efd00;
+   
+  }
+
+  // Mobile styles (screen width less than 768px)
+  @media (max-width: 767px) {
+    // Make the font size smaller and the spacing tighter on small screens
+    font-size: 0.95em;
+
+    // Stack the elements vertically
+    flex-direction: column;
+  }
+
+  // Tablet and desktop styles (screen width greater than or equal to 768px)
+  @media (min-width: 768px) {
+    // Increase the font size and spacing on larger screens
+    font-size: 1em;
+
+    // Align the elements horizontally
+    flex-direction: row;
+    
+    // Use flexbox to distribute the space evenly among the elements
+    > * {
+      flex: 1;
+      text-align: center;
+    }
+  }
+}

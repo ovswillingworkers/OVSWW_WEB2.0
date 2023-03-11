@@ -16,6 +16,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => (
       damping: 20,
     }}
   >
+    <p>Hello workds</p>
     {children}
   </motion.div>
 );

@@ -1,8 +1,9 @@
 @use 'basic/basic';
 @use 'basic/header';
-@use 'basic/nav';
+
 @use 'basic/footer';
 @use 'components/about';
 @use 'components/contact';
 @use 'components/home';
-@use 'components/programs'
+@use 'components/programs';
+@use 'components/nav'

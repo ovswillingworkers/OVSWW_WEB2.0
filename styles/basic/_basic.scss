@@ -2,6 +2,7 @@
   h1, h2, h3, h4, p {
     overflow: hidden;
   }
+
 }
 
 body {
@@ -10,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.5em;
+  background: rgb(214, 213, 213);
 
   @media only screen and (max-width: 768px) {
     font-size: 16px;
@@ -60,7 +62,7 @@ code {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .App-link {

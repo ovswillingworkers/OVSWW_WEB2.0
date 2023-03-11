@@ -7,8 +7,6 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  margin-top: 2%;
-
   &-text {
 
     text-align: center;
@@ -17,9 +15,11 @@
     width:40%;
     h5{
       overflow: hidden;
+      padding-bottom: 20px;
     }
     h3 {
       font-size: 0.9em;
+      color:red;
     }
   }
 
@@ -42,6 +42,12 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .contact-text{
+    padding:0;
+  }
+  
+  }
 .contact-container-banner {
   display: flex;
   flex-direction: column;
@@ -51,12 +57,12 @@
   background-size: cover !important;
 
   width: 100%;
- // height: calc(40vh - 200px);
+ height: 200px;
   justify-content: center;
 
   h1 {
     font-family: myFont;
-    color: var(--green);
+    color: green;
     text-stroke: 2px white;
     text-shadow: -3px 0 rgb(255, 255, 255), 0 3px white, 3px 0 white,
       0 -3px white;
@@ -70,13 +76,18 @@
 
 .contact-container-information {
   display: flex;
+  width:100vw;
+  height:75vh;
   flex-direction: column-reverse;
   align-items: center;
   padding:20px;
-
+  background:rgb(177, 178, 184);
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgb(197, 197, 197) 100%);
+  color:black;
   /* Add these two media queries */
   @media screen and (min-width: 768px) {
     flex-direction: row;
+
   }
 
   @media screen and (min-width: 1200px) {
