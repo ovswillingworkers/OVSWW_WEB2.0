@@ -1,6 +1,9 @@
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[14].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[14].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[2].oneOf[14].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[2].oneOf[14].use[5]!./styles/global.scss ***!
   \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+* {
+  caret-color: transparent;
+}
 * h1, * h2, * h3, * h4, * p {
   overflow: hidden;
 }
@@ -514,6 +517,9 @@ code {
   justify-content: center;
   align-items: center;
 }
+.home-intro button {
+  z-index: 15;
+}
 
 .home-container {
   position: absolute;
@@ -562,15 +568,15 @@ code {
 .overlay Button {
   border-radius: 20px 20px 20px 20px;
   background: transparent;
-  color: black !important;
-  border-color: black !important;
-  font-size: 0.55em;
+  color: rgb(0, 0, 0) !important;
+  border-color: rgb(11, 163, 0) !important;
+  margin-top: 20px;
   font-weight: 600;
   overflow: hidden;
   z-index: 8;
-  background: yellow;
-  width: 160px;
-  height: 40px;
+  background: rgba(231, 220, 3, 0.613);
+  width: 100px;
+  height: 25px;
   z-index: 10 !important;
 }
 .overlay Button:hover {
@@ -840,8 +846,6 @@ code {
   .banner-one h3 {
     overflow: hidden;
     z-index: 10;
-    color: black;
-    text-shadow: 1px -1px 20px #d5ffda;
   }
   .donate-banner {
     height: 100%;
@@ -1139,7 +1143,7 @@ code {
   z-index: 10;
   background: rgba(220, 10, 10, 0);
   width: 100%;
-  height: 10%;
+  height: 10% !important;
   color: rgb(1, 136, 163);
   font-weight: 500;
   display: flex;
@@ -1263,6 +1267,136 @@ code {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.career {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.career-text {
+  text-align: center;
+  margin: 2px;
+  padding: 40px;
+  width: 40%;
+}
+.career-text h5 {
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+.career-text h3 {
+  font-size: 0.9em;
+  color: red;
+}
+.career-banner {
+  margin-top: 4rem;
+  padding: 5rem;
+  background-color: #0000ff;
+  color: white;
+}
+@media screen and (max-width: 768px) {
+  .career {
+    flex-direction: column;
+    margin-top: 0;
+  }
+  .career-text {
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .career-text {
+    padding: 0;
+  }
+}
+.career-container-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: url(/_next/static/media/contact.1241ac16.jpg) no-repeat center;
+  background-size: cover !important;
+  width: 100%;
+  height: 200px;
+  justify-content: center;
+}
+.career-container-banner h1 {
+  font-family: myFont;
+  color: green;
+  text-stroke: 2px white;
+  text-shadow: -3px 0 rgb(255, 255, 255), 0 3px white, 3px 0 white, 0 -3px white;
+  font-size: 6.5rem;
+  margin-top: 20px;
+  line-height: 1em;
+  overflow: hidden;
+  width: 100% !important;
+}
+
+.career-jobpost-container {
+  display: flex;
+  display: block;
+  width: 100vw;
+  height: 75vh;
+  flex-direction: column-reverse;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden;
+  overflow-y: scroll;
+  background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(197, 197, 197) 100%);
+  color: black;
+  /* Add these two media queries */
+}
+@media screen and (min-width: 768px) {
+  .career-jobpost-container {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .career-jobpost-container {
+    flex-direction: row;
+  }
+}
+.career-jobpost-container .Gmap {
+  /* Other styles for the map container */
+  overflow: hidden;
+}
+.career-jobpost-container .Gmap button {
+  background: red !important;
+}
+.career-jobpost-container .Gmap .LoadScript {
+  margin: top 200px, im !important;
+}
+@media screen and (min-width: 1200px) {
+  .career-jobpost-container .Gmap {
+    width: 800px;
+    height: 600px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .career-jobpost-container .Gmap {
+    width: 600px;
+    height: 450px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .career-jobpost-container .Gmap {
+    width: 400px;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .career-jobpost-container .Gmap {
+    width: 80vw;
+    height: 45vh;
+  }
+}
+
+.job-posting {
+  margin: 50px;
+  background: red;
 }
 /*!***********************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[13].use[3]!./app/globals.css ***!

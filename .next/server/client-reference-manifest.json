@@ -104,6 +104,58 @@
         "async": false
       }
     },
+    "(app-client)/./app/career/page.tsx": {
+      "": {
+        "id": "(sc_client)/./app/career/page.tsx",
+        "name": "",
+        "chunks": [
+          "app/career/page:app/career/page"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./app/career/page.tsx",
+        "name": "*",
+        "chunks": [
+          "app/career/page:app/career/page"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/career/page.tsx",
+        "name": "default",
+        "chunks": [
+          "app/career/page:app/career/page"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/Nav.tsx": {
+      "": {
+        "id": "(sc_client)/./app/Nav.tsx",
+        "name": "",
+        "chunks": [
+          "app/layout:app/layout"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./app/Nav.tsx",
+        "name": "*",
+        "chunks": [
+          "app/layout:app/layout"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/Nav.tsx",
+        "name": "default",
+        "chunks": [
+          "app/layout:app/layout"
+        ],
+        "async": false
+      }
+    },
     "(app-client)/./public/assets/w2.jpg": {
       "": {
         "id": "(sc_client)/./public/assets/w2.jpg",
@@ -230,32 +282,6 @@
         "name": "default",
         "chunks": [
           "app/page:app/page"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./app/Nav.tsx": {
-      "": {
-        "id": "(sc_client)/./app/Nav.tsx",
-        "name": "",
-        "chunks": [
-          "app/layout:app/layout"
-        ],
-        "async": false
-      },
-      "*": {
-        "id": "(sc_client)/./app/Nav.tsx",
-        "name": "*",
-        "chunks": [
-          "app/layout:app/layout"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/Nav.tsx",
-        "name": "default",
-        "chunks": [
-          "app/layout:app/layout"
         ],
         "async": false
       }
@@ -493,36 +519,13 @@
         ],
         "async": false
       }
-    },
-    "(app-client)/./app/career/page.tsx": {
-      "": {
-        "id": "(sc_client)/./app/career/page.tsx",
-        "name": "",
-        "chunks": [
-          "app/career/page:app/career/page"
-        ],
-        "async": false
-      },
-      "*": {
-        "id": "(sc_client)/./app/career/page.tsx",
-        "name": "*",
-        "chunks": [
-          "app/career/page:app/career/page"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/career/page.tsx",
-        "name": "default",
-        "chunks": [
-          "app/career/page:app/career/page"
-        ],
-        "async": false
-      }
     }
   },
   "__edge_ssr_module_mapping__": {},
   "__entry_css_files__": {
+    "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\app\\career\\page": [
+      "static/css/app/career/page.css"
+    ],
     "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\app\\page": [
       "static/css/app/page.css"
     ],
@@ -531,9 +534,6 @@
     ],
     "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\app\\programs\\page": [
       "static/css/app/programs/page.css"
-    ],
-    "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\app\\career\\page": [
-      "static/css/app/career/page.css"
     ],
     "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\app\\layout": [
       "static/css/_app-client_app_globals_css.css"
@@ -752,10 +752,10 @@
       "id": "null",
       "name": "default",
       "chunks": [
+        "static/css/app/career/page.css",
         "static/css/app/page.css",
         "static/css/app/about/page.css",
         "static/css/app/programs/page.css",
-        "static/css/app/career/page.css",
         "static/css/_app-client_app_globals_css.css"
       ]
     }
@@ -765,11 +765,63 @@
       "id": "null",
       "name": "default",
       "chunks": [
+        "static/css/app/career/page.css",
         "static/css/app/page.css",
         "static/css/app/about/page.css",
-        "static/css/app/programs/page.css",
-        "static/css/app/career/page.css"
+        "static/css/app/programs/page.css"
       ]
+    }
+  },
+  "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\app\\career\\page.tsx": {
+    "": {
+      "id": "(app-client)/./app/career/page.tsx",
+      "name": "",
+      "chunks": [
+        "app/career/page:app/career/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./app/career/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/career/page:app/career/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./app/career/page.tsx",
+      "name": "default",
+      "chunks": [
+        "app/career/page:app/career/page"
+      ],
+      "async": false
+    }
+  },
+  "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\app\\Nav.tsx": {
+    "": {
+      "id": "(app-client)/./app/Nav.tsx",
+      "name": "",
+      "chunks": [
+        "app/layout:app/layout"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./app/Nav.tsx",
+      "name": "*",
+      "chunks": [
+        "app/layout:app/layout"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./app/Nav.tsx",
+      "name": "default",
+      "chunks": [
+        "app/layout:app/layout"
+      ],
+      "async": false
     }
   },
   "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\public\\assets\\w2.jpg": {
@@ -898,32 +950,6 @@
       "name": "default",
       "chunks": [
         "app/page:app/page"
-      ],
-      "async": false
-    }
-  },
-  "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\app\\Nav.tsx": {
-    "": {
-      "id": "(app-client)/./app/Nav.tsx",
-      "name": "",
-      "chunks": [
-        "app/layout:app/layout"
-      ],
-      "async": false
-    },
-    "*": {
-      "id": "(app-client)/./app/Nav.tsx",
-      "name": "*",
-      "chunks": [
-        "app/layout:app/layout"
-      ],
-      "async": false
-    },
-    "default": {
-      "id": "(app-client)/./app/Nav.tsx",
-      "name": "default",
-      "chunks": [
-        "app/layout:app/layout"
       ],
       "async": false
     }
@@ -1158,32 +1184,6 @@
       "name": "default",
       "chunks": [
         "app/programs/page:app/programs/page"
-      ],
-      "async": false
-    }
-  },
-  "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\app\\career\\page.tsx": {
-    "": {
-      "id": "(app-client)/./app/career/page.tsx",
-      "name": "",
-      "chunks": [
-        "app/career/page:app/career/page"
-      ],
-      "async": false
-    },
-    "*": {
-      "id": "(app-client)/./app/career/page.tsx",
-      "name": "*",
-      "chunks": [
-        "app/career/page:app/career/page"
-      ],
-      "async": false
-    },
-    "default": {
-      "id": "(app-client)/./app/career/page.tsx",
-      "name": "default",
-      "chunks": [
-        "app/career/page:app/career/page"
       ],
       "async": false
     }

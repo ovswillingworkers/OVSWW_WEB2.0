@@ -51,9 +51,7 @@ const Nav: React.FC<NavProps> = () => {
           <li>
             <Link href="/contact"onClick={handleLinkClick}>Contact</Link>
           </li>
-          <li>
-            <Link href="/donate"onClick={handleLinkClick}>Donate</Link>
-          </li>
+
           <li>
             <Link href="/career">Career</Link>
           </li>

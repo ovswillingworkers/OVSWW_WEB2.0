@@ -15,6 +15,9 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+    button{
+      z-index: 15;
+    }
    
   }
   
@@ -76,15 +79,15 @@
     Button {
       border-radius: 20px 20px 20px 20px;
       background: transparent;
-      color: black !important;
-      border-color: black !important;
-      font-size: 0.55em;
+      color: rgb(0, 0, 0) !important;
+      border-color: rgb(11, 163, 0) !important;
+      margin-top:20px;
       font-weight: 600;
       overflow: hidden;
       z-index: 8;
-      background: yellow;
-      width: 160px;
-      height: 40px;
+      background: rgba(231, 220, 3, 0.613);
+      width: 100px;
+      height: 25px;
       z-index:10 !important;
     
      &:hover{
@@ -451,8 +454,7 @@ background: linear-gradient(180deg, rgba(235, 241, 239,1) 0%, rgba(191,238,203,1
            
             overflow:hidden;
             z-index: 10;
-            color: black;
-            text-shadow: 1px -1px 20px #d5ffda;
+
           }
         }
         
