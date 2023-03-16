@@ -9,20 +9,49 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 export default function CreateJobPost() {
-  const [jobPosting, setJobPosting] = useState<JobPosting>({
-    id: "",
-    title: "",
-    location: "",
-    salary: "",
-    date: "",
-    description: "",
-    qualifications: [],
-    contact: {
-      name: "",
-      email: "",
-      phone: ""
-    }
-  });
+  const pacificTimezone = "en-US";
+const now = new Date();
+const expirationDate = new Date(now);
+console.log(now, expirationDate, " DATES SHOULD BE HERE ><")
+expirationDate.setMonth(expirationDate.getMonth() + 1); // add 1 month
+
+const deleteCustomQualification = (id: string) => {
+  const customQualificationIndex = customQualifications.findIndex((q) => q.id === id);
+  const deletedCustomQualification = customQualifications[customQualificationIndex];
+  const updatedCustomQualifications = [...customQualifications];
+  updatedCustomQualifications.splice(customQualificationIndex, 1);
+  setCustomQualifications(updatedCustomQualifications);
+  setJobPosting((prevState) => ({
+    ...prevState,
+    qualifications: prevState.qualifications.filter((q) => q !== deletedCustomQualification.id),
+  }));
+};
+
+const handleDeleteCustomQualification = (id: string) => {
+  const confirmDeletion = window.confirm('Are you sure you want to delete this custom qualification?');
+  if (confirmDeletion) {
+    deleteCustomQualification(id);
+  }
+};
+
+const expirationDateString = expirationDate.toISOString().substr(0, 10); // convert to yyyy-mm-dd format
+
+const [jobPosting, setJobPosting] = useState<JobPosting>(() => ({
+  id: "",
+  title: "",
+  location: "",
+  salary: "",
+  date: now.toISOString().substr(0, 10),
+  description: "",
+  qualifications: [],
+  contact: {
+    name: "",
+    email: "",
+    phone: "",
+  },
+  expirationDate: expirationDateString,
+}));
+
 
 
 
@@ -90,6 +119,14 @@ const handleQualificationsChange = (
           [name]: value
         }
       }));
+    } else if (name === "date") {
+      const expirationDate = new Date(value);
+      expirationDate.setMonth(expirationDate.getMonth() + 1); // add 1 month
+      setJobPosting(prevState => ({
+        ...prevState,
+        [name]: value,
+        expirationDate: expirationDate.toISOString().substr(0, 10), // convert to yyyy-mm-dd format
+      }));
     } else {
       setJobPosting(prevState => ({
         ...prevState,
@@ -97,6 +134,7 @@ const handleQualificationsChange = (
       }));
     }
   };
+  
 
 
 const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -147,6 +185,20 @@ return (
           <label htmlFor="date">Date:</label>
           <input type="date" id="date" name="date" value={jobPosting.date} onChange={handleInputChange} required />
         </div>
+        
+        <div className="form-group">
+  <label htmlFor="expirationDate">Expiration Date:</label>
+  <input
+    type="date"
+    id="expirationDate"
+    name="expirationDate"
+    value={jobPosting.expirationDate || ""}
+    onChange={handleInputChange}
+  />
+</div>
+
+
+
 
         <div className="form-group">
           <label htmlFor="description">Description:</label>
@@ -154,61 +206,65 @@ return (
         </div>
 
         <div className="form-group qualification">
-      <label htmlFor="qualifications">Qualifications:</label>
-      <ul>
-        <li>
+  <label htmlFor="qualifications">Qualifications:</label>
+  <ul>
+    <li>
+      <input
+        type="checkbox"
+        id="high_school_diploma"
+        name="High School Diploma"
+        checked={jobPosting.qualifications.includes("High School Diploma")}
+        onChange={handleQualificationsChange}
+      />
+      <label htmlFor="high_school_diploma">High School Diploma</label>
+    </li>
+    <li>
+      <input
+        type="checkbox"
+        id="some_college"
+        name="Some College"
+        checked={jobPosting.qualifications.includes("Some College")}
+        onChange={handleQualificationsChange}
+      />
+      <label htmlFor="some_college">Some College</label>
+    </li>
+    <li>
+      <input
+        type="checkbox"
+        id="bachelor_degree"
+        name="Bachelor's Degree"
+        checked={jobPosting.qualifications.includes("Bachelor's Degree")}
+        onChange={handleQualificationsChange}
+      />
+      <label htmlFor="bachelor_degree">Bachelor's Degree</label>
+    </li>
+    {customQualifications.map((customQualification) => (
+      <li key={customQualification.id}>
+        <div>
           <input
             type="checkbox"
-            id="high_school_diploma"
-            name="High School Diploma"
-            checked={jobPosting.qualifications.includes("High School Diploma")}
-            onChange={handleQualificationsChange}
+            id={customQualification.id}
+            name={customQualification.text}
+            checked={jobPosting.qualifications.includes(customQualification.id)}
+            onChange={(event) => handleQualificationsChange(event, customQualification.id)}
           />
-          <label htmlFor="high_school_diploma">High School Diploma</label>
-        </li>
-        <li>
           <input
-            type="checkbox"
-            id="some_college"
-            name="Some College"
-            checked={jobPosting.qualifications.includes("Some College")}
-            onChange={handleQualificationsChange}
+            type="text"
+            value={customQualification.text}
+            onChange={(event) => handleCustomQualificationChange(event, customQualification.id)}
           />
-          <label htmlFor="some_college">Some College</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            id="bachelor_degree"
-            name="Bachelor's Degree"
-            checked={jobPosting.qualifications.includes("Bachelor's Degree")}
-            onChange={handleQualificationsChange}
-          />
-          <label htmlFor="bachelor_degree">Bachelor's Degree</label>
-        </li>
-        {customQualifications.map((customQualification) => (
-          <li key={customQualification.id}>
-            <div>
-              <input
-                type="checkbox"
-                id={customQualification.id}
-                name={customQualification.text}
-                checked={jobPosting.qualifications.includes(customQualification.id)}
-                onChange={(event) => handleQualificationsChange(event, customQualification.id)}
-              />
-              <input
-                type="text"
-                value={customQualification.text}
-                onChange={(event) => handleCustomQualificationChange(event, customQualification.id)}
-              />
-            </div>
-          </li>
-        ))}
-      </ul>
-      <button type="button" onClick={addCustomQualification}>
-        Add More +
-      </button>
-    </div>
+          <button type="button" onClick={() => handleDeleteCustomQualification(customQualification.id)}>
+            Delete
+          </button>
+        </div>
+      </li>
+    ))}
+  </ul>
+  <button type="button" onClick={addCustomQualification}>
+    Add More +
+  </button>
+</div>
+
 
 
 

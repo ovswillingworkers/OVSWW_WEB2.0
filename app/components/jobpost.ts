@@ -10,5 +10,6 @@ export interface JobPosting {
       name: string;
       email: string;
       phone: string;
-    }
+    };
+    expirationDate:  string;
   }

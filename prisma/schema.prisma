@@ -75,7 +75,7 @@ model Session {
 
 model JobPosting {
   id              String   @id @default(uuid())
-    createdAt DateTime @default(now())
+  createdAt       DateTime @default(now())
   title           String
   location        String
   salary          String
@@ -85,7 +85,9 @@ model JobPosting {
   contact         Contact? @relation(fields: [contactId], references: [id], onDelete: Cascade)
   isActive        Boolean  @default(true)
   contactId       String?
+  expirationDate  DateTime?
 }
+
 model Contact {
   id          String         @id @default(uuid())
       createdAt DateTime @default(now())
