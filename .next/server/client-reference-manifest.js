@@ -104,32 +104,6 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./app/Nav.tsx": {
-      "": {
-        "id": "(sc_client)/./app/Nav.tsx",
-        "name": "",
-        "chunks": [
-          "app/layout:app/layout"
-        ],
-        "async": false
-      },
-      "*": {
-        "id": "(sc_client)/./app/Nav.tsx",
-        "name": "*",
-        "chunks": [
-          "app/layout:app/layout"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/Nav.tsx",
-        "name": "default",
-        "chunks": [
-          "app/layout:app/layout"
-        ],
-        "async": false
-      }
-    },
     "(app-client)/./app/admin/careerpost/page.tsx": {
       "": {
         "id": "(sc_client)/./app/admin/careerpost/page.tsx",
@@ -152,6 +126,32 @@ self.__RSC_MANIFEST={
         "name": "default",
         "chunks": [
           "app/admin/careerpost/page:app/admin/careerpost/page"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/Nav.tsx": {
+      "": {
+        "id": "(sc_client)/./app/Nav.tsx",
+        "name": "",
+        "chunks": [
+          "app/layout:app/layout"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./app/Nav.tsx",
+        "name": "*",
+        "chunks": [
+          "app/layout:app/layout"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/Nav.tsx",
+        "name": "default",
+        "chunks": [
+          "app/layout:app/layout"
         ],
         "async": false
       }
@@ -374,32 +374,6 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\app\\Nav.tsx": {
-    "": {
-      "id": "(app-client)/./app/Nav.tsx",
-      "name": "",
-      "chunks": [
-        "app/layout:app/layout"
-      ],
-      "async": false
-    },
-    "*": {
-      "id": "(app-client)/./app/Nav.tsx",
-      "name": "*",
-      "chunks": [
-        "app/layout:app/layout"
-      ],
-      "async": false
-    },
-    "default": {
-      "id": "(app-client)/./app/Nav.tsx",
-      "name": "default",
-      "chunks": [
-        "app/layout:app/layout"
-      ],
-      "async": false
-    }
-  },
   "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\styles\\global.scss": {
     "default": {
       "id": "null",
@@ -431,6 +405,32 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "app/admin/careerpost/page:app/admin/careerpost/page"
+      ],
+      "async": false
+    }
+  },
+  "C:\\Users\\jayce\\Desktop\\JC\\Code\\WillingWorkers_site\\Update_WW\\willingworkers_web\\willingworkers_web2\\app\\Nav.tsx": {
+    "": {
+      "id": "(app-client)/./app/Nav.tsx",
+      "name": "",
+      "chunks": [
+        "app/layout:app/layout"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./app/Nav.tsx",
+      "name": "*",
+      "chunks": [
+        "app/layout:app/layout"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./app/Nav.tsx",
+      "name": "default",
+      "chunks": [
+        "app/layout:app/layout"
       ],
       "async": false
     }
