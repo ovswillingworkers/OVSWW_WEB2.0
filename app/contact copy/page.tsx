@@ -33,7 +33,7 @@ useEffect(() => {
 }, []);
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
-console.log(apiKey, "API KEY HERE")
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
