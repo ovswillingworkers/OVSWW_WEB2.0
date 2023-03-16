@@ -1,0 +1,147 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import "../../styles/global.scss";
+// import { Footer } from "./Footer";
+import dotenv from "dotenv";
+import { Footer } from "../Footer";
+import Link from "next/link";
+import axios from "axios"
+
+interface JobPosting {
+  id: string;
+  title: string;
+  location: string;
+  salary: string;
+  date: string;
+  description: string;
+  qualifications: string;
+  contact: {
+    name: string;
+    email: string;
+    phone: string;
+  }
+}
+
+
+async function getJobPostings() {
+  try {
+    const res = await axios.get("/api/getPost");
+    const data = res.data;
+    return data as JobPosting[]; // cast the response data to an array of JobPosting objects
+  } catch (error) {
+    console.error(error);
+    return []; 
+  }
+}
+
+
+function Career() {
+
+  const [jobPostings, setJobPostings] = useState<JobPosting[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getJobPostings();
+        setJobPostings(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+        setError("Error fetching job postings. Please try again later.");
+        setIsLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+  if (isLoading) {
+    return <div>Loading job postings...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (jobPostings.length === 0) {
+    return (
+      <div>
+        <p>No job postings have been placed yet. Please call or email us at <a href="mailto:info@willingworkers.com">info@willingworkers.com</a> to see if any positions are available.</p>
+      </div>
+    );
+  }
+ 
+
+
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
+
+
+
+  return (
+    <div className="career">
+      <div className="career-container-banner mt-4 p-5 bg-primary text-white">
+        <h1>Career</h1>
+        <p></p>
+      </div>
+
+
+        <div className="career-text">
+          <h1>Schedule a tour today</h1>
+          <h5 style={{}}>
+            Willing Workers is currently giving tours following CDC guidelines.
+            Masks are mandatory during your visit.
+          </h5>
+          <h3>
+            {" "}
+            <a
+              href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
+                "4813 W. Washington Blvd., Los Angeles, Los Angeles 90016"
+              )}`}
+              target="_blank"
+            >
+              4813 W. Washington Blvd.<br></br>
+              Los Angeles, CA 90016
+            </a>
+          </h3>
+          <h3>Monday - Friday 8:00am - 3:00pm</h3>
+          <h3>
+            Phone:<a href="tel:323-729-9898">323-729-9898</a>
+          </h3>
+          <h3>Email: info@willingworkers.org</h3>
+        </div>
+        
+      <div className="career-jobpost-container">
+  
+      {jobPostings.map((jobPosting, index) => (
+          <div className="job-posting" key={index}>
+            <h2>{jobPosting.title}</h2>
+            <h4>{jobPosting.location}</h4>
+            <p>Salary: {jobPosting.salary}</p>
+            <p>Date: {jobPosting.date}</p>
+            <Link href={`/apply?id=${jobPosting.id}`} as={`/apply/${jobPosting.id}`}>
+      Apply Here
+    </Link>
+            <hr />
+            <h3>Description:</h3>
+            <p>{jobPosting.description}</p>
+            <h3>Qualifications:</h3>
+            <p>{jobPosting.qualifications}</p>
+
+            <h3>Contact:</h3>
+            <p>Name: {jobPosting.contact.name}</p>
+            <p>Email: {jobPosting.contact.email}</p>
+
+            
+            <p>Phone: {jobPosting.contact.phone}</p>
+          </div>
+      ))}
+
+      </div>
+      
+      <Footer />
+    </div>
+  );
+}
+
+export default Career;

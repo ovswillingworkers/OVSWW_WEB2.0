@@ -7,6 +7,14 @@
   width: 100%;
   justify-content: center;
   align-items: center;
+  background:rgb(173, 173, 173);
+  color:black;
+  h1{
+    color: #000000;
+
+    text-shadow: 0 0 5px #ffffff, 0 0 5px #f1f1f1, 0 0 5px #FFF, 0 0 5px #ff1818, 0 0 5px #49FF18, 0 0 5px #49FF18, 0 0 5px #49FF18, 0 0 5px #49ff18;
+    
+  }
   &-text {
 
     text-align: center;
@@ -20,6 +28,8 @@
     h3 {
       font-size: 0.9em;
       color:red;
+      text-shadow: 0 0 5px #ffffff, 0 0 5px #f1f1f1, 0 0 2px #FFF, 0 0 2px #df0303, 0 0 2px #e91202, 0 0 3px #f90d05, 0 0 2px #df3400, 0 0 2px #fc2200;
+
     }
   }
 
@@ -75,66 +85,98 @@
 
 .career-jobpost-container {
   display: flex;
-  display:block;
-  width:100vw;
-  height:75vh;
-  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  padding:20px;
-
   overflow: hidden;
   overflow-y: scroll;
-  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgb(197, 197, 197) 100%);
-  color:black;
-  /* Add these two media queries */
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgb(197, 197, 197) 100%);
+  color: black;
+  
 
+  .job-posting {
+    width: 45%; /* adjust this value as needed */
+    margin: 10px;
+    padding: 40px;
   }
 
-  @media screen and (min-width: 1200px) {
-    flex-direction: row;
-  }
-
-  .Gmap {
-
-
-    button{
-      background:red !important;
-    }
-    .LoadScript{
-      margin: top 200px, im !important;;
-    }
-    
-    
- 
-
-    /* Other styles for the map container */
-    overflow: hidden;
-    @media screen and (min-width: 1200px) {
-      width: 800px;
-      height: 600px;
-    }
-
-    @media screen and (min-width: 992px) and (max-width: 1199px) {
-      width: 600px;
-      height: 450px;
-    }
-
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-      width: 400px;
-      height: 300px;
-    }
-
-    @media screen and (max-width: 767px) {
-      width: 80vw;
-      height: 45vh;
+  @media screen and (max-width: 768px) {
+    .job-posting {
+      width: 80%;
     }
   }
 }
 
+// .career-jobpost-container {
+//   display: flex;
+//   flex-direction: column;
+  
+//   justify-content: center;
+//   align-items: center;
+//   // padding: 20px;
+//   overflow: hidden;
+//   overflow-y: scroll;
+//   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgb(197, 197, 197) 100%);
+//   color: black;
+//   /* Add these two media queries */
+//   @media screen and (min-width: 768px) {
+//     flex-direction: column;
 
-.job-posting{
-  margin:50px;
-  background:red;
+//   }
+
+//   @media screen and (min-width: 1200px) {
+//     flex-direction:row;
+//     flex-wrap: wrap;
+//   }
+
+
+// }
+
+
+// .job-posting{
+//   margin:50px;
+//   background:red;
+// }
+
+// .job-posting {
+//   width:90%; /* This will give each column some margin between them */
+//   display: inline-block;
+//   vertical-align: top;
+//   margin:10px;
+//   padding:40px;
+//   background:rgba(128, 128, 128, 0.121);
+//   border:#0000ff 20px ;
+//   border: 2px dotted;
+//}
+.job-posting {
+  /* Default styles */
+  width: 100%;
+  height: auto;
+  margin:10px;
+  padding:40px;
+  background:rgba(128, 128, 128, 0.121);
+  border: 2px dotted;
+  /* Styles for mobile screens */
+  @media only screen and (min-width: 320px) {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Styles for tablet screens */
+  @media only screen and (min-width: 768px) {
+    width: 50%;
+    height: 400px;
+  }
+
+  /* Styles for laptop screens */
+  @media only screen and (min-width: 1024px) {
+    width: 33.33%;
+    height: 400px;
+  }
+
+  /* Styles for desktop screens */
+  @media only screen and (min-width: 1200px) {
+    width: 25%;
+    height: 400px;
+  }
 }

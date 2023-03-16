@@ -73,6 +73,29 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model JobPosting {
+  id              String   @id @default(uuid())
+    createdAt DateTime @default(now())
+  title           String
+  location        String
+  salary          String
+  date            String
+  description     String
+  qualifications  String
+  contact         Contact? @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  isActive        Boolean  @default(true)
+  contactId       String?
+}
+model Contact {
+  id          String         @id @default(uuid())
+      createdAt DateTime @default(now())
+  name        String
+  email       String
+  phone       String
+  jobPostings JobPosting[]   
+  jobPostingId String?
+}
+
 
 
 model VerificationToken {
