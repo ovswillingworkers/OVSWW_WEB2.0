@@ -81,11 +81,11 @@ model JobPosting {
   salary          String
   date            String
   description     String
-  qualifications  String
+  qualifications  String[]
   contact         Contact? @relation(fields: [contactId], references: [id], onDelete: Cascade)
   isActive        Boolean  @default(true)
   contactId       String?
-  expirationDate  DateTime?
+  expirationDate  String
 }
 
 model Contact {
