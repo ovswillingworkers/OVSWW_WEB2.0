@@ -172,7 +172,17 @@ color: black;
  /* Styles for mobile screens */
 
  
+  /* Styles for mobile screens */
+  @media (max-width: 767px) {
+    margin: 0;
+    padding: 0;
+  }
 
+  /* Styles for tablet screens */
+  @media (min-width: 768px) and (max-width: 991px) {
+    margin: 0 50px;
+    padding: 0 50px;
+  }
  
  
 
