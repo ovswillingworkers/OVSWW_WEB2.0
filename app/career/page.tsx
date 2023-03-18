@@ -155,13 +155,13 @@ function Career() {
     return <div>{error}</div>;
   }
 
-  if (jobPostings.length === 0) {
-    return (
-      <div>
-        <p>No job postings have been placed yet. Please call or email us at <a href="mailto:info@willingworkers.com">info@willingworkers.com</a> to see if any positions are available.</p>
-      </div>
-    );
-  }
+  // if (jobPostings.length === 0) {
+  //   return (
+  //     <div>
+  //       <p>No job postings have been placed yet. Please call or email us at <a href="mailto:info@willingworkers.com">info@willingworkers.com</a> to see if any positions are available.</p>
+  //     </div>
+  //   );
+  // }
  
 
 
@@ -178,11 +178,12 @@ function Career() {
 
 
         <div className="career-text">
-          <h1>Schedule a tour today</h1>
-          <h5 style={{}}>
-            Willing Workers is currently giving tours following CDC guidelines.
-            Masks are mandatory during your visit.
-          </h5>
+        <h1>Join our team today</h1>
+  <h5 style={{}}>
+    At Willing Workers, we are always looking for dedicated individuals to join our team. 
+    We offer competitive salaries, comprehensive benefits, and opportunities for growth and advancement. 
+    Come visit us for a tour to see what we're all about and start your career with us today!
+  </h5>
           <h3>
             {" "}
             <a
