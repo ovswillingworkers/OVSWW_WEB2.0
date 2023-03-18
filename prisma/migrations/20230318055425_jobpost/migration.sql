@@ -69,7 +69,7 @@ CREATE TABLE "JobPosting" (
     "salary" TEXT NOT NULL,
     "date" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "qualifications" TEXT NOT NULL,
+    "qualifications" TEXT[],
     "isActive" BOOLEAN NOT NULL DEFAULT true,
     "contactId" TEXT,
     "expirationDate" TIMESTAMP(3),
