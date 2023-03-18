@@ -56,6 +56,97 @@ function Career() {
     }
     fetchData();
   }, []);
+
+  // const [jobPostings, setJobPostings] = useState([
+  //   {
+  //     id:"1",
+  //     title: 'Software Engineer',
+  //     location: 'Los Angeles, CA',
+  //     salary: '$100,000 - $120,000',
+  //     date: 'March 15, 2023',
+  //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  //     qualifications:"",
+  //     contact: {
+  //       name: 'John Doe',
+  //       email: 'johndoe@example.com',
+  //       phone: '555-555-5555',
+  //     },
+  //   },
+  //   {
+  //     id:"2",
+  //     title: 'Product Manager',
+  //     location: 'San Francisco, CA',
+  //     salary: '$120,000 - $140,000',
+  //     date: 'April 1, 2023',
+  //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  //     qualifications: 'Bachelor\'s degree in Business, Computer Science or related field. 5+ years of experience in product management.',
+  //     contact: {
+  //       name: 'Jane Smith',
+  //       email: 'janesmith@example.com',
+  //       phone: '555-555-5555',
+  //     },
+      
+  //   },
+  //   {
+  //     id:"3",
+  //     title: 'Software Engineer',
+  //     location: 'Los Angeles, CA',
+  //     salary: '$100,000 - $120,000',
+  //     date: 'March 15, 2023',
+  //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  //     qualifications: 'Bachelor\'s degree in Computer Science or related field. 3+ years of experience in software engineering.',
+  //     contact: {
+  //       name: 'John Doe',
+  //       email: 'johndoe@example.com',
+  //       phone: '555-555-5555',
+  //     },
+  //   },
+  //   {
+  //     id:"4",
+  //     title: 'Product Manager',
+  //     location: 'San Francisco, CA',
+  //     salary: '$120,000 - $140,000',
+  //     date: 'April 1, 2023',
+  //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  //     qualifications: 'Bachelor\'s degree in Business, Computer Science or related field. 5+ years of experience in product management.',
+  //     contact: {
+  //       name: 'Jane Smith',
+  //       email: 'janesmith@example.com',
+  //       phone: '555-555-5555',
+  //     },
+      
+  //   },   {
+  //     id:"5",
+  //     title: 'Software Engineer',
+  //     location: 'Los Angeles, CA',
+  //     salary: '$100,000 - $120,000',
+  //     date: 'March 15, 2023',
+  //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  //     qualifications: 'Bachelor\'s degree in Computer Science or related field. 3+ years of experience in software engineering.',
+  //     contact: {
+  //       name: 'John Doe',
+  //       email: 'johndoe@example.com',
+  //       phone: '555-555-5555',
+  //     },
+  //   },
+  //   {
+  //     id:"6",
+  //     title: 'Product Manager',
+  //     location: 'San Francisco, CA',
+  //     salary: '$120,000 - $140,000',
+  //     date: 'April 1, 2023',
+  //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  //     qualifications: 'Bachelor\'s degree in Business, Computer Science or related field. 5+ years of experience in product management.',
+  //     contact: {
+  //       name: 'Jane Smith',
+  //       email: 'janesmith@example.com',
+  //       phone: '555-555-5555',
+  //     },
+      
+  //   },
+  //   // Add more job postings here...
+  // ]);
+
   if (isLoading) {
     return <div>Loading job postings...</div>;
   }
