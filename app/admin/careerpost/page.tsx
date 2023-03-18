@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import "../../../styles/global.scss";
 import axios from 'axios';
@@ -9,11 +9,20 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 export default function CreateJobPost() {
+  const textareaDescription = useRef<HTMLTextAreaElement | null>(null);
   const pacificTimezone = "en-US";
 const now = new Date();
 const expirationDate = new Date(now);
-console.log(now, expirationDate, " DATES SHOULD BE HERE ><")
+
 expirationDate.setMonth(expirationDate.getMonth() + 1); // add 1 month
+
+useEffect(() => {
+  if (textareaDescription.current) {
+    textareaDescription.current.style.height = 'auto'; // Reset height to auto to get the correct scrollHeight
+    textareaDescription.current.style.height = `${textareaDescription.current.scrollHeight}px`; // Set the height to the content's scrollHeight
+  }
+}, [textareaDescription.current?.value]);
+
 
 const deleteCustomQualification = (id: string) => {
   const customQualificationIndex = customQualifications.findIndex((q) => q.id === id);
@@ -36,18 +45,22 @@ const handleDeleteCustomQualification = (id: string) => {
 
 const expirationDateString = expirationDate.toISOString().substr(0, 10); // convert to yyyy-mm-dd format
 
+
+const [savedCustomQualifications, setSavedCustomQualifications] = useState<Array<{ id: string; text: string }>>([]);
+
+
 const [jobPosting, setJobPosting] = useState<JobPosting>(() => ({
   id: "",
-  title: "",
-  location: "",
-  salary: "",
+  title: "Behavior Coach",
+  location: "Los Angeles",
+  salary: "$15.00/hr",
   date: now.toISOString().substr(0, 10),
-  description: "",
+  description: "This is a test description",
   qualifications: [],
   contact: {
-    name: "",
-    email: "",
-    phone: "",
+    name: "jay",
+    email: "jay@gmail.com",
+    phone: "2135465894",
   },
   expirationDate: expirationDateString,
 }));
@@ -56,12 +69,16 @@ const [jobPosting, setJobPosting] = useState<JobPosting>(() => ({
 
 
 
-  const [customQualifications, setCustomQualifications] = useState<Array<{ id: string; text: string }>>([]);
+  const [customQualifications, setCustomQualifications] = useState<Array<{ id: string; text: string; isSaved:boolean; }>>([]);
+  const [isCustomQualificationsSaved, setIsCustomQualificationsSaved] = useState<boolean>(false);
+
+
+
 
 const addCustomQualification = () => {
   setCustomQualifications((prevQualifications) => [
     ...prevQualifications,
-    { id: uuidv4(), text: '' },
+    { id: uuidv4(), text: '', isSaved:false },
   ]);
 };
 
@@ -93,21 +110,6 @@ const handleQualificationsChange = (
   }
 };
 
-  // const handleQualificationsChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-  //   const { name, checked } = event.target;
-  //   if (checked) {
-  //     setJobPosting(prevState => ({
-  //       ...prevState,
-  //       qualifications: [...prevState.qualifications, name]
-  //     }));
-  //   } else {
-  //     setJobPosting(prevState => ({
-  //       ...prevState,
-  //       qualifications: prevState.qualifications.filter(q => q !== name)
-  //     }));
-  //   }
-  // };
-  
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = event.target;
@@ -137,23 +139,43 @@ const handleQualificationsChange = (
   
 
 
-const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
-  event.preventDefault();
-  try {
-    const response = await axios.post("/api/addPost", jobPosting);
-    if (response.status === 200) {
-      const data = response.data;
-      console.log(data);
-      // Display a success message to the user
-    } else {
-      throw new Error("Error creating job post");
-    }
-  } catch (error) {
-    console.error(error);
-    // Display an error message to the user
-  }
-};
 
+  const handleSaveCustomQualification = (id: string) => {
+    const qualification = customQualifications.find((customQualification) => customQualification.id === id);
+    if (qualification && qualification.text) {
+      setSavedCustomQualifications((prevQualifications) => [
+        ...prevQualifications,
+        qualification,
+      ]);
+      setCustomQualifications((prevQualifications) =>
+        prevQualifications.map((customQualification) =>
+          customQualification.id === id ? { ...customQualification, isSaved: true } : customQualification
+        )
+      );
+    }
+  };
+  
+  
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    event.preventDefault();
+    const postId = uuidv4(); // generate a unique ID
+    const jobPostingWithId = { ...jobPosting, id: postId }; // add the ID to the jobPosting object
+    try {
+      const response = await axios.post("/api/addPost", jobPostingWithId);
+      if (response.status === 200) {
+        const data = response.data;
+        console.log(data);
+        // Display a success message to the user
+      } else {
+        throw new Error("Error creating job post");
+      }
+    } catch (error) {
+      console.error(error);
+      // Display an error message to the user
+    }
+  };
+  
 return (
   <>
     <Head>
@@ -164,6 +186,9 @@ return (
       <p></p>
     </div>
     <div className="form-container">
+      <div className="form-container-">
+        
+     
       <h1>Create Job Post</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -200,9 +225,9 @@ return (
 
 
 
-        <div className="form-group">
+        <div className="form-group job-description">
           <label htmlFor="description">Description:</label>
-          <textarea id="description" name="description" value={jobPosting.description} onChange={handleInputChange} required />
+          <textarea ref={textareaDescription} id="description" name="description" className="description" value={jobPosting.description} onChange={handleInputChange} required  rows={4}/>
         </div>
 
         <div className="form-group qualification">
@@ -238,7 +263,25 @@ return (
       />
       <label htmlFor="bachelor_degree">Bachelor's Degree</label>
     </li>
-    {customQualifications.map((customQualification) => (
+    {customQualifications.map((customQualification) => {
+  if (customQualification.isSaved) {
+    return (
+      <li key={customQualification.id}>
+        <input
+          type="checkbox"
+          id={customQualification.id}
+          name={customQualification.text}
+          checked={jobPosting.qualifications.includes(customQualification.id)}
+          onChange={(event) => handleQualificationsChange(event, customQualification.id)}
+        />
+        <label htmlFor={customQualification.id}>{customQualification.text}</label>
+        <button type="button" className="delete" onClick={() => handleDeleteCustomQualification(customQualification.id)}>
+          X
+        </button>
+      </li>
+    );
+  } else {
+    return (
       <li key={customQualification.id}>
         <div>
           <input
@@ -253,12 +296,18 @@ return (
             value={customQualification.text}
             onChange={(event) => handleCustomQualificationChange(event, customQualification.id)}
           />
-          <button type="button" onClick={() => handleDeleteCustomQualification(customQualification.id)}>
+          <button type="button" className="checkbox-newcustomButton save" onClick={() => handleSaveCustomQualification(customQualification.id)}>
+            Save
+          </button>
+          <button type="button" className="checkbox-newcustomButton delete" onClick={() => handleDeleteCustomQualification(customQualification.id)}>
             Delete
           </button>
         </div>
       </li>
-    ))}
+    );
+  }
+})}
+
   </ul>
   <button type="button" onClick={addCustomQualification}>
     Add More +
@@ -285,6 +334,7 @@ return (
 
           <button type="submit">Submit</button>
         </form>
+        </div>
       </div>
     </>
   );
