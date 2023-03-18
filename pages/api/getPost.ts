@@ -105,6 +105,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log("API GETPOST")
   if (req.method === "GET") {
     // getJobPosts
     try {
