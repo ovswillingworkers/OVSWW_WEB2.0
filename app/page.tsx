@@ -65,6 +65,23 @@ const Home = () => {
   // Declare a list of images to be displayed in the slide show
   const images = [w1, w2, w3, w4];
 
+  const [isImagesLoaded, setIsImagesLoaded] = useState(false);
+
+  // useEffect(() => {
+  //   const imagePromises = images.map((img) => {
+  //     return new Promise<void>((resolve) => {
+  //       const image = new Image();
+  //       image.onload = () => resolve();
+  //       image.src = img.src;
+  //     });
+  //   });
+  
+  //   Promise.all(imagePromises).then(() => {
+  //     setIsVisible(true);
+  //   });
+  // }, [images]);
+  
+  
   // Update the current slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
@@ -79,12 +96,20 @@ const Home = () => {
     <div>
       <div className="home-container">
         <div
-          className="overlay mt-4 p-5 bg-primary text-white"
-          style={{ backgroundImage: `url(${images[currentSlide].src})`
-          }}
+          className="overlay mt-4 p-5 bg-primary text-white">
+      <AnimatePresence initial={false}>
+  <motion.div
+    key={currentSlide}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.5 }}
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+  >
+    <Image src={images[currentSlide].src} layout="fill" objectFit="cover" alt={""} />
+  </motion.div>
+</AnimatePresence>
 
-        >
-      
   
           <div className="home-intro"></div>
 
@@ -154,20 +179,7 @@ const Home = () => {
        
 
         <AnimatePresence initial={false}>
-  {!busInView && (
-    <motion.div
-      key="bus-placeholder"
-      initial={{ opacity: 0, x: 100 }}
-      animate={{ opacity: 1, x: 0 }}
-    >
-      <Bus
-        className="bus-icon bus-placeholder"
-        width={"150px"}
-        height={"150px"}
-        fill="blue"
-      />
-    </motion.div>
-  )}
+
   {busInView && (
     <motion.div
       key="bus-animation"

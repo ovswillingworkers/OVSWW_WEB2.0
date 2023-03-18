@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 // import styled from "styled-components";
-// import Programimg from "./assets/programs.jpg";
+import programsimg from "../../public/assets/programs_color.jpg";
 import Image, { StaticImageData } from "next/image";
 import '../../styles/global.scss';
 import artsProgram from "../../public/assets/programs/art_program.jpg";
@@ -58,6 +58,14 @@ const Programs = () => {
       <div className="program-container">
         <div className="program-container-banner mt-4 p-5 bg-primary text-white">
           {/* <div className="layer"></div> */}
+          <Image
+        src={programsimg}
+        alt="background"
+        layout="fill"
+        objectFit="cover"
+        quality={100}
+       
+      />
           <h1>Programs</h1>
           <br></br>
         </div>
