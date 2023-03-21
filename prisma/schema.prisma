@@ -19,7 +19,7 @@ model User {
   sessions      Session[]
   post          Post[]
   comment       Comment[]
-  password      String
+  password      String?
 }
 
 model Post {

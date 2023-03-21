@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import Image from 'next/image'
 import getConfig from 'next/config';
 import { Footer } from "./Footer";
+import Nav from "./Nav";
 
 
 
@@ -94,6 +95,7 @@ const Home = () => {
 
   return (
     <div>
+      <Nav/>
       <div className="home-container">
         <div
           className="overlay mt-4 p-5 bg-primary text-white">

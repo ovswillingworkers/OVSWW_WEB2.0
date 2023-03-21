@@ -1,13 +1,12 @@
 'use client'
 import Link from "next/link";
-import { useEffect, useState } from "react";
-type NavProps = {};
-type NavState = {
-  showMenu: boolean;
-};
+import { useEffect, useState, useRef } from "react";
 
-const Nav: React.FC<NavProps> = () => {
+
+
+const Nav: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const navMenuRef = useRef<HTMLDivElement>(null); // create a ref for the nav_menu element
 
   const handleLinkClick = () => {
     setShowMenu(false);
@@ -19,7 +18,7 @@ const Nav: React.FC<NavProps> = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (showMenu && !event.composedPath().includes(document.querySelector(".nav_menu") as Element)) {
+      if (showMenu && navMenuRef.current && !navMenuRef.current.contains(event.target as Node)) { // check if the event target is inside the nav_menu element
         setShowMenu(false);
       }
     };
@@ -30,13 +29,13 @@ const Nav: React.FC<NavProps> = () => {
   }, [showMenu]);
 
   return (
-    <nav className="nav flex justify-between items-center py-8">
+    <nav className="nav flex justify-between items-center py-8" >
       
       <div className="nav_home">
         <Link href="/">Willing Workers</Link>
       </div>
       
-      <div className="nav_menu">
+      <div className="nav_menu" ref={navMenuRef}>
       <div className="menu-icon" onClick={toggleMenu}>
           &#9776;
         </div>

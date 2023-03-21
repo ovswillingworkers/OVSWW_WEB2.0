@@ -22,6 +22,7 @@ function About() {
   }, []);
 
   return (
+    
     <div className="about-container">
       <div className="about-container-banner mt-4 p-5 bg-primary text-white">
         <h1>About Us</h1>
