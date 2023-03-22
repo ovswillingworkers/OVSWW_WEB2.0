@@ -22,4 +22,57 @@
 
 }
 
+.dashboard-container-banner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(172,240,172,1) 53%, rgba(237,237,237,1) 99%);
+  
+  width: 100%;
+  height: 100px;
+ color: white !important;
+  p{
+    //font-size: larger;
+  }
+  justify-content: center;
+  overflow:visible !important;
 
+  h1 {
+    font-family:myfont;
+    color: green;
+    //text-stroke: 2px white;
+    text-shadow: -2px 0 white, 0 4px white, 2px 2px white, 0 -2px white;
+    
+    font-size: 6.5rem;
+    margin-top: 20px;
+    line-height: 1em;
+    overflow: hidden;
+    width:100% !important;
+  }
+
+  button {
+    border-radius: 20px 20px 0 20px;
+    background: transparent;
+    color: yellow;
+    border-color: yellow;
+    //font-size: 0.9em;
+  }
+}
+
+
+.adminMenu{
+  width:100%;
+  height:600px;
+
+  .ant-layout{
+    height:100%;
+  }
+}
+
+.ant-space{
+  display:flex;
+  flex-direction: column;
+  margin:20px 0  20px 0;
+}

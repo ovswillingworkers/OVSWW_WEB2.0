@@ -32,30 +32,25 @@ import { Footer } from "../../Footer";
 import { signOut } from "next-auth/react";
 import Logged from "@/app/auth/Logged";
 // import { Footer } from "./Footer";
+import AdminMenu from "./adminmenu";
+
 
 async function Dashboard() {
   const session = await getServerSession(authOptions)
   if (!session) {
-    redirect("/api/auth/signin")
+    redirect("/admin")
   }
 
   
   return (
     
     <div className="about-container">
-      <div className="about-container-banner mt-4 p-5 bg-primary text-white">
-      <Logged image={session.user?.image || ""}/>
-        <h1>Dashboard</h1>
-        <p>The best people in the service of helping individuals</p>
+      <div className="dashboard-container-banner mt-4 p-5 bg-primary text-white">
+     
       </div>
 
       <div className="about-container-text">
-        <p>CREATE EDIT DELETE user
-
-
-        </p>
-
-        <p>CREATE EDIT DELETE Suspend</p>
+<AdminMenu  image={session.user?.image || ""}/>
       </div>
 
       <Footer />

@@ -4,6 +4,7 @@ import Image from "next/image"
 
 import {signOut} from 'next-auth/react'
 import Link from "next/link"
+import { Button, Space } from "antd"
 
 type User={
     image:string
@@ -14,19 +15,24 @@ export default function Logged({image}: User) {
 
   
   return (
-   <li className="flex gap-8 items-center">
-    <button onClick={()=>signOut()} className="bg-gray-700 text-white text-sm px-6 py-2 rounded-md"> Sign out</button>
-   <Link href={"/dashboard"}>
+   <div className="logged flex flex-col gap-8 items-center">
+   
+    <Space wrap>
     <Image 
     className="w-14 rounded-full"
-    width={64} 
-    height={64} 
+    width={100} 
+    height={100} 
     src={image}
     alt=""
     priority
      />
-   </Link>
+<Button onClick={()=>signOut()}  type="primary" danger>
+  Signout
+</Button>
+
+
+</Space>
    
-   </li>
+   </div>
   )
 }
