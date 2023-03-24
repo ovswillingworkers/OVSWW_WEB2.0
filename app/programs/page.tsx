@@ -13,6 +13,7 @@ import { Footer } from "../Footer";
 // //import recreationalActivities from "../../public/assets/programs/recreational_activities.avif";
 import recreational from "../../public/assets/programs/recreational.jpg";
 import transportation from "../../public/assets/programs/transportation.jpg";
+import Nav from "../Nav";
 // import { Footer } from "./Footer";
 
 const Programs = () => {
@@ -55,6 +56,7 @@ const Programs = () => {
   }, []);
   return (
     <div>
+      <Nav/>
       <div className="program-container">
         <div className="program-container-banner mt-4 p-5 bg-primary text-white">
           {/* <div className="layer"></div> */}
