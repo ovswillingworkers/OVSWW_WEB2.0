@@ -1,19 +1,28 @@
 'use client'
+
+
 import React, { useRef, useState } from 'react';
-import "../../../styles/global.scss";
+import "../../styles/global.scss";
 import { UploadOutlined, UserOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
+import { Layout, Menu, theme , Breadcrumb,} from 'antd';
 import Image from "next/image"
 import Logged from '@/app/auth/Logged';
 import { Button, Space } from 'antd';
+import Link from 'next/link';
+
+
+
+
 
 type User={
   image:string
 }
+// const { Header, Content } = Layout;
+const { Header, Content,Sider } = Layout;
 
-const { Header, Content, Footer, Sider } = Layout;
+export default function AdminMenu(){
 
-export default function AdminMenu({image}: User){
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -28,7 +37,27 @@ export default function AdminMenu({image}: User){
   };
 
   return (
-    <div className="adminMenu">
+    <>
+    
+    <Layout>
+      <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
+        <div
+          style={{
+            float: 'left',
+            width: 120,
+            height: 31,
+            margin: '16px 24px 16px 0',
+            background: 'rgba(255, 255, 255, 0.2)',
+          }}
+          ><div className="nav_home">
+        <Link href="/">Willing Workers</Link>
+      </div></div>
+
+      </Header>
+      <Content className="site-layout" style={{ padding: '0 50px' }}>
+
+        <div className="admin-layout">
+        <div className="adminMenu">
       <Layout>
         <Sider
           breakpoint="lg"
@@ -39,9 +68,9 @@ export default function AdminMenu({image}: User){
           onCollapse={(collapsed, type) => {
             console.log(collapsed, type);
           }}
-        >
+          >
           <div className="logo" />
-          <Logged image={ image}/>
+          <Logged image={''}/>
 
           <Menu
             theme="dark"
@@ -49,7 +78,7 @@ export default function AdminMenu({image}: User){
             defaultSelectedKeys={['1']}
             selectedKeys={[selectedOption]} 
             onClick={handleOptionClick} 
-          >
+            >
             <Menu.Item key="user" icon={<UserOutlined />} label="User">
               User
             </Menu.Item>
@@ -74,5 +103,14 @@ export default function AdminMenu({image}: User){
         </Layout>
       </Layout>
     </div>
+      
+
+</div>
+      </Content>
+    
+    </Layout>
+    
+   
+            </>
   );
 };
