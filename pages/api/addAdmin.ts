@@ -22,7 +22,7 @@ export default async function handler(
   const id = uuidv4();
   // Validate the required fields
   console.log(name, "name ||", email ," || ", password,"pass||", )
-  if (!email || !password || !name) {
+  if (!email ||  !name) {
     return res.status(400).json({ error: "Name, email, and password are required" });
   }
 
@@ -41,7 +41,7 @@ export default async function handler(
       id,
       name,
       email,
-      password: hashedPassword,
+      // password: hashedPassword,
     },
   });
 
