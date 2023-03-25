@@ -79,10 +79,10 @@ export default function AdminMenu(){
             selectedKeys={[selectedOption]} 
             onClick={handleOptionClick} 
             >
-            <Menu.Item key="user" icon={<UserOutlined />} label="User">
+            <Menu.Item key="user" icon={<UserOutlined />} >
               User
             </Menu.Item>
-            <Menu.Item key="job-posting" icon={<UploadOutlined />} label="Job Posting">
+            <Menu.Item key="job-posting" icon={<UploadOutlined />} >
               Job Posting
             </Menu.Item>
           </Menu>
