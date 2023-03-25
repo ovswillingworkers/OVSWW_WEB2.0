@@ -155,14 +155,7 @@ function Career() {
     return <div>{error}</div>;
   }
 
-  // if (jobPostings.length === 0) {
-  //   return (
-  //     <div>
-  //       <p>No job postings have been placed yet. Please call or email us at <a href="mailto:info@willingworkers.com">info@willingworkers.com</a> to see if any positions are available.</p>
-  //     </div>
-  //   );
-  // }
- 
+
 
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
