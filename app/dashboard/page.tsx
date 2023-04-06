@@ -1,6 +1,11 @@
 
+'use client'
 import React, { useEffect } from "react";
-import AdminMenu from "./adminmenu";
+import AdminMenu from "./dashboardMenu";
+import { Provider } from "react-redux";
+import { store_0001 } from "../redux/store/store";
+import AdminSession from "./adminsession";
+
 
 
 // import Image from "next/image";
@@ -18,12 +23,23 @@ import AdminMenu from "./adminmenu";
 
 function Dashboard() {
 
-
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const result = AdminSession()
+  //   console.log( result, " THIS IS THE NE REDIRECT")
+  //     // Do something with the data
+  //   }
+  //   fetchData();
+  // }, []);
   
+
+
   return (
 <>
-<AdminMenu/>
+<Provider store={store_0001}>
 
+<AdminMenu />
+</Provider>
 
  </>
   );

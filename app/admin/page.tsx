@@ -1,7 +1,7 @@
 'use client'
 
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import '../../styles/global.scss';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
@@ -9,6 +9,9 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import Link from 'next/link';
 import Login from '../auth/Login';
 import { Footer } from '../Footer';
+import { Provider } from 'react-redux';
+import { store_0001 } from '../redux/store/store';
+
 
 
 
@@ -18,8 +21,10 @@ const { Header, Content } = Layout;
 export default function admin() {
 
 
+
   return (
     <>
+    <Provider store={store_0001}>
     <Layout>
       <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
         <div
@@ -57,6 +62,8 @@ export default function admin() {
     
     </Layout>
     <Footer/>
+
+    </Provider>
   </>
   );
 };

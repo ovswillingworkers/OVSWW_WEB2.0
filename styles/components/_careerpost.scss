@@ -115,11 +115,11 @@ $secondary-color: #6c757d;
 .form-container {
   background-color: rgb(223, 217, 217);
 }
-.form-container- {
+.form-container-content {
   background-color: rgb(217, 216, 216);
   border-radius: 4px;
-  margin: 0 100px;
-  padding:0 100px;
+  margin: 0 100px ;
+  padding:60px 100px 100px 100px;
 color: black;
 
 
@@ -397,3 +397,9 @@ color: black;
 //   height: auto !important;
 
 // }
+
+
+.jobposting-container{
+  height:100%;
+  overflow: scroll;
+}

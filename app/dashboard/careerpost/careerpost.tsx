@@ -5,10 +5,12 @@ import "../../../styles/global.scss";
 import axios from 'axios';
 import { JobPosting } from "@/app/components/jobpost";
 import { v4 as uuidv4 } from 'uuid';
+import { addJobPost } from "@/app/api/addJobPosting";
+import { toast } from "react-hot-toast";
 
 
 
-export default function CreateJobPost() {
+export default function CreateJobPost(prop:any) {
   const textareaDescription = useRef<HTMLTextAreaElement | null>(null);
   const pacificTimezone = "en-US";
 const now = new Date();
@@ -22,7 +24,6 @@ useEffect(() => {
     textareaDescription.current.style.height = `${textareaDescription.current.scrollHeight}px`; // Set the height to the content's scrollHeight
   }
 }, [textareaDescription.current?.value]);
-
 
 const deleteCustomQualification = (id: string) => {
   const customQualificationIndex = customQualifications.findIndex((q) => q.id === id);
@@ -161,54 +162,45 @@ const handleQualificationsChange = (
     event.preventDefault();
     const postId = uuidv4(); // generate a unique ID
     const jobPostingWithId = { ...jobPosting, id: postId }; // add the ID to the jobPosting object
-    try {
-      const response = await axios.post("/api/addPost", jobPostingWithId);
-      if (response.status === 200) {
-        const data = response.data;
-        console.log(data);
-        // Display a success message to the user
-      } else {
-        throw new Error("Error creating job post");
-      }
-    } catch (error) {
-      console.error(error);
-      // Display an error message to the user
-    }
+    addJobPost(jobPostingWithId)
+
+    prop.onClick("all-job-posting")
   };
   
 return (
   <>
+
     <Head>
       <title>Create Job Post</title>
     </Head>
-    <div className="career-container-banner mt-4 p-5 bg-primary text-white">
+    {/* <div className="career-container-banner mt-4 p-5 bg-primary text-white">
       <h1>Job Posting</h1>
       <p></p>
-    </div>
+    </div> */}
     <div className="form-container">
-      <div className="form-container-">
+      <div className="form-container-content">
         
      
       <h1>Create Job Post</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="title">Title:</label>
-          <input type="text" id="title" name="title" value={jobPosting.title} onChange={handleInputChange} required />
+          <input type="text" id="title" name="title"  onChange={handleInputChange} required />
         </div>
 
         <div className="form-group">
           <label htmlFor="location">Location:</label>
-          <input type="text" id="location" name="location" value={jobPosting.location} onChange={handleInputChange} required />
+          <input type="text" id="location" name="location"  onChange={handleInputChange} required />
         </div>
 
         <div className="form-group">
           <label htmlFor="salary">Salary:</label>
-          <input type="text" id="salary" name="salary" value={jobPosting.salary} onChange={handleInputChange} required />
+          <input type="text" id="salary" name="salary"  onChange={handleInputChange} required />
         </div>
 
         <div className="form-group">
           <label htmlFor="date">Date:</label>
-          <input type="date" id="date" name="date" value={jobPosting.date} onChange={handleInputChange} required />
+          <input type="date" id="date" name="date"  onChange={handleInputChange} required />
         </div>
         
         <div className="form-group">
@@ -217,7 +209,7 @@ return (
     type="date"
     id="expirationDate"
     name="expirationDate"
-    value={jobPosting.expirationDate || ""}
+    
     onChange={handleInputChange}
   />
 </div>
@@ -227,7 +219,7 @@ return (
 
         <div className="form-group job-description">
           <label htmlFor="description">Description:</label>
-          <textarea ref={textareaDescription} id="description" name="description" className="description" value={jobPosting.description} onChange={handleInputChange} required  rows={4}/>
+          <textarea ref={textareaDescription} id="description" name="description" className="description"  onChange={handleInputChange} required  rows={4}/>
         </div>
 
         <div className="form-group qualification">
@@ -293,7 +285,7 @@ return (
           />
           <input
             type="text"
-            value={customQualification.text}
+          
             onChange={(event) => handleCustomQualificationChange(event, customQualification.id)}
           />
           <button type="button" className="checkbox-newcustomButton save" onClick={() => handleSaveCustomQualification(customQualification.id)}>
@@ -319,17 +311,17 @@ return (
 
         <div className="form-group">
           <label htmlFor="name">Contact Name:</label>
-          <input type="text" id="name" name="name" value={jobPosting.contact.name} onChange={handleInputChange} required />
+          <input type="text" id="name" name="name" onChange={handleInputChange} required />
         </div>
 
         <div className="form-group">
           <label htmlFor="email">Contact Email:</label>
-          <input type="email" id="email" name="email" value={jobPosting.contact.email} onChange={handleInputChange} required />
+          <input type="email" id="email" name="email"  onChange={handleInputChange} required />
         </div>
 
         <div className="form-group">
             <label htmlFor="phone">Contact Phone:</label>
-            <input type="tel" id="phone" name="phone" value={jobPosting.contact.phone} onChange={handleInputChange} required />
+            <input type="tel" id="phone" name="phone"  onChange={handleInputChange} required />
           </div>
 
           <button type="submit">Submit</button>

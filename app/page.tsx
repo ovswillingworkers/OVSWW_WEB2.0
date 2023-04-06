@@ -29,14 +29,14 @@ const Home = () => {
 
 
   useEffect(() => {
-    console.log(handsInView, "Hands");
+
     if (handsInView) {
       setIsHandsLoaded(true);
     }
   }, [handsInView]);
 
   useEffect(() => {
-    console.log(coachInView, "Coach");
+
     if (coachInView) {
       setIsCoachLoaded(true);
     }
@@ -46,7 +46,7 @@ const Home = () => {
 
 
   useEffect(() => {
-    console.log(busInView, "Bus");
+
    
    
     if (busInView) {
@@ -68,22 +68,7 @@ const Home = () => {
 
   const [isImagesLoaded, setIsImagesLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   const imagePromises = images.map((img) => {
-  //     return new Promise<void>((resolve) => {
-  //       const image = new Image();
-  //       image.onload = () => resolve();
-  //       image.src = img.src;
-  //     });
-  //   });
-  
-  //   Promise.all(imagePromises).then(() => {
-  //     setIsVisible(true);
-  //   });
-  // }, [images]);
-  
-  
-  // Update the current slide every 5 seconds
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide(prevSlide => (prevSlide + 1) % images.length);
@@ -95,7 +80,7 @@ const Home = () => {
 
   return (
     <div>
-      <Nav/>
+      <Nav image={""} banner={""}/>
       <div className="home-container">
         <div
           className="overlay mt-4 p-5 bg-primary text-white">

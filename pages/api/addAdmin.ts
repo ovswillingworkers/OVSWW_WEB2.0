@@ -8,6 +8,7 @@ interface AddAdminRequest {
   name: string;
   email: string;
   password: string;
+  role: string;
 }
 
 export default async function handler(
@@ -18,10 +19,10 @@ export default async function handler(
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const {  name, email, password } = req.body as AddAdminRequest;
+  const {  name, email, password, role } = req.body as AddAdminRequest;
   const id = uuidv4();
   // Validate the required fields
-  console.log(name, "name ||", email ," || ", password,"pass||", )
+
   if (!email ||  !name) {
     return res.status(400).json({ error: "Name, email, and password are required" });
   }
@@ -41,6 +42,7 @@ export default async function handler(
       id,
       name,
       email,
+      role,
       // password: hashedPassword,
     },
   });

@@ -2,15 +2,19 @@
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import Logged from "./auth/Logged";
-import ovsww_logo from "../public/assets/ovs_ww.png"
+import Logged from "../auth/Logged";
+import ovsww_logo from "../../public/assets/ovs_ww.png"
+
+
 type User={
   image:string
   banner:string;
+  email:string;
 }
 
 
-function Nav ({image, banner=""}: User)  {
+function 
+AdminNav ({image, banner="", email}: User)  {
   const [showMenu, setShowMenu] = useState(false);
   const navMenuRef = useRef<HTMLDivElement>(null); // create a ref for the nav_menu element
 
@@ -34,11 +38,12 @@ function Nav ({image, banner=""}: User)  {
     };
   }, [showMenu]);
 
+
+
+
   return (
-    <nav className="nav flex justify-between items-center py-8" >
-      
-      <div className="nav_home">
-      <Link href="/">
+    <nav className="admin-nav flex justify-between items-center py-8" >
+   <div className="admin-nav_home">
         <Image
                   src={ovsww_logo}
                   alt={"image here"}
@@ -46,31 +51,18 @@ function Nav ({image, banner=""}: User)  {
                   width={50}
                   height={50}
                   priority />
-                  </Link>
+
                   <p>OVS Willing Workers</p>
       </div>
       
-      <div className="nav_menu" ref={navMenuRef}>
-      <div className="menu-icon" onClick={toggleMenu}>
+      
+
+
+      <div className="admin-nav_menu" ref={navMenuRef}>
+      {/* <div className="menu-icon" onClick={toggleMenu}>
           &#9776;
-        </div>
-        <ul className={showMenu ? "menu show-menu" : "menu"}>
-
-          <li>
-            <Link href="/programs"onClick={handleLinkClick}>Programs</Link>
-          </li>
-          <li>
-            <Link href="/about"onClick={handleLinkClick}>About</Link>
-          </li>
-          <li>
-            <Link href="/contact"onClick={handleLinkClick}>Contact</Link>
-          </li>
-
-          <li>
-            <Link href="/career">Career</Link>
-          </li>
-
-       
+        </div> */}
+        <ul className={showMenu ? "menu-admin show-menu" : "menu-admin"}>
             
           {image ? (
 
@@ -81,8 +73,8 @@ function Nav ({image, banner=""}: User)  {
                   src={image}
                   alt={"image here"}
                   className="w-14 rounded-full"
-                  width={100}
-                  height={100}
+                  width={50}
+                  height={50}
                   priority />
               </li></>
           ) : null}
@@ -96,4 +88,4 @@ function Nav ({image, banner=""}: User)  {
   );
 };
 
-export default Nav;
+export default AdminNav;

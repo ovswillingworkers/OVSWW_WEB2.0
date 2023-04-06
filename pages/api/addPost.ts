@@ -1,5 +1,5 @@
 import prisma from "../../prisma/client";
-import { getServerSession } from "next-auth/next";
+
 import { authOptions } from "../api/auth/[...nextauth]";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -21,7 +21,7 @@ export default async function handler(
     //Create JobPosting
 //Create JobPosting
 try {  
-  console.log("DAVE CHAPELE ")
+
   const result = await prisma.jobPosting.create({
     data: {
       title,

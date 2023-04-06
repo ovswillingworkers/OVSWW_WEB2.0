@@ -14,6 +14,7 @@ import helpingHands from "../../public/assets/hands.jpg";
 
 import Image from "next/image";
 import { Footer } from "../Footer";
+import Nav from "../Nav";
 // import { Footer } from "./Footer";
 
 function About() {
@@ -22,7 +23,9 @@ function About() {
   }, []);
 
   return (
-    
+    <>
+    <Nav image={""} banner={""}/>
+   
     <div className="about-container">
       <div className="about-container-banner mt-4 p-5 bg-primary text-white">
         <h1>About Us</h1>
@@ -103,6 +106,7 @@ function About() {
 
       <Footer />
     </div>
+    </>
   );
 }
 

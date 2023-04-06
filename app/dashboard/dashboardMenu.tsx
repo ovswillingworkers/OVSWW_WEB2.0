@@ -14,20 +14,22 @@ import ListJobPosting from './careerpost/listjobpost';
 import { Footer } from '../Footer';
 import EditJobPost from './careerpost/editjobpost';
 import { JobPosting } from '../components/jobpost';
+import ValidAuth from '../auth/validAuth';
+import { User } from '../components/user';
 
 
 
 
 
-type User={
-  image:string
-}
+
 // const { Header, Content } = Layout;
 const { Header, Content,Sider } = Layout;
-
+interface Props {
+  session: User;
+}
 export default function AdminMenu( ){
- 
-  const [session, setSession] = useState<JobPosting>({
+//  console.log("THIS IS THE ADMINMENU DASHBOARD MENU SESS: ", props)
+  const [session1, setSession] = useState<JobPosting>({
     id: '',
     title: '',
     location: '',
@@ -66,7 +68,7 @@ export default function AdminMenu( ){
 
   return (
     <>
-    
+    {/* <ValidAuth image={''} email={props.sess} /> */}
     <Layout>
       <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
    
@@ -183,7 +185,7 @@ export default function AdminMenu( ){
       <Button onClick={() =>setSelectedOption("all-job-posting")}>Back</Button>
        
       </Header>
-      <EditJobPost prop={session} setSelectedOption={handleOptionClick} />
+      <EditJobPost prop={session1} setSelectedOption={handleOptionClick} />
     </div>
   )}
 </Content>

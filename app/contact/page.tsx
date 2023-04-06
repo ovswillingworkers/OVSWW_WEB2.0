@@ -13,6 +13,7 @@ import '../../styles/global.scss';
 // import { Footer } from "./Footer";
 import dotenv from 'dotenv';
 import { Footer } from "../Footer";
+import Nav from "../Nav";
 
 
 const containerStyle = {
@@ -53,7 +54,7 @@ useEffect(() => {
   };
 
   const onLoad = (marker: any) => {
-    console.log("marker: ", marker);
+  
   };
 
   var customLabel = {
@@ -74,6 +75,11 @@ useEffect(() => {
   } | null>(null);
 
   return (
+
+
+    <>
+    <Nav image={""} banner={""}/>
+
     <div className="contact">
       <div className="contact-container-banner mt-4 p-5 bg-primary text-white">
         <h1>Contact Us</h1>
@@ -159,6 +165,8 @@ useEffect(() => {
       </div>
       <Footer />
     </div>
+
+    </>
   );
 }
 

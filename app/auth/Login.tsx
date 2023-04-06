@@ -11,7 +11,7 @@ import '../../styles/global.scss';
 export default function Login() {
   return (
     <li className="list-none">
-       <Button className="text-sm bg-gray-700 text-white py-2 px-6 rounded-xl disabled:opacity-25" onClick={() => signIn()} type="primary" ghost>
+       <Button className="text-sm bg-gray-700 text-white py-2 px-6 rounded-xl disabled:opacity-25" onClick={() => signIn('google')} type="primary" ghost>
 Sign In
 <Image
 className='G-logo'

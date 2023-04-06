@@ -1,46 +1,58 @@
 
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
-import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
-import Logged from '../auth/Logged';
 import QueryWrapper from '../auth/QueryWrapper';
-import Image from 'next/image';
-import { Header } from 'antd/es/layout/layout';
-import Link from 'next/link';
+import adminbanner from "../../public/assets/admin.jpg";
+import AdminNav from './adminNav';
+import React from 'react';
+import AdminSession from './adminsession';
+import getUser from '../api/getUser';
+import Authentication from '../auth/Authentication';
+import { Provider } from 'react-redux';
+import { store_0001 } from '../redux/store/store';
+import ValidAuth from '../auth/validAuth';
+
 
 
 export default async function layout({ children, }: {
   children: any;
 }) {
+//  const store =  store_0001
+//  console.log(store, " STORE IN LAYOUT")
+  const session = await AdminSession()
 
-  const session = await getServerSession(authOptions)
-  console.log(session, "  SESSION HERE")
-//   if (session) {
-//     redirect("/dashboard")
+  if (!session) {
+    redirect("/admin")
     
-//   }
+  }
 
+  // const user = await getUser(session.user?.email || '')
+  // console.log("THIS SHOULD BE THE DATA I BE USING NOW ON.", user)
 
 
   return (
 
-  
-      <QueryWrapper>
+  <>
 
 
 
- <Image 
-    className="w-14 rounded-full"
-    width={100} 
-    height={100} 
-    src={session?.user?.image || ''}
-    alt=""
-    priority
-     />
-{/* <Logged image={session?.user?.image || ''}/> */}
-        {children}
-      
-            </QueryWrapper>
+
+
+  <QueryWrapper >
+
+
+
+
+
+      {/* <AdminNav image={session?.user?.image || ''} banner={adminbanner.src} email={session?.user?.email || ''} /> */}
+      <AdminNav image={ ''} banner={adminbanner.src} email={session.user?.email || ''} />
+
+      {React.cloneElement(children, { session: session })}
+    </QueryWrapper>
+
+    
+
+    
+    </>
 
   )   
        

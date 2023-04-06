@@ -3,6 +3,8 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import QueryWrapper from '../auth/QueryWrapper';
+import AdminSession from '../dashboard/adminsession';
+import getUser from '../api/getUser';
 
 
 
@@ -10,11 +12,11 @@ export default async function layout({ children, }: {
   children: any;
 }) {
 
-  const session = await getServerSession(authOptions)
+  const session = await AdminSession()
   if (session) {
 
     redirect("/dashboard")
-    
+
   }
 
 
@@ -22,7 +24,7 @@ export default async function layout({ children, }: {
   return (
 
   
-      <QueryWrapper>
+      <QueryWrapper session={session || ''}>
 
 
         {children}

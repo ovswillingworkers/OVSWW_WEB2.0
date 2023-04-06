@@ -13,6 +13,9 @@ import { getSession, GetSessionParams } from 'next-auth/react';
 
 type User = {
   image: string;
+  name: string;
+  email:string;
+  role:string;
 };
 
 interface UserimageProps {
@@ -35,6 +38,8 @@ export default function Userimage({ user }: UserimageProps): JSX.Element {
     setSelectedOption(selectedValue);
   };
 
+console.log(user, " THIS IS USER DATA ")
+
   return (
     <>
       <Image
@@ -51,7 +56,7 @@ export default function Userimage({ user }: UserimageProps): JSX.Element {
 
 export const getServerSideProps = async (context: GetSessionParams | undefined) => {
   const session = await getSession(context);
-  console.log(session, "THIS IS THE SESSION")
+  console.log(session)
   if (!session) {
     return {
       redirect: {

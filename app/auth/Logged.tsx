@@ -21,14 +21,7 @@ type User={
 
     <Space wrap>
       
-    <Image 
-    className="w-14 rounded-full"
-    width={100} 
-    height={100} 
-    src={image}
-    alt=""
-    priority
-     />
+ 
 <Button onClick={()=>signOut()}  type="primary" danger>
   Signout
 </Button>
