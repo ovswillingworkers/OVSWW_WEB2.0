@@ -4,7 +4,7 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import QueryWrapper from '../auth/QueryWrapper';
 import AdminSession from '../dashboard/adminsession';
-import getUser from '../api/getUser';
+
 
 
 

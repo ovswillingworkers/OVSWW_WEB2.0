@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Logged from "../auth/Logged";
 import ovsww_logo from "../../public/assets/ovs_ww.png"
+import { connect } from "react-redux";
 
 
 type User={
@@ -13,10 +14,12 @@ type User={
 }
 
 
-function 
-AdminNav ({image, banner="", email}: User)  {
+function AdminNav ({image, banner="", email}: User)  {
   const [showMenu, setShowMenu] = useState(false);
   const navMenuRef = useRef<HTMLDivElement>(null); // create a ref for the nav_menu element
+
+
+
 
   const handleLinkClick = () => {
     setShowMenu(false);

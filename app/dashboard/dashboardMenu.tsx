@@ -1,23 +1,23 @@
 'use client'
 
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState } from 'react';
 import "../../styles/global.scss";
-import { UploadOutlined, UserOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme , Breadcrumb,} from 'antd';
-import Image from "next/image"
-import Logged from '@/app/auth/Logged';
-import { Button, Space } from 'antd';
-import Link from 'next/link';
+import { UploadOutlined,UserOutlined } from '@ant-design/icons';
+import { Layout, Menu, theme } from 'antd';
+
+import { Button } from 'antd';
 import CreateJobPost from './careerpost/careerpost';
 import ListJobPosting from './careerpost/listjobpost';
 import { Footer } from '../Footer';
 import EditJobPost from './careerpost/editjobpost';
 import { JobPosting } from '../components/jobpost';
-import ValidAuth from '../auth/validAuth';
 import { User } from '../components/user';
 
-
+import { redirect } from 'next/navigation';
+import getAuth from '../auth/getAuth';
+import { useSelector } from 'react-redux';
+import getAuthRedux from '../auth/getAuthRedux';
 
 
 
@@ -27,8 +27,18 @@ const { Header, Content,Sider } = Layout;
 interface Props {
   session: User;
 }
-export default function AdminMenu( ){
-//  console.log("THIS IS THE ADMINMENU DASHBOARD MENU SESS: ", props)
+export default function DashboardMenu( ){
+
+  const valid = getAuthRedux()
+console.log(valid, " IS THERE VALID USER HERE")
+//     if (!valid) {
+//     redirect("/admin")
+    
+//   }
+
+
+  const users = useSelector((state: any) => state.users.users);
+console.log(users)
   const [session1, setSession] = useState<JobPosting>({
     id: '',
     title: '',
@@ -66,9 +76,11 @@ export default function AdminMenu( ){
     }
   };
 
+
+
   return (
     <>
-    {/* <ValidAuth image={''} email={props.sess} /> */}
+   
     <Layout>
       <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
    
@@ -98,23 +110,27 @@ export default function AdminMenu( ){
     
 
           <Menu
-                    theme="dark"
-                    mode="inline"
-                    defaultSelectedKeys={['1']}
-                    selectedKeys={[selectedOption]}
-                    onClick={handleOptionClick}
-                  >
-                    <Menu.SubMenu key="submenu-user" icon={<UserOutlined />} title="User">
-                      <Menu.Item key="new-user">New User</Menu.Item>
-                      <Menu.Item key="edit-user">Edit User</Menu.Item>
-                      <Menu.Item key="delete-user">Delete User</Menu.Item>
-                    </Menu.SubMenu>
-                    <Menu.SubMenu key="submenu-job-posting" icon={<UploadOutlined />} title="Job Posting">
-                      <Menu.Item key="new-job-posting">New Job Posting</Menu.Item>
-                      <Menu.Item key="all-job-posting">All Job Posting</Menu.Item>
-                     
-                    </Menu.SubMenu>
-                  </Menu>
+  theme="dark"
+  mode="inline"
+  defaultSelectedKeys={['1']}
+  selectedKeys={[selectedOption]}
+  onClick={handleOptionClick}
+  >
+   
+    <Menu.SubMenu key='submenu-user' icon={<UserOutlined />} title='User'>
+      <Menu.Item key='new-user'>New User</Menu.Item>
+      <Menu.Item key='edit-user'>Edit User</Menu.Item>
+      <Menu.Item key='delete-user'>Delete User</Menu.Item>
+    </Menu.SubMenu>
+  
+  <Menu.SubMenu key='submenu-job-posting' icon={<UploadOutlined />} title='Job Posting'>
+    <Menu.Item key='new-job-posting'>New Job Posting</Menu.Item>
+    <Menu.Item key='all-job-posting'>All Job Posting</Menu.Item>
+  </Menu.SubMenu>
+</Menu>
+
+
+
         </Sider>
         <Layout>
         <Content className='dashboard-content' style={{ margin: '24px 16px 0' }}>

@@ -5,6 +5,7 @@ interface User {
   id: string;
   name: string;
   email: string;
+  images:string;
   role:string;
 }
 
@@ -25,11 +26,12 @@ export default async function handler(
           id: true,
           name: true,
           email: true,
+          image:true,
           role:true,
         },
       });
       if (user) {
-        console.log(" THIS IS USERRRRR !! RArw ", user)
+        // console.log(" THIS IS USERRRRR !! RArw ", user)
         res.status(200).json(user);
       } else {
         res.status(404).json({ message: "User not found" });

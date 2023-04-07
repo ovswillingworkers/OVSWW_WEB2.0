@@ -9,6 +9,19 @@ import '../../styles/global.scss';
 
 
 export default function Login() {
+//  const handleSignIn = async () => {
+//     const result = await signIn('google');
+//     if (result?.error) {
+//       // Handle authentication error
+//     } else {
+//       // Store session data in local storage
+//       localStorage.setItem('session', JSON.stringify(result));
+//       // Redirect to dashboard page
+//       window.location.href = '/dashboard';
+//     }
+//   };
+
+
   return (
     <li className="list-none">
        <Button className="text-sm bg-gray-700 text-white py-2 px-6 rounded-xl disabled:opacity-25" onClick={() => signIn('google')} type="primary" ghost>
@@ -27,3 +40,5 @@ height={20}
     </li>
   )
 }
+
+

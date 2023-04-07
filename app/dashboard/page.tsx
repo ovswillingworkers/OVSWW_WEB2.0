@@ -1,10 +1,11 @@
 
 'use client'
 import React, { useEffect } from "react";
-import AdminMenu from "./dashboardMenu";
+import DashboardMenu from "./dashboardMenu";
 import { Provider } from "react-redux";
 import { store_0001 } from "../redux/store/store";
 import AdminSession from "./adminsession";
+import getAuthRedux from "../auth/getAuthRedux";
 
 
 
@@ -22,7 +23,7 @@ import AdminSession from "./adminsession";
 // const { Header, Content } = Layout;
 
 function Dashboard() {
-
+ 
   // useEffect(() => {
   //   async function fetchData() {
   //     const result = AdminSession()
@@ -38,7 +39,9 @@ function Dashboard() {
 <>
 <Provider store={store_0001}>
 
-<AdminMenu />
+<DashboardMenu />
+
+
 </Provider>
 
  </>
