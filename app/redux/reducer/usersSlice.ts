@@ -3,9 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 interface User {
-  id: number;
+  id: string;
   name: string;
   email: string;
+  role: string;
+  image:string;
 }
 
 interface UsersState {
@@ -15,7 +17,7 @@ interface UsersState {
 }
 
 const initialState: UsersState = {
-  users: [],
+  users: [] as User[],
   loading: false,
   error: null,
 };
@@ -25,7 +27,7 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     setBulkUser: (state, action) => {
-      state.users = [action.payload];
+      state.users = action.payload;
       state.loading = false;
       state.error = null;
     },
@@ -37,6 +39,6 @@ const usersSlice = createSlice({
   },
 });
 
-export const { setBulkUser: setRedUser, clearUsers } = usersSlice.actions;
+export const { setBulkUser, clearUsers } = usersSlice.actions;
 
 export default usersSlice.reducer;

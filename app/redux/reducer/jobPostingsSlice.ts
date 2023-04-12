@@ -1,12 +1,21 @@
 // reducers/jobPostingsSlice.js
 
 import { createSlice } from '@reduxjs/toolkit';
+import { JobPosting } from '../../components/jobpost';
 
-const initialState = {
-  jobPostings: [],
+
+interface JobState {
+  jobPostings: JobPosting[];
+  loading: boolean;
+  error: string | null;
+}
+
+const initialState: JobState = {
+  jobPostings: [] as JobPosting[],
   loading: false,
   error: null,
 };
+
 
 const jobPostingsSlice = createSlice({
   name: 'jobPostings',

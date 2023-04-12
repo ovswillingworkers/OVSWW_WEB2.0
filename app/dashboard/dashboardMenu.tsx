@@ -70,25 +70,26 @@ export default function DashboardMenu( ){
 ];
 
 
-
-
-
-
   useEffect(() => {
+    let isMounted = true;
     async function fetchUser() {
     let valid =  await getAuthRedux(user)
-    console.log(" CHECKING USEEFFFECT ", valid)
-     if (valid){
+    
+     if (valid && isMounted){
       dispatch(setReduxUser(valid as User));
      }
     }
+
+    
     fetchUser();
  
- 
+    return () => {
+      isMounted = false;
+    };
    
   }, []);
     
-  console.log(" THIS IS DASHBOARDMENU USER redux, ", user)
+
 
 
 

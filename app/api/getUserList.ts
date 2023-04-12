@@ -4,14 +4,14 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import prisma from '@/prisma/client';
 import { getServerSession } from 'next-auth';
 import { useDispatch } from "react-redux";
-import { setBulkUser } from "../redux/reducer/usersSlice";
+
 
 export async function getUserList(email: string) {
     try {
-      console.log("calling getUser");
-      const res = await axios.get("/api/getUserlist", { params: { email } });
+
+      const res = await axios.get("/api/getUserList", { params: { email } });
       const userResponse = res.data;
-      console.log(userResponse, "THIS IS GET USER DATA");
+     
   
       const users: User[] = userResponse.map((userData: any) => {
         const user: User = {
@@ -27,7 +27,9 @@ export async function getUserList(email: string) {
       return users;
     } catch (error) {
       console.error(error);
-      return error;
+      return false;
     }
+
+
   }
   

@@ -15,35 +15,41 @@ import { useDispatch, useSelector } from "react-redux";
 export default function ListJobPosting(props: any) {
   const dispatch = useDispatch()
   const JobPostings_list = useSelector((state: any) => state.jobPostings);
-  const [jobPostings, setJobPostings] = useState<JobPosting[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [jobListPostings, setJobListPostings] = useState<JobPosting[]>(JobPostings_list.jobPostings.length > 0 ? JobPostings_list.jobPostings as JobPosting[] : []);
+  const [isLoading, setIsLoading] = useState(JobPostings_list.jobPostings.length > 0);
   const [error, setError] = useState("");
 
-console.log(" THIS IS JOB POSTING BRO", JobPostings_list)
+console.log(" THIS IS JOB POSTING BRO", JobPostings_list, isLoading)
 
 useEffect(() => {
-  console.log(JobPostings_list.jobPostings.length > 0, " JOBLISTING LENGTH GReATER THAN 0?", JobPostings_list.jobPostings.length, " || ", JobPostings_list.jobPostings)
+  let isMounted = true;
   async function fetchData() {
-    
-   
-      if (JobPostings_list.jobPostings.length > 0) {
-        setIsLoading(true);
-        setJobPostings(JobPostings_list.jobPostings as JobPosting[]);
-      } else {
+
+        
         const data = await getJobPostings();
-        dispatch(setJobPosting(data));
-        setIsLoading(true);
-        console.log(JobPostings_list, " GETTING JOB POSTING HERE")
-        setJobPostings(JobPostings_list.jobPostings as JobPosting[]);
-      }
+        if (data && isMounted){
+          dispatch(setJobPosting(data as JobPosting[]));
+          setIsLoading(true);
+          console.log(JobPostings_list, " GETTING JOB POSTING HERE")
+          setJobListPostings(data as JobPosting[]);
+
+        }
+
+      
     
   }
-  fetchData();
-  console.log(JobPostings_list.jobPostings, " HERE IS OUTSIDE THE ASYNC")
 
-}, [JobPostings_list]);
+  if (JobPostings_list.jobPostings.length ==0){
+    fetchData();
+   
+  }
+  console.log(JobPostings_list.jobPostings.length, " HERE IS OUTSIDE THE ASYNC")
+  return () => {
+    isMounted = false;
+  };
+}, []);
 
-      console.log(jobPostings, " THIS IS THE MAP FOR JOB POOSTING")
+      console.log(JobPostings_list, " THIS IS THE MAP FOR JOB POOSTING")
 
 
 
@@ -53,7 +59,7 @@ useEffect(() => {
     // Logic to delete the job posting with the given ID
     try {
       deleteJobPost(id);
-      setJobPostings(jobPostings.filter((jobPosting) => jobPosting.id !== id));
+      setJobListPostings(jobListPostings.filter((jobListPosting) => jobListPosting.id !== id));
       toast.success("Job Post Deleted");
     } catch (error:any) {
       console.error(error.message);
@@ -68,7 +74,7 @@ return (
   
 
   {isLoading ? (
-       jobPostings.map((jobPosting, index) => (
+       jobListPostings.map((jobPosting, index) => (
         <div className="list-job-posting" key={index}>
         <h2>{jobPosting.title}</h2>
         <h4>{jobPosting.location}</h4>

@@ -11,31 +11,36 @@ import { deleteJobPost } from "../../api/deleteJobPosting";
 import toast from "react-hot-toast";
 import { getUserList } from "@/app/api/getUserList";
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from "@/app/redux/store/store";
+import { setBulkUser } from "@/app/redux/reducer/usersSlice";
 
 
 export default function ListAllUser(props: any) {
   const user = useSelector((state: AppState) => state.user.user);
-  const [userList, setUserList] = useState<User[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const users = useSelector((state: AppState) => state.users.users);
+  const [userList, setUserList] = useState<User[]>(users.length > 0 ? users as User[] : []);
+  const [isLoading, setIsLoading] = useState<boolean>(userList.length > 0);
   const [error, setError] = useState("");
+  const dispatch = useDispatch()
 
 
-  console.log("user from redux here at VIEW ALL USERS:", user)
+ 
+  
   useEffect(() => {
+    console.log(" USE EFFECT BEING CALLED ")
+    let isMounted = true;
     async function fetchData() {
       try {
-        const data = await getUserList('');
+        const data = await getUserList(user.email);
+        console.log(" THIS IS THE USER LIST DATA RETRUN !", data)
+        if (data && isMounted){
 
-        if (data){
-
+          dispatch(setBulkUser(data))
           setUserList(data as User[]);
-          console.log(userList, " This is the user List")
-          if(userList.length ==0){
-            setIsLoading(false)
-            return
-          }
+          setIsLoading(true);
+          // setUserList(data as User[]);
+          console.log(data, " This is the user List")
             setIsLoading(true);
         }
     
@@ -46,10 +51,24 @@ export default function ListAllUser(props: any) {
         setIsLoading(false);
       }
     }
-    fetchData();
+
+
+    if (user.role == "admin" && users.length ==0){
+      fetchData();
+     
+    }
+    if (user.role === "admin" && users.length > 0) {
+      setUserList(users as User[]);
+      setIsLoading(true);
+    }
+
+    return () => {
+      isMounted = false;
+    };
+
   }, []);
 
-      
+      console.log(" THIS IS THE USERLIST , ",userList, isLoading)
 
 
 
@@ -57,14 +76,14 @@ export default function ListAllUser(props: any) {
   
   function handleDelete(id: string) {
     // Logic to delete the job posting with the given ID
-    try {
-      deleteJobPost(id);
-      setUserList(userList.filter((userList) => userList.id !== id));
-      toast.success("Job Post Deleted");
-    } catch (error:any) {
-      console.error(error.message);
-      toast.error("Error deleting job post");
-    }
+    // try {
+    //   deleteJobPost(id);
+    //   setUserList(userList.filter((userList) => userList.id !== id));
+    //   toast.success("Job Post Deleted");
+    // } catch (error:any) {
+    //   console.error(error.message);
+    //   toast.error("Error deleting job post");
+    // }
   }
   
   
