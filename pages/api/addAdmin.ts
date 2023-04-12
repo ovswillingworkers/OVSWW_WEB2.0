@@ -7,7 +7,6 @@ interface AddAdminRequest {
   id: string;
   name: string;
   email: string;
-  password: string;
   role: string;
 }
 
@@ -19,7 +18,7 @@ export default async function handler(
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const {  name, email, password, role } = req.body as AddAdminRequest;
+  const {  name, email, role } = req.body as AddAdminRequest;
   const id = uuidv4();
   // Validate the required fields
 
@@ -28,16 +27,16 @@ export default async function handler(
   }
 
   // Check if user already exists with the given email
-  const existingUser = await prisma.user.findUnique({ where: { email } });
+  const existingUser = await prisma.allowUser.findUnique({ where: { email } });
   if (existingUser) {
     return res.status(400).json({ error: "User already exists" });
   }
 
   // Hash the password before storing it in the database
-  const hashedPassword = await hash(password, 10);
+  // const hashedPassword = await hash(password, 10);
 
   // Create the new user in the database
-  const newUser = await prisma.user.create({
+  const newUser = await prisma.allowUser.create({
     data: {
       id,
       name,

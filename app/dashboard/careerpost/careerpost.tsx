@@ -7,6 +7,7 @@ import { JobPosting } from "@/app/components/jobpost";
 import { v4 as uuidv4 } from 'uuid';
 import { addJobPost } from "@/app/api/addJobPosting";
 import { toast } from "react-hot-toast";
+import { clearJobPosting } from "@/app/redux/reducer/jobPostingsSlice";
 
 
 
@@ -163,7 +164,7 @@ const handleQualificationsChange = (
     const postId = uuidv4(); // generate a unique ID
     const jobPostingWithId = { ...jobPosting, id: postId }; // add the ID to the jobPosting object
     addJobPost(jobPostingWithId)
-
+    dispatch(clearJobPosting()); // add this line
     prop.onClick("all-job-posting")
   };
   
@@ -331,3 +332,7 @@ return (
     </>
   );
 }
+function dispatch(arg0: any) {
+  throw new Error("Function not implemented.");
+}
+

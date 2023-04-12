@@ -72,11 +72,13 @@ function Nav ({image, banner=""}: User)  {
 
        
             
-          {image ? (
+         
 
             <><li>
-              <Logged image={""} />
-            </li><li>
+              <Logged />
+            </li>
+            {image ? (
+            <li>
                 <Image
                   src={image}
                   alt={"image here"}
@@ -84,9 +86,10 @@ function Nav ({image, banner=""}: User)  {
                   width={100}
                   height={100}
                   priority />
-              </li></>
+              </li>
           ) : null}
        
+              </>
         </ul>
       </div>
       <div className="about-container-banner mt-4 p-5 bg-primary text-white"   >

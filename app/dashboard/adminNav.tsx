@@ -67,11 +67,13 @@ function AdminNav ({image, banner="", email}: User)  {
         </div> */}
         <ul className={showMenu ? "menu-admin show-menu" : "menu-admin"}>
             
-          {image ? (
+          
 
             <><li>
-              <Logged image={""} />
-            </li><li>
+              <Logged/>
+            </li>
+            {image ? (
+            <li>
                 <Image
                   src={image}
                   alt={"image here"}
@@ -79,8 +81,10 @@ function AdminNav ({image, banner="", email}: User)  {
                   width={50}
                   height={50}
                   priority />
-              </li></>
+              </li>
+              
           ) : null}
+              </>
        
         </ul>
       </div>

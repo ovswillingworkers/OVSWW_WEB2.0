@@ -4,7 +4,7 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import prisma from '@/prisma/client';
 import { getServerSession } from 'next-auth';
 import { useDispatch } from "react-redux";
-import { setRedUser } from "../redux/reducer/usersSlice";
+import { setBulkUser } from "../redux/reducer/usersSlice";
 
 export async function getUser(email: string) {
   try {

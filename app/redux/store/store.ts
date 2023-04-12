@@ -8,6 +8,6 @@ const store = configureStore({
 });
 
 export const wrapper = createWrapper(() => store);
-export const store_0001 = store;
+export const appStore = store;
 export type AppState = ReturnType<typeof store.getState>;
 export const useAppDispatch = () => useDispatch();

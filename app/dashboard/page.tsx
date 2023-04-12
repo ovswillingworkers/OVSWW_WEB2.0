@@ -3,9 +3,9 @@
 import React, { useEffect } from "react";
 import DashboardMenu from "./dashboardMenu";
 import { Provider } from "react-redux";
-import { store_0001 } from "../redux/store/store";
+import { appStore } from "../redux/store/store";
 import AdminSession from "./adminsession";
-import getAuthRedux from "../auth/getAuthRedux";
+import useAuthRedux from "../auth/getAuthRedux";
 
 
 
@@ -37,7 +37,7 @@ function Dashboard() {
 
   return (
 <>
-<Provider store={store_0001}>
+<Provider store={appStore}>
 
 <DashboardMenu />
 

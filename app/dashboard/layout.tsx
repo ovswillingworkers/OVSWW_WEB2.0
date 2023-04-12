@@ -8,19 +8,20 @@ import AdminSession from './adminsession';
 import {getUser} from '../api/getUser';
 
 import { Provider } from 'react-redux';
-import { store_0001 } from '../redux/store/store';
+import { useDispatch } from 'react-redux';
 import  getAuth from '../auth/getAuth';
-import getAuthRedux from '../auth/getAuthRedux';
+import useAuthRedux from '../auth/getAuthRedux';
 import { getServerSession } from 'next-auth';
 
 
 
 
 
-export default async function layout({ children, }: {
+export default async function layout({ children, store }: {
   children: any;
+  store:any;
 }) {
-//  const store =  store_0001
+
 //  console.log(store, " STORE IN LAYOUT")
   const session = await AdminSession()
 console.log(session, " LAYOUT REACH OUT LAYOUT ")
@@ -52,7 +53,7 @@ console.log(session, " LAYOUT REACH OUT LAYOUT ")
 
       <AdminNav image={ session.user?.image as string} banner={adminbanner.src} email={session.user?.email || ''} />
 
-      {React.cloneElement(children)}
+      {children}
     </QueryWrapper>
 
     

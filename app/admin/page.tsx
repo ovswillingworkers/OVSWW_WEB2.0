@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Login from '../auth/Login';
 import { Footer } from '../Footer';
 import { Provider } from 'react-redux';
-import { store_0001 } from '../redux/store/store';
+import { appStore } from '../redux/store/store';
 import AdminNav from '../dashboard/adminNav';
 
 
@@ -25,7 +25,7 @@ export default function admin() {
 
   return (
     <>
-    <Provider store={store_0001}>
+    <Provider store={appStore}>
     <Layout>
       <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
       {/* <AdminNav image={''} banner={''} email={''}/> */}

@@ -5,7 +5,7 @@ import React, {useEffect, useRef, useState } from 'react';
 import "../../styles/global.scss";
 import { UploadOutlined,UserOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
-
+import { useMemo } from 'react';
 import { Button } from 'antd';
 import CreateJobPost from './careerpost/careerpost';
 import ListJobPosting from './careerpost/listjobpost';
@@ -13,13 +13,13 @@ import { Footer } from '../Footer';
 import EditJobPost from './careerpost/editjobpost';
 import { JobPosting } from '../components/jobpost';
 import { User } from '../components/user';
-
-import { redirect } from 'next/navigation';
-import getAuth from '../auth/getAuth';
-import { useSelector } from 'react-redux';
+import AddAdmin from './userpost/newuserpost';
+import NewUserPost from './userpost/newuserpost';
+import ListAllUser from './userpost/listAllUsers';
 import getAuthRedux from '../auth/getAuthRedux';
+import { useDispatch, useSelector } from 'react-redux';
 
-
+import { setReduxUser } from '../redux/reducer/userSlice';
 
 
 // const { Header, Content } = Layout;
@@ -29,17 +29,10 @@ interface Props {
 }
 export default function DashboardMenu( ){
 
-  const valid = getAuthRedux()
-console.log(valid, " IS THERE VALID USER HERE")
-//     if (!valid) {
-//     redirect("/admin")
-    
-//   }
-
-
-  const users = useSelector((state: any) => state.users.users);
-console.log(users)
-  const [session1, setSession] = useState<JobPosting>({
+  const user = useSelector((state: any) => state.user.user );
+  
+  const dispatch = useDispatch()
+  const [editSession, setEditSession] = useState<JobPosting>({
     id: '',
     title: '',
     location: '',
@@ -54,10 +47,6 @@ console.log(users)
     },
     expirationDate: '',
   });
-  
-
-
-
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -65,6 +54,48 @@ console.log(users)
   const [selectedOption, setSelectedOption] = useState('user');
   const userContentRef = useRef(null);
   const jobPostingContentRef = useRef(null);
+  
+  const items = [  user.role === 'admin' ?  {    key: 'submenu-user',    icon: <UserOutlined />,    title: 'User',    label: 'Admin Access',    children: [      { key: 'new-user', label: 'New User' },      { key: 'all-list-user', label: 'View All Users' },    ],
+} : null,
+{
+  key: 'submenu-job-posting',
+  icon: <UploadOutlined />,
+  title: 'Job Posting',
+  label: 'Job Posting',
+  children: [
+    { key: 'new-job-posting', label: 'New Job Posting' },
+    { key: 'all-job-posting', label: 'All Job Posting' },
+  ],
+},
+];
+
+
+
+
+
+
+  useEffect(() => {
+    async function fetchUser() {
+    let valid =  await getAuthRedux(user)
+    console.log(" CHECKING USEEFFFECT ", valid)
+     if (valid){
+      dispatch(setReduxUser(valid as User));
+     }
+    }
+    fetchUser();
+ 
+ 
+   
+  }, []);
+    
+  console.log(" THIS IS DASHBOARDMENU USER redux, ", user)
+
+
+
+
+ 
+
+
 
   const handleOptionClick = (event:any, prop?:JobPosting) => {
     
@@ -72,7 +103,7 @@ console.log(users)
     setSelectedOption(selectedValue);
 
     if (prop) {
-      setSession(prop);
+      setEditSession(prop);
     }
   };
 
@@ -115,20 +146,8 @@ console.log(users)
   defaultSelectedKeys={['1']}
   selectedKeys={[selectedOption]}
   onClick={handleOptionClick}
-  >
-   
-    <Menu.SubMenu key='submenu-user' icon={<UserOutlined />} title='User'>
-      <Menu.Item key='new-user'>New User</Menu.Item>
-      <Menu.Item key='edit-user'>Edit User</Menu.Item>
-      <Menu.Item key='delete-user'>Delete User</Menu.Item>
-    </Menu.SubMenu>
-  
-  <Menu.SubMenu key='submenu-job-posting' icon={<UploadOutlined />} title='Job Posting'>
-    <Menu.Item key='new-job-posting'>New Job Posting</Menu.Item>
-    <Menu.Item key='all-job-posting'>All Job Posting</Menu.Item>
-  </Menu.SubMenu>
-</Menu>
-
+  items={items}
+/>
 
 
         </Sider>
@@ -153,25 +172,18 @@ console.log(users)
       <Header style={{ padding: 0, background: colorBgContainer }} >
         <h2>New User Content</h2>
       </Header>
-      <p>This is the content for creating new user.</p>
+     <NewUserPost/>
     </div>
   )}
-  {selectedOption === 'edit-user' && (
+  {selectedOption === 'all-list-user' && (
     <div>
       <Header style={{ padding: 0, background: colorBgContainer }} >
-        <h2>Edit User Content</h2>
+        <h2>View All User Content</h2>
       </Header>
-      <p>This is the content for editing user.</p>
+     <ListAllUser />
     </div>
   )}
-  {selectedOption === 'delete-user' && (
-    <div>
-      <Header style={{ padding: 0, background: colorBgContainer }} >
-        <h2>Delete User Content</h2>
-      </Header>
-      <p>This is the content for deleting user.</p>
-    </div>
-  )}
+
   {selectedOption === 'new-job-posting' && (
     <div>
       <Header style={{ padding: 0, background: colorBgContainer }} >
@@ -201,7 +213,7 @@ console.log(users)
       <Button onClick={() =>setSelectedOption("all-job-posting")}>Back</Button>
        
       </Header>
-      <EditJobPost prop={session1} setSelectedOption={handleOptionClick} />
+      <EditJobPost  setSelectedOption={handleOptionClick} prop={editSession} />
     </div>
   )}
 </Content>

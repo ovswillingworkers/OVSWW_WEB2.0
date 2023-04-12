@@ -8,12 +8,10 @@ import Link from "next/link"
 import { Button, Space } from "antd"
 import Userimage from "./Userimage"
 
-type User={
-    image:string
-}
 
 
- function Logged({image}: User) {
+
+ function Logged() {
 
   
   return (

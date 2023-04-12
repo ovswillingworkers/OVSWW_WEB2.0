@@ -12,25 +12,96 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      authorizationUrl: undefined, // Disables user creation through Google OAuth2 API
+      // autoCreate: false,
     }),
   ],
-  async signIn(user, account, profile) {
-    console.log(user, " SIGNIN this is signin fuction.")
-    const userExists = await prisma.user.findUnique({
-      where: { email: user.email },
-    });
-    return userExists !== null;
+  callbacks: {
+    async signIn(user) {
+
+    
+      if (user.account.provider === "google") {
+        try {
+          const existingUser = await prisma.allowUser.findUnique({
+            where: { email: user.profile.email },
+          });
+
+
+          
+
+          if (!existingUser){
+            console.log(" User has not been found")
+            const AllowUser = await prisma.allowUser.findUnique({
+              where: { email: user.profile.email },
+            });
+
+            if (!AllowUser){
+              console.log( " USER NOT ON THE LIST")
+              
+              return false
+            }
+          }
+          
+
+          
+
+
+          return true
+        } catch (error) {
+          console.error("Error in signIn callback:", error);
+          return false;
+        }
+      }
+
+      return false;
+    },
+
+    async session(session, user) {
+    
+      // Find the user in the database
+
+      try {
+        const dbUser = await prisma.user.findUnique({
+          where: {
+            email: session.user.email,
+          },
+        });
+
+
+        if (!['admin', 'moderator'].includes(dbUser.role)) {
+          const existingUser = await prisma.allowUser.findUnique({
+            where: { email: session.user.email },
+          });
+        
+          if (existingUser) {
+            // Update the User table with the user's name and role
+            const updatedUser = await prisma.user.update({
+              where: { email: session.user.email },
+              data: { name: existingUser.name, role: existingUser.role },
+            });
+        
+           
+          }
+        }
+        
+      } catch (error) {
+        console.error("Error finding user:", error);
+      }
+  
+      return session
+    },
+
   },
-  async redirect(url, baseUrl) {
-    if (url === "/") {
-      // Redirect users who are authorized to '/dashboard'
-      return "/dashboard";
-    } else {
-      // Redirect users who are not authorized to '/admin'
-      return "/admin";
-    }
+  pages: {
+    error: '/admin'
   },
 };
 
 export default NextAuth(authOptions);
+
+
+
+
+
+
+
+
