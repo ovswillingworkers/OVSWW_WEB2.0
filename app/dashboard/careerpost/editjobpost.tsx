@@ -9,17 +9,23 @@ import { toast } from "react-hot-toast"
 import { error } from "console";
 import { RootState } from "@/app/redux/reducer/rootReducer"; 
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { clearJobPosting } from "@/app/redux/reducer/jobPostingsSlice";
 
+type SetSelectedOption = (selectedOption: string) => void;
 
 
 interface EditJobPostProps {
   prop: JobPosting;
-  setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedOption: SetSelectedOption;
 }
 
 
-export default function EditJobPost({ prop, setSelectedOption  }: EditJobPostProps) {
 
+export default function EditJobPost({ prop, setSelectedOption  }: EditJobPostProps) {
+  const dispatch = useDispatch();
+
+console.log("Prop here", prop)
   const someData = useSelector((state: RootState) => state.users);
 console.log(someData, " THIS IS REDUX USER ")
   const textareaDescription = useRef<HTMLTextAreaElement | null>(null);
@@ -179,6 +185,7 @@ const handleQualificationsChange = (
         const data = response.data;
         console.log(data);
         setSelectedOption("all-job-posting")
+        dispatch(clearJobPosting()); // add this line
         toast.success("Edit has been saved ")
       
         // Display a success message to the user

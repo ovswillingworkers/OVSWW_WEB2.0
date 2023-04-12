@@ -3,42 +3,47 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 import {Button} from "antd";
-import EditJobPost from "./editjobpost";
 import getJobPostings from "../../../app/api/getJobPostings";
 import { JobPosting } from "../../../app/components/jobpost";
 import { deleteJobPost } from "../../../app/api/deleteJobPosting";
 import toast from "react-hot-toast";
-
+import { setJobPosting } from "@/app/redux/reducer/jobPostingsSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
 export default function ListJobPosting(props: any) {
-  
+  const dispatch = useDispatch()
+  const JobPostings_list = useSelector((state: any) => state.jobPostings);
   const [jobPostings, setJobPostings] = useState<JobPosting[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await getJobPostings();
-        setJobPostings(data);
-    
-      if(data.length==0){
-        setIsLoading(false)
-        return
-      }
-        setIsLoading(true);
-      } catch (error) {
-        console.error(error);
-        setError("Error fetching job postings. Please try again later.");
-        setIsLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
+console.log(" THIS IS JOB POSTING BRO", JobPostings_list)
 
-      
+useEffect(() => {
+  console.log(JobPostings_list.jobPostings.length > 0, " JOBLISTING LENGTH GReATER THAN 0?", JobPostings_list.jobPostings.length, " || ", JobPostings_list.jobPostings)
+  async function fetchData() {
+    
+   
+      if (JobPostings_list.jobPostings.length > 0) {
+        setIsLoading(true);
+        setJobPostings(JobPostings_list.jobPostings as JobPosting[]);
+      } else {
+        const data = await getJobPostings();
+        dispatch(setJobPosting(data));
+        setIsLoading(true);
+        console.log(JobPostings_list, " GETTING JOB POSTING HERE")
+        setJobPostings(JobPostings_list.jobPostings as JobPosting[]);
+      }
+    
+  }
+  fetchData();
+  console.log(JobPostings_list.jobPostings, " HERE IS OUTSIDE THE ASYNC")
+
+}, [JobPostings_list]);
+
+      console.log(jobPostings, " THIS IS THE MAP FOR JOB POOSTING")
 
 
 
