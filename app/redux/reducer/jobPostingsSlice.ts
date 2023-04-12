@@ -23,10 +23,16 @@ const jobPostingsSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    setJobPosting(state, action) {
+      state.jobPostings = action.payload;
+    },
+    clearJobPosting(state) {
+      state.jobPostings = [];
+    },
     // Add more reducers as needed...
   },
 });
 
-export const { getJobPostingsStart, getJobPostingsSuccess, getJobPostingsFailure } = jobPostingsSlice.actions;
+export const { getJobPostingsStart, getJobPostingsSuccess, getJobPostingsFailure, setJobPosting, clearJobPosting } = jobPostingsSlice.actions;
 
 export default jobPostingsSlice.reducer;

@@ -24,12 +24,12 @@ const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    setRedUser: (state, action) => {
+    setBulkUser: (state, action) => {
       state.users = [action.payload];
       state.loading = false;
       state.error = null;
     },
-    clearUser(state) {
+    clearUsers(state) {
       state.users = [];
       state.loading = false;
       state.error = null;
@@ -37,6 +37,6 @@ const usersSlice = createSlice({
   },
 });
 
-export const { setRedUser, clearUser } = usersSlice.actions;
+export const { setBulkUser: setRedUser, clearUsers } = usersSlice.actions;
 
 export default usersSlice.reducer;
