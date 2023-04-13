@@ -89,12 +89,12 @@ export default function ListAllUser(props: any) {
   
 
 return (
-  <div className="list-jobpost-container">
+  <div className="list-user-container">
   
 
   {isLoading ? (
        userList.map((userList, index) => (
-        <div className="list-job-posting" key={index}>
+        <div className="list-user-posting" key={index}>
         <h2>{userList.name}</h2>
         <h4>{userList.email}</h4>
         <p>Role: {userList.role}</p>
@@ -105,7 +105,7 @@ return (
       </div>
         ))
         ):(
-        <div className="no-job-posting">
+        <div className="no-user-posting">
        <p>No User postings are currently available
        </p>
      </div>
