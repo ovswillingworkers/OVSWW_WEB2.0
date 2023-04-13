@@ -20,6 +20,8 @@ import getAuthRedux from '../auth/getAuthRedux';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setReduxUser } from '../redux/reducer/userSlice';
+import EditUserPost from './userpost/editUser';
+import { setJobPosting } from '../redux/reducer/jobPostingsSlice';
 
 
 // const { Header, Content } = Layout;
@@ -32,7 +34,7 @@ export default function DashboardMenu( ){
   const user = useSelector((state: any) => state.user.user );
   
   const dispatch = useDispatch()
-  const [editSession, setEditSession] = useState<JobPosting>({
+  const [editJobSession, setEditJobSession] = useState<JobPosting >({
     id: '',
     title: '',
     location: '',
@@ -47,6 +49,16 @@ export default function DashboardMenu( ){
     },
     expirationDate: '',
   });
+
+  const [editUserSession, setEditUserSession] = useState<User>({
+    id:'',
+    image:'',
+    name: '',
+    role:'',
+    email:'',
+  })
+
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -103,8 +115,20 @@ export default function DashboardMenu( ){
     const selectedValue = event.key || event;
     setSelectedOption(selectedValue);
 
+
     if (prop) {
-      setEditSession(prop);
+      setEditJobSession(prop);
+    }
+  };
+
+  const handleUserOptionClick = (event:any, prop?:User) => {
+    console.log("ONE EXAMPLE DUDE")
+    const selectedValue = event.key || event;
+    setSelectedOption(selectedValue);
+
+
+    if (prop) {
+      setEditUserSession(prop);
     }
   };
 
@@ -181,7 +205,16 @@ export default function DashboardMenu( ){
       <Header style={{ padding: 0, background: colorBgContainer }} >
         <h2>View All User Content</h2>
       </Header>
-     <ListAllUser />
+     <ListAllUser onClick={handleUserOptionClick}/>
+    </div>
+  )}
+      {selectedOption === 'edit-user' && (
+    <div>
+      <Header style={{ padding: 0, background: colorBgContainer }} >
+      <Button onClick={() =>setSelectedOption("all-list-user")}>Back</Button>
+       
+      </Header>
+      <EditUserPost  setSelectedOption={handleUserOptionClick} prop={editUserSession} />
     </div>
   )}
 
@@ -200,21 +233,13 @@ export default function DashboardMenu( ){
     < ListJobPosting onClick={handleOptionClick} />
     </div>
   )}
-  {selectedOption === 'delete-job-posting' && (
-    <div>
-      <Header style={{ padding: 0, background: colorBgContainer }} >
-        <h2>Delete Job Posting Content</h2>
-      </Header>
-      <p>This is the content for deleting job posting.</p>
-    </div>
-  )}
     {selectedOption === 'edit-job-posting' && (
     <div>
       <Header style={{ padding: 0, background: colorBgContainer }} >
       <Button onClick={() =>setSelectedOption("all-job-posting")}>Back</Button>
        
       </Header>
-      <EditJobPost  setSelectedOption={handleOptionClick} prop={editSession} />
+      <EditJobPost  setSelectedOption={handleOptionClick} prop={editJobSession} />
     </div>
   )}
 </Content>

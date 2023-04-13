@@ -98,7 +98,7 @@ return (
         <h2>{userList.name}</h2>
         <h4>{userList.email}</h4>
         <p>Role: {userList.role}</p>
-    <Button onClick={() => props.onClick("edit-job-posting", userList)}>Edit</Button>
+    <Button onClick={() => props.onClick("edit-user", userList)}>Edit</Button>
     <Button style={{background:"red", color:"white"}} onClick={() => handleDelete(userList.id)}>Delete</Button>
         
         
