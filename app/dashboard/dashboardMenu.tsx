@@ -1,34 +1,27 @@
 'use client'
 
-
 import React, {useEffect, useRef, useState } from 'react';
 import "../../styles/global.scss";
 import { UploadOutlined,UserOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
-import { useMemo } from 'react';
 import { Button } from 'antd';
 import CreateJobPost from './careerpost/careerpost';
 import ListJobPosting from './careerpost/listjobpost';
 import { Footer } from '../Footer';
-import EditJobPost from './careerpost/editjobpost';
+import JobPostingEditor from './careerpost/jobposteditor';
 import { JobPosting } from '../components/jobpost';
 import { User } from '../components/user';
-import AddAdmin from './userpost/newuserpost';
 import NewUserPost from './userpost/newuserpost';
 import ListAllUser from './userpost/listAllUsers';
 import getAuthRedux from '../auth/getAuthRedux';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { setReduxUser } from '../redux/reducer/userSlice';
 import EditUserPost from './userpost/editUser';
-import { setJobPosting } from '../redux/reducer/jobPostingsSlice';
 
 
 // const { Header, Content } = Layout;
 const { Header, Content,Sider } = Layout;
-interface Props {
-  session: User;
-}
+
 export default function DashboardMenu( ){
 
   const user = useSelector((state: any) => state.user.user );
@@ -239,7 +232,7 @@ export default function DashboardMenu( ){
       <Button onClick={() =>setSelectedOption("all-job-posting")}>Back</Button>
        
       </Header>
-      <EditJobPost  setSelectedOption={handleOptionClick} prop={editJobSession} />
+      <JobPostingEditor  setSelectedOption={handleOptionClick} prop={editJobSession} />
     </div>
   )}
 </Content>

@@ -22,7 +22,7 @@ interface EditJobPostProps {
 
 
 
-export default function EditJobPost({ prop, setSelectedOption  }: EditJobPostProps) {
+export default function JobPostingEditor({ prop, setSelectedOption  }: EditJobPostProps) {
   const dispatch = useDispatch();
 
 console.log("Prop here", prop)

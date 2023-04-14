@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function ListJobPosting(props: any) {
   const dispatch = useDispatch()
+  const jobPostings = useSelector((state: any) => state.jobPostings.jobPostings);
   const JobPostings_list = useSelector((state: any) => state.jobPostings);
   const [jobListPostings, setJobListPostings] = useState<JobPosting[]>(JobPostings_list.jobPostings.length > 0 ? JobPostings_list.jobPostings as JobPosting[] : []);
   const [isLoading, setIsLoading] = useState(JobPostings_list.jobPostings.length > 0);
@@ -39,7 +40,7 @@ useEffect(() => {
     
   }
 
-  if (JobPostings_list.jobPostings.length ==0){
+  if (!JobPostings_list.jobPostings.length){
     fetchData();
    
   }
@@ -55,17 +56,17 @@ useEffect(() => {
 
 
   
-  function handleDelete(id: string) {
-    // Logic to delete the job posting with the given ID
-    try {
-      deleteJobPost(id);
-      setJobListPostings(jobListPostings.filter((jobListPosting) => jobListPosting.id !== id));
-      toast.success("Job Post Deleted");
-    } catch (error:any) {
-      console.error(error.message);
-      toast.error("Error deleting job post");
-    }
-  }
+      function handleDelete(id: string) {
+        try {
+          deleteJobPost(id);
+          dispatch(setJobPosting(jobPostings.filter((jobPosting:any) => jobPosting.id !== id)));
+          toast.success("Job post deleted");
+        } catch (error:any) {
+          console.error(error.message);
+          toast.error("Error deleting job post");
+        }
+      }
+      
   
   
 
