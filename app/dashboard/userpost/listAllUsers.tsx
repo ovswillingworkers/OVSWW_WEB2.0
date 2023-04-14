@@ -90,31 +90,28 @@ export default function ListAllUser(props: any) {
 
 return (
   <div className="list-user-container">
-  
-
   {isLoading ? (
-       userList.map((userList, index) => (
-        <div className="list-user-posting" key={index}>
+    userList.map((userList, index) => (
+      <div className={`list-user-posting ${userList.email === user.email ? 'own-user' : ''}`} key={index}>
         <h2>{userList.name}</h2>
         <h4>{userList.email}</h4>
         <p>Role: {userList.role}</p>
-    <Button onClick={() => props.onClick("edit-user", userList)}>Edit</Button>
-    <Button style={{background:"red", color:"white"}} onClick={() => handleDelete(userList.id)}>Delete</Button>
-        
-        
+        {userList.email !== user.email &&
+          <>
+            <Button onClick={() => props.onClick("edit-user", userList)}>Edit</Button>
+            <Button style={{background:"red", color:"white"}} onClick={() => handleDelete(userList.id)}>Delete</Button>
+          </>
+        }
+        {userList.email === user.email &&
+          <p className="own-user-label">This is your own user information</p>
+        }
       </div>
-        ))
-        ):(
-        <div className="no-user-posting">
-       <p>No User postings are currently available
-       </p>
-     </div>
-     
-     ) }
-
-
-
-
-  </div>
+    ))
+  ) : (
+    <div className="no-user-posting">
+      <p>No user postings are currently available.</p>
+    </div>
+  )}
+</div>
 );
         }
