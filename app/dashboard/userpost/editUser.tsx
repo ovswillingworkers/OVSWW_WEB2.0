@@ -28,7 +28,7 @@ export default function EditUserPost({ prop, setSelectedOption  }: EditUserPostP
     try {
       const response = await axios.post("/api/updateUser", admin);
       if (response.status === 201) {
-        toast.success("Admin user created successfully!");
+        toast.success("User role has change successfully!");
         setAdmin({ name: "", email: "", role: "admin" });
       }
     } catch (error: any) {
@@ -40,7 +40,7 @@ export default function EditUserPost({ prop, setSelectedOption  }: EditUserPostP
     <div className="form-container">
       <div className="form-container-content user-form">
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="form-group edit-user-form">
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -52,7 +52,7 @@ export default function EditUserPost({ prop, setSelectedOption  }: EditUserPostP
           required
         />
       </div>
-      <div className="form-group">
+      <div className="form-group edit-user-form">
         <label htmlFor="email">Email:</label>
         <input
           type="email"
@@ -71,6 +71,7 @@ export default function EditUserPost({ prop, setSelectedOption  }: EditUserPostP
   id="role"
   name="role"
   onChange={handleInputChange}
+  value={admin.role as string}
   required
 >
   <option value="" disabled>
