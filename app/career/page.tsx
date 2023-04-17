@@ -91,7 +91,7 @@ function Career() {
             <h4>{jobPosting.location}</h4>
             <p>Salary: {jobPosting.salary}</p>
             <p>Date: {jobPosting.date}</p>
-            <Link href={`/apply?id=${jobPosting.id}`} as={`/apply/${jobPosting.id}`}>
+            <Link href={`/career?id=${jobPosting.id}`} as={`/career/${jobPosting.id}`}>
               Apply Here
             </Link>
             <hr />
