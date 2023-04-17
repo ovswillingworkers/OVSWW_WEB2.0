@@ -1,5 +1,4 @@
-'use client
-'
+'use client'
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { Form, Input, Button } from "antd";
