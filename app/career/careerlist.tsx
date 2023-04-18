@@ -9,6 +9,7 @@ import Nav from "../Nav";
 import getJobPostings from "../api/getJobPostings";
 import { useDispatch, useSelector } from "react-redux";
 import { setJobPosting } from "../redux/reducer/jobPostingsSlice";
+import { AppState } from "../redux/store/store";
 
 
 
@@ -19,12 +20,13 @@ function CareerList() {
   // const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch()
-  const jobPostings = useSelector((state: any) => state.jobPostings.jobPostings);
-  const JobPostings_list = useSelector((state: any) => state.jobPostings);
+ 
+  const JobPostings_list = useSelector((state:any) => state.jobPostings);
   const [jobListPostings, setJobListPostings] = useState<JobPosting[]>(JobPostings_list.jobPostings.length > 0 ? JobPostings_list.jobPostings as JobPosting[] : []);
   const [isLoading, setIsLoading] = useState(JobPostings_list.jobPostings.length > 0);
   const [error, setError] = useState("");
 
+  console.log(isLoading)
 
   useEffect(() => {
     let isMounted = true;
@@ -33,10 +35,11 @@ function CareerList() {
           
           const data = await getJobPostings();
           if (data && isMounted){
-            dispatch(setJobPosting(data as JobPosting[]));
+             dispatch(setJobPosting(data as JobPosting[]));
+             
             setIsLoading(true);
-            console.log(JobPostings_list, " GETTING JOB POSTING HERE")
-            setJobListPostings(data as JobPosting[]);
+            console.log(data, " GETTING JOB POSTING HERE")
+           setJobListPostings(data as JobPosting[]);
   
           }
   
@@ -53,7 +56,8 @@ function CareerList() {
       isMounted = false;
     };
   }, []);
-      
+  
+  console.log(JobPostings_list, " HERE THE ASYNC")
 
 
 
@@ -101,7 +105,7 @@ function CareerList() {
         
       <div className="career-jobpost-container">
       {isLoading ? (
-       jobPostings.map((jobPosting, index) => (
+       jobListPostings.map((jobPosting: any, index: any) => (
          <div className="job-posting" key={index}>
             <h2>{jobPosting.title}</h2>
             <h4>{jobPosting.location}</h4>

@@ -4,20 +4,19 @@ import usersReducer from './usersSlice';
 import userReducer from './userSlice';
 import jobPostingsReducer from './jobPostingsSlice';
 
-const rootReducer = combineReducers({
-  users: usersReducer,
-  user: userReducer,
+
+const rootApplyReducer = combineReducers({
+
   jobPostings: jobPostingsReducer,
   // Add more reducers as needed...
 });
 
 
-export type RootState = ReturnType<typeof rootReducer>;
 
 
+export type RootApplyState = ReturnType<typeof rootApplyReducer>;
 
+export default rootApplyReducer;
 
-
-export default rootReducer;
 
   
