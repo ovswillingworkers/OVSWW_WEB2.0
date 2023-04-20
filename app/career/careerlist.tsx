@@ -15,18 +15,18 @@ import { AppState } from "../redux/store/store";
 
 
 function CareerList() {
-
-  // const [jobPostings, setJobPostings] = useState<JobPosting[]>([]);
-  // const [isLoading, setIsLoading] = useState(false);
-
   const dispatch = useDispatch()
+
  
-  const JobPostings_list = useSelector((state:any) => state.jobPostings);
-  const [jobListPostings, setJobListPostings] = useState<JobPosting[]>(JobPostings_list.jobPostings.length > 0 ? JobPostings_list.jobPostings as JobPosting[] : []);
-  const [isLoading, setIsLoading] = useState(JobPostings_list.jobPostings.length > 0);
+  const JobPostings_list = useSelector((state:any) => { console.log(state); return state.jobPostings.jobPostings});
+  
+
+
+  const [jobListPostings, setJobListPostings] = useState<JobPosting[]>(JobPostings_list.length > 0 ? JobPostings_list as JobPosting[] : []);
+  const [isLoading, setIsLoading] = useState(jobListPostings.length > 0);
   const [error, setError] = useState("");
 
-  console.log(isLoading)
+  console.log(jobListPostings, " THIS IS FIRST ")
 
   useEffect(() => {
     let isMounted = true;
@@ -35,10 +35,10 @@ function CareerList() {
           
           const data = await getJobPostings();
           if (data && isMounted){
-             dispatch(setJobPosting(data as JobPosting[]));
+             
              
             setIsLoading(true);
-            console.log(data, " GETTING JOB POSTING HERE")
+            console.log(data as JobPosting[], " GETTING JOB POSTING HERE")
            setJobListPostings(data as JobPosting[]);
   
           }
@@ -47,18 +47,19 @@ function CareerList() {
       
     }
   
-    if (!JobPostings_list.jobPostings.length){
+    if (!jobListPostings.length){
       fetchData();
      
     }
-    console.log(JobPostings_list.jobPostings.length, " HERE IS OUTSIDE THE ASYNC")
+    console.log(jobListPostings.length, " HERE IS OUTSIDE THE ASYNC")
+   
     return () => {
       isMounted = false;
     };
   }, []);
   
-  console.log(JobPostings_list, " HERE THE ASYNC")
-
+  console.log(jobListPostings, " HERE THE ASYNC")
+  dispatch(setJobPosting(jobListPostings as JobPosting[]));
 
 
 
@@ -111,7 +112,7 @@ function CareerList() {
             <h4>{jobPosting.location}</h4>
             <p>Salary: {jobPosting.salary}</p>
             <p>Date: {jobPosting.date}</p>
-            <Link href={`/career?id=${jobPosting.id}`} as={`/career/${jobPosting.id}`}>
+            <Link href={`/career?id=${jobPosting.id}&name=${jobPosting.name}`} as={`/career/${jobPosting.id}`}>
               Apply Here
             </Link>
             <hr />

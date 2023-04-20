@@ -74,9 +74,7 @@ function Nav ({image, banner=""}: User)  {
             
          
 
-            <><li>
-              <Logged />
-            </li>
+            <>
             {image ? (
             <li>
                 <Image

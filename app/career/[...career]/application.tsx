@@ -1,10 +1,17 @@
 'use client'
 import { Button, Form, Input, Upload } from "antd";
+import "../../../styles/global.scss";
 import { UploadOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { sendJobApplicationEmail } from "./sendEmail";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { Footer } from "@/app/Footer";
+import Nav from "@/app/Nav";
+import { redirect } from "next/navigation";
+
+
+
 
 interface IProps {
   params: {
@@ -13,7 +20,8 @@ interface IProps {
   searchParams: {};
 }
 
-const CareerPost = ({ params }: IProps) => {
+const Application = () => {
+  const [valid, setValid] = useState(false)
   const [values, setValues] = useState<any>({
     name: "",
     email: "",
@@ -26,6 +34,22 @@ const CareerPost = ({ params }: IProps) => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('');
+
+
+  useEffect(() => {
+    if (valid){
+      redirect('/career')
+    }
+      
+ }, [valid]);
+
+
+
+ function testing(){
+  console.log("SPEAK NOTHJING")// 
+
+ // redirect('/career')
+}
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = event.target;
@@ -86,16 +110,55 @@ const CareerPost = ({ params }: IProps) => {
       setName('');
       setEmail('');
       setMessage('');
+      toast.success("Application has been sumbitted");
+      setValid(true)
     } catch (error: any) {
       console.error(error.message);
       toast.error(error.message);
     }
+
+
+   
   };
   
 
 
   return (
-    <div className="job-application-form">
+    <>
+    <Nav image={""} banner={""} />
+    <div className="career">
+      <div className="career-container-banner mt-4 p-5 bg-primary text-white">
+        <h1>Career</h1>
+        <p></p>
+      </div>
+
+
+        <div className="career-text">
+        <h1>Join our team today</h1>
+  <h5 style={{}}>
+    At Willing Workers, we are always looking for dedicated individuals to join our team. 
+    We offer competitive salaries, comprehensive benefits, and opportunities for growth and advancement. 
+    Come visit us for a tour to see what we're all about and start your career with us today!
+  </h5>
+          <h3>
+            {" "}
+            <a
+              href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
+                "4813 W. Washington Blvd., Los Angeles, Los Angeles 90016"
+                )}`}
+                target="_blank"
+                >
+              4813 W. Washington Blvd.<br></br>
+              Los Angeles, CA 90016
+            </a>
+          </h3>
+          <h3>Monday - Friday 8:00am - 3:00pm</h3>
+          <h3>
+            Phone:<a href="tel:323-729-9898">323-729-9898</a>
+          </h3>
+          <h3>Email: info@willingworkers.org</h3>
+        </div>
+        <div className="job-application-form">
       <Form layout="vertical" onFinish={handleSubmit}>
         <Form.Item label="Name" name="name" rules={[{ required: true, message: "Please enter your name." }]}>
           <Input value={values.name} onChange={handleChange} />
@@ -124,7 +187,17 @@ const CareerPost = ({ params }: IProps) => {
         </Form.Item>
       </Form>
     </div>
+
+
+  
+      
+      <Footer />
+    </div>
+      
+
+
+    </>
   );
 };
 
-export default CareerPost;
+export default Application;

@@ -23,11 +23,11 @@ function Career() {
   
 
   return (
-  <>
+
   <Provider store={appStore} >
 <CareerList/>
   </Provider>
-  </>
+ 
   );
 }
 

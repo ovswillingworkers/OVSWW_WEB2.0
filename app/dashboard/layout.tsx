@@ -43,8 +43,6 @@ console.log(session, " LAYOUT REACH OUT LAYOUT ")
 
 
 
-  <QueryWrapper >
-
 
 
 
@@ -54,7 +52,7 @@ console.log(session, " LAYOUT REACH OUT LAYOUT ")
       <AdminNav image={ session.user?.image as string} banner={adminbanner.src} email={session.user?.email || ''} />
 
       {children}
-    </QueryWrapper>
+
 
     
 

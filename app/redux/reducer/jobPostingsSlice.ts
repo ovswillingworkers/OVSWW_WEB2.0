@@ -33,6 +33,7 @@ const jobPostingsSlice = createSlice({
       state.error = action.payload;
     },
     setJobPosting(state, action) {
+      console.log("THIS IS JOBPSTOING REDUCER SLICER ")
       state.jobPostings = action.payload;
     },
     clearJobPosting(state) {
