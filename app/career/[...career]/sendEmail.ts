@@ -13,6 +13,7 @@ interface IJobApplication {
     email: string;
     phone: string;
     coverLetter: string;
+    resume : File;
    
   }
   
