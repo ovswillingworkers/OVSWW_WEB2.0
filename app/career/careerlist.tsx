@@ -10,6 +10,8 @@ import getJobPostings from "../api/getJobPostings";
 import { useDispatch, useSelector } from "react-redux";
 import { setJobPosting } from "../redux/reducer/jobPostingsSlice";
 import { AppState } from "../redux/store/store";
+import DisplayJobList from "./displayjoblist";
+import Application from "./[...career]/application";
 
 
 
@@ -24,9 +26,12 @@ function CareerList() {
 
   const [jobListPostings, setJobListPostings] = useState<JobPosting[]>(JobPostings_list.length > 0 ? JobPostings_list as JobPosting[] : []);
   const [isLoading, setIsLoading] = useState(jobListPostings.length > 0);
+const [ isApplying, setIsApplying] = useState(false)
+const [selectedJobPosting, setSelectedJobPosting] = useState<JobPosting >();
+
   const [error, setError] = useState("");
 
-  console.log(jobListPostings, " THIS IS FIRST ")
+  console.log(jobListPostings, " THIS IS FIRST ", isLoading)
 
   useEffect(() => {
     let isMounted = true;
@@ -61,7 +66,13 @@ function CareerList() {
   console.log(jobListPostings, " HERE THE ASYNC")
   dispatch(setJobPosting(jobListPostings as JobPosting[]));
 
-
+  const applyToJobPosting = (isApplying: boolean, jobPosting?: JobPosting ) => {
+    if (isApplying){
+      setIsApplying(isApplying)
+      setSelectedJobPosting(jobPosting)
+    }
+    setIsApplying(isApplying)
+  }
 
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
@@ -103,42 +114,13 @@ function CareerList() {
           </h3>
           <h3>Email: info@willingworkers.org</h3>
         </div>
-        
-      <div className="career-jobpost-container">
-      {isLoading ? (
-       jobListPostings.map((jobPosting: any, index: any) => (
-         <div className="job-posting" key={index}>
-            <h2>{jobPosting.title}</h2>
-            <h4>{jobPosting.location}</h4>
-            <p>Salary: {jobPosting.salary}</p>
-            <p>Date: {jobPosting.date}</p>
-            <Link href={`/career?id=${jobPosting.id}&name=${jobPosting.name}`} as={`/career/${jobPosting.id}`}>
-              Apply Here
-            </Link>
-            <hr />
-            <h3>Description:</h3>
-            <p>{jobPosting.description}</p>
-            <h3>Qualifications:</h3>
-            <p>{jobPosting.qualifications}</p>
-            <h3>Contact:</h3>
-            <p>Name: {jobPosting.contact.name}</p>
-            <p>Email: {jobPosting.contact.email}</p>
-            <p>Phone: {jobPosting.contact.phone}</p>
-          </div>
-        ))
-        ):(
-        <div className="no-job-posting">
-       <p>Sorry, no job postings are currently available. Please feel free to&nbsp;
-         <a href="tel:123-456-7890">call</a>&nbsp;or&nbsp;
-         <a href="mailto:jobs@example.com">email</a>&nbsp;
-         us to inquire about future openings.
-       </p>
-     </div>
-     
-     ) }
 
-      </div>
+        <div className="Career-holder">
+
+        {isLoading && !isApplying ? <DisplayJobList jobListPostings={jobListPostings} applyToJobPosting={applyToJobPosting}   /> : null}
+      {isApplying ?<Application jobPosting={selectedJobPosting as JobPosting} applyToJobPosting={applyToJobPosting} />:null}
       
+        </div>
       <Footer />
     </div>
         </>
