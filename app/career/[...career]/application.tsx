@@ -2,7 +2,7 @@
 import { Button, Form, Input, Upload } from "antd";
 import "../../../styles/global.scss";
 import { UploadOutlined } from "@ant-design/icons";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { sendJobApplicationEmail } from "./sendEmail";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -38,8 +38,13 @@ const Application = (props: { jobPosting: JobPosting ; applyToJobPosting: (isApp
   const [status, setStatus] = useState('');
 
 
+  const sectionRef = useRef(null);
 
+  useEffect(() => {
+    sectionRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
 
+  
 
 
  function handleChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -125,8 +130,8 @@ function handleFileChange(info: any) {
 console.log(props.jobPosting, " THIS IS APPLICAITON JOB")
   return (
     <>
-<Button onClick={() => props.applyToJobPosting(false)}>Back</Button>        <div className="job-application-form">
-     <div className="application-jobpost">
+<Button ref={sectionRef} onClick={() => props.applyToJobPosting(false)}>Back</Button>        <div className="job-application-form">
+     <div className="application-jobpost" >
       <h3>Job Title: {props.jobPosting.title}</h3>
       <h4>Location: {props.jobPosting.location}</h4>
       <h4>Salary: {props.jobPosting.salary}</h4>
