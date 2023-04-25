@@ -126,9 +126,11 @@ console.log(props.jobPosting, " THIS IS APPLICAITON JOB")
   return (
     <>
 <Button onClick={() => props.applyToJobPosting(false)}>Back</Button>        <div className="job-application-form">
-     <div>
+     <div className="application-jobpost">
       <h3>Job Title: {props.jobPosting.title}</h3>
-      <h3>Location: {props.jobPosting.location}</h3>
+      <h4>Location: {props.jobPosting.location}</h4>
+      <h4>Salary: {props.jobPosting.salary}</h4>
+      <h4>Job Description:{props.jobPosting.description}</h4>
      </div>
      
       <Form layout="vertical" onFinish={handleSubmit}>
