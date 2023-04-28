@@ -1,7 +1,6 @@
 
 import sgMail from "@sendgrid/mail";
 import axios from "axios";
-import multer, { Multer } from "multer";
 import toast from "react-hot-toast";
 
 
