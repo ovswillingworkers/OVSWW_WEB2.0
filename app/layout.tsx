@@ -1,4 +1,4 @@
-'use client'
+
 import { Provider } from 'react-redux';
 import QueryWrapper from './auth/QueryWrapper'
 import { appStore } from './redux/store/store';
@@ -30,12 +30,12 @@ export default  function RootLayout({ children, }: {
 
       <body>
      
-      <Provider store={appStore}>
+      {/* <Provider store={appStore}> */}
           <QueryWrapper>
             {children}
           </QueryWrapper>
- 
-          </Provider>
+{/*  
+          </Provider> */}
    
       </body>
    
