@@ -1,12 +1,19 @@
 import sgMail from '@sendgrid/mail';
 import { NextApiRequest, NextApiResponse } from 'next';
 import formidable from 'formidable';
+import { Request, Response } from 'express';
+import { File } from 'formidable';
+
 
 export const config = {
   api: {
     bodyParser: false,
   },
 };
+
+function isFile(obj: any): obj is File {
+  return 'filepath' in obj && 'originalFilename' in obj && 'mimetype' in obj;
+}
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
@@ -15,72 +22,66 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const sgEmail= process.env.SENDGRID_API_EMAIL as string
-console.log(process.env.SENDGRID_API_KEY as string, " sendgrid api code")
+  console.log(process.env.SENDGRID_API_KEY as string, " sendgrid api code")
   sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
   console.log(process.env.SENDGRID_API_EMAIL as string, " sendgrid api code")
 
-const form = new formidable.IncomingForm();
+  const form = new formidable.IncomingForm();
 
-try {
-  form.parse(req,  async (err, fields, files) => {
-    if (err) {
-      console.error("Error parsing form:", err);
-      res.status(500).send('Error sending message.');
-      return;
-    }
+  try {
+    form.parse(req, async (err, fields, files) => {
+      if (err) {
+        console.error("Error parsing form:", err);
+        res.status(500).send('Error sending message.');
+        return;
+      }
 
-    console.log("Parsed fields:", fields);
-    console.log("THIS IS UPLOADED FILE?", files)
-    console.log("THIS IS resume", files.resume.path)
-
-    const sgEmail= process.env.SENDGRID_API_EMAIL as string
-    console.log(process.env.SENDGRID_API_KEY as string, " sendgrid api code")
-      sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
-      console.log(process.env.SENDGRID_API_EMAIL as string, " sendgrid api code")
       const { name, email, message } = fields;
-    
+      console.log(files);
+
+      // Use a type guard to check if 'files.resume' is a 'File'
+      
+      const resumeFile = files.resume as File;
+      if (!isFile(resumeFile)) {
+        console.error("Invalid resume file:", resumeFile);
+        res.status(400).send('Invalid resume file.');
+        return;
+      }
 
       const fs = require('fs');
-      const resumeContent = fs.readFileSync(files.resume.filepath).toString('base64');
-      
+      const resumeContent = fs.readFileSync(resumeFile.filepath).toString('base64');
+      console.log(files)
 
       const msg = {
-        to: sgEmail, // replace with your own email address
-        from: sgEmail,
-        subject: `Job Application for ${name}`,
+        to: sgEmail as string,
+        from: sgEmail as string,
+        subject: `Job Application for ${name} ` as string,
         text: message as string,
-        html: `<p>${message}  || ${email}</p>`,
+        html: `<p>${message}  || ${email}</p>` as string,
         attachments: [
           {
             content: resumeContent,
-            filename: files.resume.originalFilename,
-            type: files.resume.mimetype,
-            disposition: 'attachment',
-            
+            filename: resumeFile.originalFilename as string,
+            type: resumeFile.mimetype as string,
+            disposition: 'attachment' as string,
           }
         ],
       };
 
-     
-    try {
-      console.log(msg)
-    const result = await sgMail.send(msg);
-    console.log(result);
-    console.log("Message was sent")
-    res.status(200).send('Message sent successfully.');
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Error sending message in sendgrid.');
+      try {
+        console.log(msg)
+        const result = await sgMail.send(msg);
+        console.log(result);
+        console.log("Message was sent")
+        res.status(200).send('Message sent successfully.');
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Error sending message in sendgrid.');
+      }
+    });
+  } catch (err) {
+    console.error("Error parsing form:", err);
+    res.status(500).send('Error sending message.');
+    return;
   }
-
-  });
-
-  
-} catch (err) {
-  console.error("Error parsing form:", err);
-  res.status(500).send('Error sending message.');
-  return;
-}
-
-
 };

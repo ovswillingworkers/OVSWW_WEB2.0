@@ -17,9 +17,9 @@ import { getServerSession } from 'next-auth';
 
 
 
-export default async function layout({ children, store }: {
+export default async function layout({ children}: {
   children: any;
-  store:any;
+ 
 }) {
 
 //  console.log(store, " STORE IN LAYOUT")

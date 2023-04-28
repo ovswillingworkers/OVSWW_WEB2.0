@@ -23,6 +23,8 @@ interface IProps {
 }
 
 const Application = (props: { jobPosting: JobPosting ; applyToJobPosting: (isApplying: boolean, jobPosting?: JobPosting) => void;  }) => {
+  
+
   const [valid, setValid] = useState(false)
   const [values, setValues] = useState<any>({
     name: "",
@@ -36,13 +38,13 @@ const Application = (props: { jobPosting: JobPosting ; applyToJobPosting: (isApp
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('');
-
-
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    sectionRef.current.scrollIntoView({ behavior: "smooth" });
-  }, []);
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+      }, []);
 
   
 

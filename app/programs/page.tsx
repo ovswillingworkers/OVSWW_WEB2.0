@@ -56,7 +56,7 @@ const Programs = () => {
   }, []);
   return (
     <div>
-      <Nav/>
+      <Nav image={""} banner={""}/>
       <div className="program-container">
         <div className="program-container-banner mt-4 p-5 bg-primary text-white">
           {/* <div className="layer"></div> */}
