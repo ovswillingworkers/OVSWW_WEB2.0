@@ -20,7 +20,7 @@ function CareerList() {
   const dispatch = useDispatch()
 
  
-  const JobPostings_list = useSelector((state:any) => { console.log(state); return state.jobPostings.jobPostings});
+  const JobPostings_list = useSelector((state:any) => {  return state.jobPostings.jobPostings});
   
 
 
@@ -31,7 +31,7 @@ const [selectedJobPosting, setSelectedJobPosting] = useState<JobPosting >();
 
   const [error, setError] = useState("");
 
-  console.log(jobListPostings, " THIS IS FIRST ", isLoading)
+
 
   useEffect(() => {
     let isMounted = true;
@@ -43,7 +43,7 @@ const [selectedJobPosting, setSelectedJobPosting] = useState<JobPosting >();
              
              
             setIsLoading(true);
-            console.log(data as JobPosting[], " GETTING JOB POSTING HERE")
+    
            setJobListPostings(data as JobPosting[]);
   
           }
@@ -56,14 +56,14 @@ const [selectedJobPosting, setSelectedJobPosting] = useState<JobPosting >();
       fetchData();
      
     }
-    console.log(jobListPostings.length, " HERE IS OUTSIDE THE ASYNC")
+
    
     return () => {
       isMounted = false;
     };
   }, []);
   
-  console.log(jobListPostings, " HERE THE ASYNC")
+  
   dispatch(setJobPosting(jobListPostings as JobPosting[]));
 
   const applyToJobPosting = (isApplying: boolean, jobPosting?: JobPosting ) => {
