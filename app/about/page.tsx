@@ -47,8 +47,8 @@ function About() {
 
 
 
-            <h1>"Our Mission"</h1>
             <p>
+            <h1>"Our Mission"</h1>
             At Willing Workers our mission is to empower individuals with intellectual and 
             developmental disabilities to lead fulfilling and independent lives. 
             Through community integration training and the development of healthy habits, 
@@ -81,8 +81,13 @@ function About() {
   </div>
 </div>
 </div>
-        </div>
 
+
+
+
+        </div>
+       
+      </div>
         <div className="about-container-contacts">
           <h1 >Schedule a tour today</h1>
           <p >
@@ -103,7 +108,6 @@ function About() {
           </h5>
           <br></br>
         </div>
-      </div>
 
       <Footer />
     </div>
