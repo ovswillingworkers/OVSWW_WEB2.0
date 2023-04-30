@@ -71,44 +71,63 @@ position:absolute;
   }
   .about-container-text-details {
     display: flex;
-    // flex-direction: column;
-   // align-items: center;
-    margin-top:20px;
-    margin-bottom: 50px;
-    padding:0 50px;
+     margin-top: 20px;
+    // margin-bottom: 50px;
+    // padding: 0 50px;
+    
     figure {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin: 0 auto;
-
+      
       img {
         width: 100%;
         height: 40vh;
         border-radius: 5px;
       }
-
+      
       figcaption {
         font-style: italic;
-        //font-size: 0.8em;
         text-align: center;
         margin-top: 10px;
       }
     }
-  
-    .about-container-text-values{
+    
+    .about-container-text-values {
       margin: 20px 0 20px 40px;
       text-align: left;
-      h1{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      h1 {
         text-align: center;
       }
-      p{
-        padding:20px;
+      
+      p {
+        padding: 20px;
       }
     }
-
-
+    
+    // media query for screens with a maximum width of 425px
+    @media only screen and (max-width: 425px) {
+      padding:0px !important;
+      margin: 0px;
+   
+      figure {
+        width: 100%;
+        max-width: 425px;
+        margin-bottom: 20px;
+      }
+      
+      .about-container-text-values {
+        margin-left: 0;
+        text-align: center;
+      }
+    }
   }
+  
 
 
 }
@@ -118,7 +137,9 @@ position:absolute;
 .about-container-contacts {
   //font-size: medium;
   color: #000; // Black
-
+display:flex;
+flex-direction: column;
+text-align: center;
   h5 {
       color: #000; // Black
   }
@@ -208,7 +229,7 @@ position:absolute;
 }
 .about-container-text-details-description {
   flex: 1;
-  margin-right: 2rem;
+
 }
 
 .about-container-text-details-image {
@@ -220,20 +241,20 @@ position:absolute;
 
 
 /* Default styles for all screen sizes */
-.about-container-contacts{
+// .about-container-contacts{
   
-  color: #000000; // Black
+//   color: #000000; // Black
 
-  h5 {
-      color: rgb(248, 64, 2); // Black
-      overflow: hidden;
-  }
+//   h5 {
+//       color: rgb(248, 64, 2); // Black
+//       overflow: hidden;
+//   }
 
-  h3 {
-      color: #808080; // Gray
-      // //font-size: 16px;
-  }
-}
+//   h3 {
+//       color: #808080; // Gray
+//       // //font-size: 16px;
+//   }
+// }
 
 /* Styles for screens with a width smaller than 768px (i.e. tablets and smartphones) */
 @media (max-width: 768px) {
@@ -253,7 +274,10 @@ position:absolute;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  @media (min-width: 480px) {
+    padding:0px 20px;
+  
+  }
 }
 
 .about-container-text-values {
@@ -300,7 +324,7 @@ position:absolute;
   .about-ourmission {
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
+    padding: 10px 0px 0px 0px;
     
   }
   
