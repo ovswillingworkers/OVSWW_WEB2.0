@@ -47,8 +47,8 @@ function About() {
 
 
 
+            <h1>"Our Mission"</h1>
             <p>
-            {/* <h1>"Our Mission"</h1> */}
             At Willing Workers our mission is to empower individuals with intellectual and 
             developmental disabilities to lead fulfilling and independent lives. 
             Through community integration training and the development of healthy habits, 
@@ -61,8 +61,8 @@ function About() {
             <div className="about-container-text-values-image">
   <div className="about-container-text-values">
    
-    <p>
     <h1>"Our Values"</h1>
+    <p>
     Our values guide everything we do at Willing Workers. 
     We put individuals first, empower them to grow, and strive for inclusivity. 
     We work closely with families and the community, continuously seeking improvement 
