@@ -21,6 +21,7 @@ const Banner: React.FC<BannerProps> = ({ backgroundImage }) => {
                 
                 />
             </figure>
+            <h1>This is a group of people</h1>
     </div>
   );
 };
