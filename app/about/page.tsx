@@ -18,12 +18,13 @@ import Nav from "../Nav";
 // import { Footer } from "./Footer";
 
 function About() {
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <>
+    <div>
     <Nav image={""} banner={""}/>
    
     <div className="about-container">
@@ -47,7 +48,7 @@ function About() {
 
 
             <p>
-            <h1>"Our Mission"</h1>
+            {/* <h1>"Our Mission"</h1> */}
             At Willing Workers our mission is to empower individuals with intellectual and 
             developmental disabilities to lead fulfilling and independent lives. 
             Through community integration training and the development of healthy habits, 
@@ -106,8 +107,8 @@ function About() {
 
       <Footer />
     </div>
-    </>
+    </div>
   );
 }
 
-export default React.memo(About);
+export default About;
