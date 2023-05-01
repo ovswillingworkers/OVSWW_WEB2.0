@@ -37,7 +37,7 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   background:$color-light-gray;
-  color:black;
+  color:$color-deep-blue;
   padding-bottom: 20px;
 }
 
@@ -534,7 +534,7 @@ background: linear-gradient(180deg, $color-light-gray 20%, $color-soft-blue 80%)
       .bus-icon{
   
       path{
-        fill:#000000 !important;
+        fill:$color-deep-blue !important;
       }
     
       rect{
@@ -556,14 +556,14 @@ background: linear-gradient(180deg, $color-light-gray 20%, $color-soft-blue 80%)
       }
     
       .coach-icon{
-        fill:#000000;
+        fill:$color-deep-blue;
         width:80px;
         transform: scaleX(-1);
         
       }
     
       .hands-icon{
-        fill:#000000;
+        fill:$color-deep-blue;
         width:80px;
         
       }

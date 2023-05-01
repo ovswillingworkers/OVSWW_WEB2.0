@@ -145,11 +145,9 @@ const Home = () => {
                   }}
                 >
                   <div className="donate-banner ">
-                    <h3>Donate</h3>
+                    <h3>About Us</h3>
                     <p>
-                      Your donation can make a difference in the lives of those
-                      we serve. Every contribution helps us provide valuable
-                      services.
+                     Get to know what we are all about
                     </p>
                   </div>
                 </a>
