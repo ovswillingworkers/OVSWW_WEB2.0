@@ -1,7 +1,9 @@
-$border-color: #02ae2dcb;
-$menu-color:rgba(136, 255, 0, 0);
-$menu-color2:rgba(57, 240, 2, 0.962);
+@import '../basic/colors';
 
+
+$border-color: $color-deep-blue;
+$menu-color:rgba(136, 255, 0, 0);
+$menu-color2:$color-soft-blue;
 
 /* Define font-face */
 @font-face {
@@ -94,9 +96,9 @@ $menu-color2:rgba(57, 240, 2, 0.962);
         }
         
         a {
-            color: #FFFFFF;
+            color: $color-light-gray;
        
-            text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, $menu-color 0px 0px 20px, $menu-color 0px 0px 30px, $menu-color 0px 0px 40px, $menu-color 0px 0px 50px, $menu-color 0px 0px 75px;
+            text-shadow: $color-light-gray 0px 0px 5px, $color-light-gray 0px 0px 10px, $color-light-gray 0px 0px 15px, $menu-color 0px 0px 20px, $menu-color 0px 0px 30px, $menu-color 0px 0px 40px, $menu-color 0px 0px 50px, $menu-color 0px 0px 75px;
             text-decoration: none;
             font-size: large;
             font-weight: 500;
@@ -113,13 +115,13 @@ $menu-color2:rgba(57, 240, 2, 0.962);
 /* Styles for .nav_home */
 .nav_home {
     // font-family: myfont;
-    color: rgb(2, 147, 60);
-    color: #FFFFFF;
+    color:$color-deep-blue;
+    color: $color-light-gray;
     display:flex;
     justify-content: center;
     align-items: center;
     align-content: center;
-    text-shadow: 0 0 5px #000000, 0 0 2px #000000, 0 0 5px #FFF, 0 0 5px #49ff18, 0 0 8px #49FF18, 0 0 8px #49FF18, 0 0 2px #49FF18, 0 0 2px #49ff18;
+    text-shadow: 0 0 5px #000000, 0 0 2px #000000, 0 0 5px $color-light-gray, 0 0 5px $border-color, 0 0 8px $border-color, 0 0 8px $border-color, 0 0 2px $border-color, 0 0 2px $border-color;
     /* Make .nav_home take up one-third of the available space */
     flex: 0 0 calc(100% / 3);
   
@@ -139,7 +141,7 @@ $menu-color2:rgba(57, 240, 2, 0.962);
 
     :hover{
         color:rgb(0, 0, 0);
-        text-shadow: 0 0 5px $menu-color, 0 0 10px $menu-color, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
+        text-shadow: 0 0 5px $menu-color, 0 0 10px $menu-color, 0 0 15px $color-light-gray, 0 0 20px $border-color, 0 0 30px $border-color, 0 0 40px $border-color, 0 0 55px $border-color, 0 0 75px $border-color;
         border-radius: 20px;
         
     }
@@ -151,13 +153,13 @@ $menu-color2:rgba(57, 240, 2, 0.962);
     display: flex;
     align-items: center;
     flex-direction: row;
-    color: #FFFFFF;
+    color: $color-light-gray;
     justify-content: end;
-    text-shadow: 0 0 5px #000000, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 20px #49FF18, 0 0 35px #49FF18, 0 0 55px #49ff18;
+    text-shadow: 0 0 5px #000000, 0 0 10px $color-light-gray, 0 0 15px $color-light-gray, 0 0 20px $border-color, 0 0 30px $border-color, 0 0 20px $border-color, 0 0 35px $border-color, 0 0 55px $border-color;
 
     @media only screen and (max-width: 767px) {
         margin-top: 20px;
-        color: green;
+        color: $border-color;
         font-size: large;
         justify-content:start;
         text-align: end;
@@ -185,7 +187,7 @@ $menu-color2:rgba(57, 240, 2, 0.962);
             :hover{
                 color:black;
                 font-weight: 650;
-                text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, $menu-color2 0px 0px 10px, $menu-color2 0px 0px 20px, $menu-color2 0px 0px 20px, $menu-color2 0px 0px 25px, $menu-color2 0px 0px 45px;
+                text-shadow: $color-light-gray 0px 0px 5px, $color-light-gray 0px 0px 10px, $color-light-gray 0px 0px 15px, $menu-color2 0px 0px 10px, $menu-color2 0px 0px 20px, $menu-color2 0px 0px 20px, $menu-color2 0px 0px 25px, $menu-color2 0px 0px 45px;
 
             }
             li{

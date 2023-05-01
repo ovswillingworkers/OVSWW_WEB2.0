@@ -1,7 +1,11 @@
+
+@import '../basic/colors';
+
+
 .Footer {
   width: 100vw;
   height: 100%;
-  background-color: rgb(99, 99, 99);
+  background-color: $color-deep-blue;
   z-index: 12;
   color: white !important;
   display: flex;
@@ -10,7 +14,7 @@
   align-items: center;
   word-wrap: break-word;
   a {
-    color: white;
+    color: $color-light-gray;
 
     &:hover {
       color: blue;
@@ -23,10 +27,10 @@
     font-family: myfont;
     font-size: 3.5em;
    
-    color: #ffffff;
+    color: $color-deep-blue;
  
-     text-shadow: 0 0 2px #000000, 0 0 2px #000000, 0 0 12px #000000, 0 0 12px #000000, 0 0 8px #1efd00;
-   
+  
+    text-shadow: 3px 0 white, 0 2px white, 2px 0 white, 0 -2px white;   
   }
 
   // Mobile styles (screen width less than 768px)
