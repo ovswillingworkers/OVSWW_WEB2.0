@@ -91,6 +91,10 @@ $menu-color2:$color-soft-blue;
         display:flex;
         flex-direction: row;
 
+
+        ul{
+            margin-top:70px;
+        }
         li {
             margin: 10px;
         }
@@ -118,6 +122,7 @@ $menu-color2:$color-soft-blue;
     color:$color-deep-blue;
     color: $color-light-gray;
     display:flex;
+   margin-top:50px;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -140,9 +145,10 @@ $menu-color2:$color-soft-blue;
     }
 
     :hover{
-        color:rgb(0, 0, 0);
-        text-shadow: 0 0 5px $menu-color, 0 0 10px $menu-color, 0 0 15px $color-light-gray, 0 0 20px $border-color, 0 0 30px $border-color, 0 0 40px $border-color, 0 0 55px $border-color, 0 0 75px $border-color;
-        border-radius: 20px;
+        // color:rgb(0, 0, 0);
+        // text-shadow: 0 0 5px $menu-color, 0 0 10px $menu-color, 0 0 15px $color-light-gray, 0 0 20px $border-color, 0 0 30px $border-color, 0 0 40px $border-color, 0 0 55px $border-color, 0 0 75px $border-color;
+        // border-radius: 20px;
+        cursor:pointer
         
     }
 }
@@ -153,7 +159,7 @@ $menu-color2:$color-soft-blue;
     display: flex;
     align-items: center;
     flex-direction: row;
-    color: $color-light-gray;
+    color: $color-light-gray !important;
     justify-content: end;
     text-shadow: 0 0 5px #000000, 0 0 10px $color-light-gray, 0 0 15px $color-light-gray, 0 0 20px $border-color, 0 0 30px $border-color, 0 0 20px $border-color, 0 0 35px $border-color, 0 0 55px $border-color;
 

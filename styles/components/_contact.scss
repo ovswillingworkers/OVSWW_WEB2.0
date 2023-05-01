@@ -1,4 +1,4 @@
-
+@import '../basic//colors';
 
 .contact {
   display: flex;
@@ -19,7 +19,7 @@
     }
     h3 {
       font-size: 0.9em;
-      color:red;
+      color:$color-deep-blue;
     }
   }
 
@@ -62,7 +62,7 @@
 
   h1 {
     font-family: myFont;
-    color: green;
+    color: $color-deep-blue;
     text-stroke: 2px white;
     text-shadow: -3px 0 rgb(255, 255, 255), 0 3px white, 3px 0 white,
       0 -3px white;
@@ -77,13 +77,13 @@
 .contact-container-information {
   display: flex;
   width:100vw;
-  height:75vh;
+  height:100%;
   flex-direction: column-reverse;
   align-items: center;
   padding:20px;
   background:rgb(177, 178, 184);
-  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgb(197, 197, 197) 100%);
-  color:black;
+  background: linear-gradient(180deg,$color-light-gray 30%, $color-vibrant-blue 80%);
+  color:$color-vibrant-blue;
   /* Add these two media queries */
   @media screen and (min-width: 768px) {
     flex-direction: row;
@@ -98,7 +98,7 @@
 
 
     button{
-      background:red !important;
+      background:$color-vibrant-blue !important;
     }
     .LoadScript{
       margin: top 200px, im !important;;
@@ -126,7 +126,7 @@
 
     @media screen and (max-width: 767px) {
       width: 80vw;
-      height: 45vh;
+      height: 325px;
     }
   }
 }

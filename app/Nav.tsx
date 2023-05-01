@@ -43,11 +43,14 @@ function Nav ({image, banner=""}: User)  {
                   src={ovsww_logo}
                   alt={"image here"}
                   className="w-14 rounded-full"
-                  width={50}
-                  height={50}
+                  width={100}
+                  height={100}
                   priority />
                   </Link>
+                  <Link href="/">
                   <p>OVS Willing Workers</p>
+
+                  </Link>
       </div>
       
       <div className="nav_menu" ref={navMenuRef}>

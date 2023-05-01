@@ -1,4 +1,4 @@
-
+@import '../basic/colors';
 
 .career {
   display: flex;
@@ -7,7 +7,7 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  background:rgb(173, 173, 173);
+  background:$color-soft-blue;
   color:black;
   h1{
     color: #000000;
@@ -91,7 +91,7 @@
   align-items: center;
   overflow: hidden;
   overflow-y: scroll;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgb(197, 197, 197) 100%);
+  background: linear-gradient(180deg, $color-soft-blue 0%, $color-light-gray 100%);
   color: black;
   
 
@@ -111,54 +111,15 @@
   }
 }
 
-// .career-jobpost-container {
-//   display: flex;
-//   flex-direction: column;
-  
-//   justify-content: center;
-//   align-items: center;
-//   // padding: 20px;
-//   overflow: hidden;
-//   overflow-y: scroll;
-//   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgb(197, 197, 197) 100%);
-//   color: black;
-//   /* Add these two media queries */
-//   @media screen and (min-width: 768px) {
-//     flex-direction: column;
-
-//   }
-
-//   @media screen and (min-width: 1200px) {
-//     flex-direction:row;
-//     flex-wrap: wrap;
-//   }
 
 
-// }
-
-
-// .job-posting{
-//   margin:50px;
-//   background:red;
-// }
-
-// .job-posting {
-//   width:90%; /* This will give each column some margin between them */
-//   display: inline-block;
-//   vertical-align: top;
-//   margin:10px;
-//   padding:40px;
-//   background:rgba(128, 128, 128, 0.121);
-//   border:#0000ff 20px ;
-//   border: 2px dotted;
-//}
 .job-posting {
   /* Default styles */
   width: 100%;
   height: auto;
   margin:10px;
   padding:40px;
-  background:rgba(128, 128, 128, 0.121);
+  background:$color-light-gray;
   border: 2px dotted;
   /* Styles for mobile screens */
   @media only screen and (min-width: 320px) {
@@ -228,7 +189,9 @@
 
 .job-application-form{
   width:500px;
-background:rgb(235, 235, 235);
+background:$color-light-gray;
+background: linear-gradient(180deg, $color-light-gray 97%,$color-vibrant-blue 2%, );
+
 margin:30px 0px 30px 0;
   @media only screen and (max-width: 425px) {
     width: 80vw;
@@ -238,8 +201,8 @@ margin:30px 0px 30px 0;
 
 
 .Career-holder {
-  background: rgb(181,180,180);
-  background: linear-gradient(180deg, rgba(181,180,180,1) 0%, rgba(128,128,128,1) 93%, rgba(157,203,157,1) 100%, rgba(0,0,0,1) 100%);
+  background: $color-light-gray;
+  background: linear-gradient(180deg, $color-soft-blue 0%,$color-deep-blue 93%, $color-deep-blue 100%, rgba(0,0,0,1) 100%);
   width: 100%;
   /* padding: 0 20%; */
   display: flex;
