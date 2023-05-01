@@ -83,7 +83,7 @@
     Button {
       border-radius: 20px 20px 20px 20px;
       background: transparent;
-      color: rgb(0, 0, 0) !important;
+      color: $color-light-gray !important;
       border-color: $color-soft-blue;
       margin-top:20px;
       font-weight: 600;
@@ -173,6 +173,7 @@ background: linear-gradient(180deg, $color-light-gray 20%, $color-soft-blue 80%)
     .programs{
       button{
         background:$color-vibrant-blue !important;
+        color:$color-light-gray;
         border-radius: 20px;
         height:20px;
         width:120px;
