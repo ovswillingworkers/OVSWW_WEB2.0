@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 // import styled from "styled-components";
-import programsimg from "../../public/assets/programs_color.jpg";
+import programsimg from "../../public/assets/blue_bg2(1).jpg";
 import Image, { StaticImageData } from "next/image";
 import '../../styles/global.scss';
 import artsProgram from "../../public/assets/programs/art_program.jpg";

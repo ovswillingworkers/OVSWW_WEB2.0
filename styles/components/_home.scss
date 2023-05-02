@@ -210,7 +210,7 @@ background: linear-gradient(180deg, $color-light-gray 20%, $color-soft-blue 80%)
       color:black;
       text-align:center;
       align-items:center;
-      background: url('../../public/assets/smile.jpg') no-repeat center;
+      background: url('../../public/assets/cs1.jpg') no-repeat bottom;
       background-size:cover;
       margin-top:20px;
       margin-bottom:2vw;
@@ -225,7 +225,7 @@ background: linear-gradient(180deg, $color-light-gray 20%, $color-soft-blue 80%)
 
       font-size: x-large;
       width:50vw;
-      text-shadow: 0 0 2px #000000, 0 0 2px #000000, 0 0 12px #000000, 0 0 12px #000000, 0 0 8px #050402;
+      text-shadow: 0 0 2px $color-deep-blue, 0 0 5px $color-vibrant-blue, 0 0 5px $color-vibrant-blue, 0 0 5px $color-vibrant-blue, 0 0 8px $color-vibrant-blue;
       height:auto;
       overflow:hidden;
      }
@@ -262,7 +262,7 @@ background: linear-gradient(180deg, $color-light-gray 20%, $color-soft-blue 80%)
       flex-direction: column;
       width:40vw;
       height: 250px;
-      background: url('../../public/assets/donatee.jpg') no-repeat center top;
+      background: url('../../public/assets/about_us.jpg') no-repeat center center;
       background-size: cover;
       font-weight: 600;
      

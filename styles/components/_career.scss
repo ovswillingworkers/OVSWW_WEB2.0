@@ -8,11 +8,13 @@
   justify-content: center;
   align-items: center;
   background:$color-soft-blue;
-  color:black;
-  h1{
-    color: #000000;
+  color:$color-deep-blue;
 
-    text-shadow: 0 0 5px #ffffff, 0 0 5px #f1f1f1, 0 0 5px #FFF, 0 0 5px #ff1818, 0 0 5px #49FF18, 0 0 5px #49FF18, 0 0 5px #49FF18, 0 0 5px #49ff18;
+  h1{
+    color: $color-deep-blue;
+    text-shadow: 30 30 45px $color-vibrant-blue 40 40 45px $color-vibrant-blue, ;
+
+   // text-shadow: 0 0 45px $color-vibrant-blue 0 0 45px $color-vibrant-blue, 0 0 45px $color-vibrant-blue, 0 0 54px $color-soft-blue, 0 0 54px $color-vibrant-blue, 0 0 5px  $color-vibrant-blue, 0 0 54px  $color-vibrant-blue, 0 0 54px  $color-vibrant-blue;
     
   }
   &-text {
@@ -27,8 +29,8 @@
     }
     h3 {
       font-size: 0.9em;
-      color:red;
-      text-shadow: 0 0 5px #ffffff, 0 0 5px #f1f1f1, 0 0 2px #FFF, 0 0 2px #df0303, 0 0 2px #e91202, 0 0 3px #f90d05, 0 0 2px #df3400, 0 0 2px #fc2200;
+      color:$color-deep-blue;
+      text-shadow: 0 0 5px #ffffff, 0 0 5px #f1f1f1, 0 0 2px #FFF, 0 0 2px $color-vibrant-blue, 0 0 2px $color-vibrant-blue, 0 0 3px $color-vibrant-blue, 0 0 2px $color-vibrant-blue, 0 0 2px $color-vibrant-blue;
 
     }
   }
@@ -63,7 +65,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: url("../../public/assets/sunset.jpg") no-repeat center;  background-size: cover !important;
+  background: url("../../public/assets/sunset2.jpg") no-repeat center;  background-size: cover !important;
 
   width: 100%;
  height: 200px;
@@ -71,7 +73,7 @@
 
   h1 {
     font-family: myFont;
-    color: green;
+    color: $color-vibrant-blue;
     text-stroke: 2px white;
     text-shadow: -3px 0 rgb(255, 255, 255), 0 3px white, 3px 0 white,
       0 -3px white;
@@ -90,7 +92,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   background: linear-gradient(180deg, $color-soft-blue 0%, $color-light-gray 100%);
   color: black;
   
@@ -101,6 +103,12 @@
     padding: 40px;
     Button{
       width:40%;
+      background:$color-vibrant-blue;
+      cursor: pointer;
+      :hover{
+        background:red;
+        
+      }
       }
   }
 
