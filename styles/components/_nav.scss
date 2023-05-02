@@ -70,12 +70,12 @@ $menu-color2:$color-soft-blue;
      
 
   
-      .menu-admin-icon {
+      .menu-icon {
         display: block;
         font-size: 30px;
         color: rgb(255, 255, 255);
         cursor: pointer;
-      
+        margin-left: 50vw !important;
         margin:10px;
         justify-self: end;
         align-self: end;
@@ -86,7 +86,7 @@ $menu-color2:$color-soft-blue;
         background-color: #f6f6f600;
         list-style: none;
         padding: 0;
-       
+        margin-left:40vw;
         text-align: center;
         display:flex;
         flex-direction: row;
@@ -162,7 +162,7 @@ $menu-color2:$color-soft-blue;
     color: $color-light-gray !important;
     justify-content: end;
     text-shadow: 0 0 5px #000000, 0 0 10px $color-light-gray, 0 0 15px $color-light-gray, 0 0 20px $border-color, 0 0 30px $border-color, 0 0 20px $border-color, 0 0 35px $border-color, 0 0 55px $border-color;
-
+    cursor: pointer;
     @media only screen and (max-width: 767px) {
         margin-top: 20px;
         color: $border-color;
@@ -171,9 +171,9 @@ $menu-color2:$color-soft-blue;
         text-align: end;
         flex-direction: column;
         .menu{
-            display:flex;
-            flex-direction:column;
+           display:none;
             // display:none;
+            
             opacity:0;
             transform: translateY(-10px);
             transition: opacity 0.35s ease-out, transform 0.35s ease-out;
@@ -181,6 +181,9 @@ $menu-color2:$color-soft-blue;
 
         .show-menu{
             
+            display:flex;
+            flex-direction:column;
+
             background:rgba(97, 96, 96, 0.837);
             border-top: 7px ridge $border-color;
             border-right: 4px ridge $border-color;
@@ -188,6 +191,7 @@ $menu-color2:$color-soft-blue;
             border-left: 4px ridge $border-color;
             border-radius: 0px 10px 10px 10px;
             opacity: 1;
+            z-index: 5;
             transform: translateY(0);
             transition: opacity 0.5s ease-out, transform 0.35s ease-out 0.1s;
             :hover{
