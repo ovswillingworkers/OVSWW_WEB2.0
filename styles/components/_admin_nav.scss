@@ -1,3 +1,7 @@
+@import '../basic//colors';
+
+
+
 $border-color: #02ae2dcb;
 $menu-color:rgba(136, 255, 0, 0);
 $menu-color2:rgba(57, 240, 2, 0.962);
@@ -82,7 +86,7 @@ $menu-color2:rgba(57, 240, 2, 0.962);
   
       .menu-admin {
         
-        background-color: #f6f6f600;
+        background-color:$color-deep-blue;
         list-style: none;
         padding: 0;
        
@@ -176,7 +180,7 @@ $menu-color2:rgba(57, 240, 2, 0.962);
 
         .show-menu{
             
-            background:rgba(97, 96, 96, 0.837);
+            background:$color-deep-blue;
             border-top: 7px ridge $border-color;
             border-right: 4px ridge $border-color;
             border-bottom: 4px ridge $border-color;
