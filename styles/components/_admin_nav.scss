@@ -86,7 +86,7 @@ $menu-color2:rgba(57, 240, 2, 0.962);
   
       .menu-admin {
         
-        background-color:$color-deep-blue;
+      //  background-color:$color-deep-blue;
         list-style: none;
         padding: 0;
        
@@ -180,7 +180,7 @@ $menu-color2:rgba(57, 240, 2, 0.962);
 
         .show-menu{
             
-            background:$color-deep-blue;
+        //    background:$color-deep-blue;
             border-top: 7px ridge $border-color;
             border-right: 4px ridge $border-color;
             border-bottom: 4px ridge $border-color;
@@ -273,4 +273,21 @@ $menu-color2:rgba(57, 240, 2, 0.962);
            
         }
     }
+}
+
+.ant-layout-sider-children, nav.admin-nav.flex.justify-between.items-center.py-8, :where(.css-dev-only-do-not-override-htwhyh).ant-menu-inline.ant-menu-root .ant-menu-item, :where(.css-dev-only-do-not-override-htwhyh).ant-menu-inline.ant-menu-root .ant-menu-submenu-title{
+    background:$color-deep-blue !important;
+}
+
+
+ul#rc-menu-uuid-15182-2-submenu-user-popup,ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark.css-dev-only-do-not-override-htwhyh {
+    background: $color-deep-blue;
+}
+
+
+.ul#rc-menu-uuid-87207-2-submenu-user-popup {
+
+background : $color-deep-blue;
+
+
 }
