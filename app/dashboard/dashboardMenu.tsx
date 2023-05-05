@@ -17,6 +17,7 @@ import getAuthRedux from '../auth/getAuthRedux';
 import { useDispatch, useSelector } from 'react-redux';
 import { setReduxUser } from '../redux/reducer/userSlice';
 import EditUserPost from './userpost/editUser';
+import Mainmenu from './mainmenu';
 
 
 // const { Header, Content } = Layout;
@@ -56,14 +57,21 @@ export default function DashboardMenu( ){
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const [selectedOption, setSelectedOption] = useState('user');
+  const [selectedOption, setSelectedOption] = useState('submenu-main-menu');
   const userContentRef = useRef(null);
   const jobPostingContentRef = useRef(null);
   
-  const items = [  user.role === 'admin' ?  {    key: 'submenu-user',    icon: <UserOutlined />,    title: 'User',    label: 'Admin Access',    children: [      { key: 'new-user', label: 'New User' },      { key: 'all-list-user', label: 'View All Users' },    ],
+  const items = [ {
+    key: 'submenu-main-menu',
+
+    title: 'Main Menu',
+    label: 'Main Menu',
+    
+  },
+   user.role === 'admin' ?  {    key: 'submenu-user',    icon: <UserOutlined />,    title: 'User',    label: 'Admin Access',    children: [      { key: 'new-user', label: 'New User' },      { key: 'all-list-user', label: 'View All Users' },    ],
 } : null,
 {
-  key: 'submenu-job-posting',
+  key: 'submenu-job-postin',
   icon: <UploadOutlined />,
   title: 'Job Posting',
   label: 'Job Posting',
@@ -171,10 +179,11 @@ export default function DashboardMenu( ){
         </Sider>
         <Layout>
         <Content className='dashboard-content' style={{ margin: '24px 16px 0' }}>
-  {selectedOption === 'user' && (
+  {selectedOption === 'submenu-main-menu' && (
     <div ref={userContentRef} style={{ display: 'block' }}>
       <Header style={{ padding: 0, background: colorBgContainer }} />
    <p>MAIN MENU</p>
+   <Mainmenu/>
     </div>
   )}
   {selectedOption === 'job-posting' && (
