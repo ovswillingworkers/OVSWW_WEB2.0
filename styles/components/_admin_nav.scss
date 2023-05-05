@@ -1,10 +1,8 @@
-@import '../basic//colors';
+@import '../basic/colors';
 
 
 
-$border-color: #02ae2dcb;
-$menu-color:rgba(136, 255, 0, 0);
-$menu-color2:rgba(57, 240, 2, 0.962);
+
 
 
 /* Define font-face */
@@ -32,7 +30,7 @@ $menu-color2:rgba(57, 240, 2, 0.962);
         :hover{
 
            
-            color:$menu-color2;
+            color:$color-light-gray;
            
 
            
@@ -101,7 +99,7 @@ $menu-color2:rgba(57, 240, 2, 0.962);
         a {
             color: #FFFFFF;
        
-            text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, $menu-color 0px 0px 20px, $menu-color 0px 0px 30px, $menu-color 0px 0px 40px, $menu-color 0px 0px 50px, $menu-color 0px 0px 75px;
+            text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, $color-light-gray 0px 0px 20px, $color-light-gray 0px 0px 30px, $color-light-gray 0px 0px 40px, $color-light-gray 0px 0px 50px, $color-light-gray 0px 0px 75px;
             text-decoration: none;
             font-size: large;
             font-weight: 500;
@@ -120,7 +118,7 @@ $menu-color2:rgba(57, 240, 2, 0.962);
     font-size: 1.5em;
     color: #FFFFFF;
     margin-left: 20px;
-    text-shadow: 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
+    text-shadow: 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #FFF, 0 0 20px $color-deep-blue, 0 0 30px $color-deep-blue, 0 0 40px $color-deep-blue, 0 0 55px $color-deep-blue, 0 0 75px $color-deep-blue;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -128,15 +126,15 @@ $menu-color2:rgba(57, 240, 2, 0.962);
     justify-content: space-between;
     
     &:hover {
-        color:rgb(0, 0, 0);
-        text-shadow: 0 0 5px $menu-color, 0 0 10px $menu-color, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
+        // color:$color-light-gray;
+      text-shadow: 0 0 15px $color-light-gray, 0 0 10px $color-light-gray, 0 0 15px #FFF, 0 0 20px $color-deep-blue, 0 0 30px $color-deep-blue, 0 0 40px $color-deep-blue, 0 0 55px $color-deep-blue, 0 0 75px $color-deep-blue;
         border-radius: 20px;
     }
     
     // Apply font-size for mobile devices
     @media only screen and (max-width: 767px) {
         font-size: 1.0em;
-        text-shadow: 0 0 2px $menu-color, 0 0 5px $menu-color, 0 0 7px #FFF, 0 0 10px #49ff18, 0 0 10px #49FF18, 0 0 40px #49FF18;
+        text-shadow: 0 0 2px $color-light-gray, 0 0 5px $color-light-gray, 0 0 7px #FFF, 0 0 10px $color-deep-blue, 0 0 10px $color-deep-blue, 0 0 40px $color-deep-blue;
 
     }
     
@@ -158,7 +156,7 @@ $menu-color2:rgba(57, 240, 2, 0.962);
     flex-direction: row;
     color: #FFFFFF;
     justify-content: center;
-    text-shadow: 0 0 5px #000000, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 20px #49FF18, 0 0 35px #49FF18, 0 0 55px #49ff18;
+    text-shadow: 0 0 5px #000000, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px $color-deep-blue, 0 0 30px $color-deep-blue, 0 0 20px $color-deep-blue, 0 0 35px $color-deep-blue, 0 0 55px $color-deep-blue;
     padding-top: 10px;
 
 
@@ -181,10 +179,10 @@ $menu-color2:rgba(57, 240, 2, 0.962);
         .show-menu{
             
         //    background:$color-deep-blue;
-            border-top: 7px ridge $border-color;
-            border-right: 4px ridge $border-color;
-            border-bottom: 4px ridge $border-color;
-            border-left: 4px ridge $border-color;
+            border-top: 7px ridge $color-light-gray;
+            border-right: 4px ridge $color-light-gray;
+            border-bottom: 4px ridge $color-light-gray;
+            border-left: 4px ridge $color-light-gray;
             border-radius: 0px 10px 10px 10px;
             opacity: 1;
             transform: translateY(0);
@@ -192,11 +190,11 @@ $menu-color2:rgba(57, 240, 2, 0.962);
             :hover{
                 color:black;
                 font-weight: 650;
-                text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, $menu-color2 0px 0px 10px, $menu-color2 0px 0px 20px, $menu-color2 0px 0px 20px, $menu-color2 0px 0px 25px, $menu-color2 0px 0px 45px;
+                text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, $color-light-gray 0px 0px 10px, $color-light-gray 0px 0px 20px, $color-light-gray 0px 0px 20px, $color-light-gray 0px 0px 25px, $color-light-gray 0px 0px 45px;
 
             }
             li{
-                border-bottom:1px ridge $border-color;
+                border-bottom:1px ridge $color-light-gray;
             }
         }
 
@@ -214,33 +212,13 @@ a {
 
 
 
-// .admin-nav_home {
-//     font-family: myfont;
-//     font-size: 2em;
-//     color: rgb(2, 147, 60);
-//     color: #FFFFFF;
-  
-//     text-shadow: 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
-//     /* Make .nav_home take up one-third of the available space */
-//     flex: 0 0 calc(100% / 3);
-   
-
-//     :hover{
-//         color:rgb(0, 0, 0);
-//         text-shadow: 0 0 5px $menu-color, 0 0 10px $menu-color, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
-//         border-radius: 20px;
-        
-//     }
-// }
 
 .admin-site-layout{
     padding:0 !important;
 }
 
 
-$border-color: #02ae2dcb;
-$menu-color:rgba(136, 255, 0, 0);
-$menu-color2:rgba(57, 240, 2, 0.962);
+
 
 
 /* Define font-face */
@@ -264,10 +242,10 @@ $menu-color2:rgba(57, 240, 2, 0.962);
 
         margin:20px;
 
-        :hover{
+        &:hover{
 
            
-            color:$menu-color2;
+            color:$color-light-gray;
            
 
            
@@ -275,19 +253,29 @@ $menu-color2:rgba(57, 240, 2, 0.962);
     }
 }
 
-.ant-layout-sider-children, nav.admin-nav.flex.justify-between.items-center.py-8, :where(.css-dev-only-do-not-override-htwhyh).ant-menu-inline.ant-menu-root .ant-menu-item, :where(.css-dev-only-do-not-override-htwhyh).ant-menu-inline.ant-menu-root .ant-menu-submenu-title{
+.ant-space-item, .ant-btn{
     background:$color-deep-blue !important;
+    color:white !important;
+    border-radius: 250px;
+   :hover{
+    color:$color-soft-blue !important;
+    
+    border-color: $color-vibrant-blue !important;
+   }
 }
 
 
-ul#rc-menu-uuid-15182-2-submenu-user-popup,ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark.css-dev-only-do-not-override-htwhyh {
-    background: $color-deep-blue;
-}
+// .ant-layout-sider-children, nav.admin-nav.flex.justify-between.items-center.py-8, :where(.css-dev-only-do-not-override-htwhyh).ant-menu-inline.ant-menu-root .ant-menu-item, :where(.css-dev-only-do-not-override-htwhyh).ant-menu-inline.ant-menu-root .ant-menu-submenu-title{
+//     background: $color-soft-blue !important;
+// }
 
 
-.ul#rc-menu-uuid-87207-2-submenu-user-popup {
+// ul#rc-menu-uuid-15182-2-submenu-user-popup,ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark.css-dev-only-do-not-override-htwhyh {
+//     background: $color-soft-blue;
 
-background : $color-deep-blue;
+// }
+// .ul#rc-menu-uuid-87207-2-submenu-user-popup {
 
+// background : $color-soft-blue;
 
-}
+// }

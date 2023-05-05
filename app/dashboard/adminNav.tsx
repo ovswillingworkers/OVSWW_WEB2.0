@@ -47,6 +47,7 @@ function AdminNav ({image, banner="", email}: User)  {
   return (
     <nav className="admin-nav flex justify-between items-center py-8" >
    <div className="admin-nav_home">
+   <Link href={"/"}> 
         <Image
                   src={ovsww_logo}
                   alt={"image here"}
@@ -54,8 +55,11 @@ function AdminNav ({image, banner="", email}: User)  {
                   width={50}
                   height={50}
                   priority />
-
+</Link>
+                 <Link href={"/"}> 
+                 
                   <p>OVS Willing Workers</p>
+                 </Link>
       </div>
       
       
