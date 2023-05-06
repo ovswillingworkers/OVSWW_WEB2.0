@@ -14,6 +14,7 @@ import { getUserList } from "@/app/api/getUserList";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "@/app/redux/store/store";
 import { setBulkUser } from "@/app/redux/reducer/usersSlice";
+import { deleteUser } from "@/app/api/deleteUser";
 
 export default function ListAllUser(props: any) {
   const user = useSelector((state: AppState) => state.user.user);
@@ -59,16 +60,18 @@ export default function ListAllUser(props: any) {
     };
   }, []);
 
-  function handleDelete(user: User) {
+ async function handleDelete(user: User) {
     // Logic to delete the job posting with the given ID
-    // try {
-    //   deleteJobPost(id);
-    //   setUserList(userList.filter((userList) => userList.id !== id));
-    //   toast.success("Job Post Deleted");
-    // } catch (error:any) {
-    //   console.error(error.message);
-    //   toast.error("Error deleting job post");
-    // }
+    const id = user.id
+    console.log(id)
+    try {
+     await deleteUser(id as string);
+      setUserList(userList.filter((userList) => userList.id !== id));
+      toast.success("Job Post Deleted");
+    } catch (error:any) {
+      console.error(error.message);
+      toast.error("Error deleting job post");
+    }
   }
 
   return (

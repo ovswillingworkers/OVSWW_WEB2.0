@@ -33,7 +33,7 @@ const Mainmenu = ({ onOptionClick, isAdmin }: MainmenuProps) => {
             <h2>Admin Access</h2>
             <UserOutlined className="user-icon" />
             <div>
-              <a href="#" onClick={() => handleClick("createNewUser")}>
+              <a href="#" onClick={() => handleClick("new-user")}>
                 <h1>Create New User</h1>
               </a>
               <a href="#" onClick={() => handleClick("all-list-user")}>

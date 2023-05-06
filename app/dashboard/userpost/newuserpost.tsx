@@ -1,6 +1,8 @@
+
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+
 
 export default function NewUserPost() {
   const [admin, setAdmin] = useState({
@@ -11,9 +13,16 @@ export default function NewUserPost() {
 
   const handleInputChange = (event: { target: { name: any; value: any } }) => {
     const { name, value } = event.target;
-    setAdmin((prevAdmin) => ({ ...prevAdmin, [name]: value }));
+    if (name === 'name') {
+      setAdmin((prevAdmin) => ({ ...prevAdmin, [name]: value.charAt(0).toUpperCase() + value.slice(1).toLowerCase() }));
+    } else if (name === 'email') {
+      setAdmin((prevAdmin) => ({ ...prevAdmin, [name]: value.toLowerCase() }));
+    } else {
+      setAdmin((prevAdmin) => ({ ...prevAdmin, [name]: value }));
+    }
   };
-
+  
+ 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     try {
@@ -21,6 +30,9 @@ export default function NewUserPost() {
       if (response.status === 201) {
         toast.success("Admin user created successfully!");
         setAdmin({ name: "", email: "", role: "admin" });
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       }
     } catch (error: any) {
       toast.error(error.response.data.error);
