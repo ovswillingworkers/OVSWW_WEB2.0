@@ -211,7 +211,7 @@ return (
       <div className="form-container-content">
         
      
-      <h1>Edit Job Post</h1>
+      <h2>Edit Job Post</h2>
       
       <form onSubmit={handleSubmit}>
         <div className="form-group">

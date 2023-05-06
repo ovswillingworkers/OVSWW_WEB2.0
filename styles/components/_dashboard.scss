@@ -1,3 +1,5 @@
+@import '../basic//colors';
+
 .no-job-postings {
     
     width: 100%;
@@ -158,4 +160,49 @@ main.ant-layout-content.dashboard-content.css-dev-only-do-not-override-mxhywb {
   
 
 
+}
+
+
+
+.jobpost-icon, .user-icon{
+  svg{
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  background:$color-deep-blue;
+}
+
+
+.mainmenu{
+  display:block;
+  height:100%;
+}
+.menu-option{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 100px;
+  height:100%;
+  @media only screen and (max-width: 425px) {
+  flex-direction: column;
+  }
+  
+}
+
+.mainmenu-jobpost ,.mainmenu-user{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.header-mainmenu{
+  display:flex !important;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }

@@ -26,7 +26,9 @@ const { Header, Content,Sider } = Layout;
 export default function DashboardMenu( ){
 
   const user = useSelector((state: any) => state.user.user );
-  
+  const isAdmin = user.role === 'admin';
+
+
   const dispatch = useDispatch()
   const [editJobSession, setEditJobSession] = useState<JobPosting >({
     id: '',
@@ -60,6 +62,51 @@ export default function DashboardMenu( ){
   const [selectedOption, setSelectedOption] = useState('submenu-main-menu');
   const userContentRef = useRef(null);
   const jobPostingContentRef = useRef(null);
+  // const jobPostingItems = [
+  //   {
+  //     key: 'new-job-posting',
+  //     label: 'New Job Posting',
+  //   },
+  //   {
+  //     key: 'all-job-posting',
+  //     label: 'All Job Posting',
+  //   },
+  // ];
+  
+  // const userItems = isAdmin
+  //   ? [
+  //       {
+  //         key: 'new-user',
+  //         label: 'New User',
+  //       },
+  //       {
+  //         key: 'all-list-user',
+  //         label: 'View All Users',
+  //       },
+  //     ]
+  //   : [];
+  
+  // const items = [
+  //   {
+  //     key: 'submenu-main-menu',
+  //     title: 'Main Menu',
+  //     label: 'Main Menu',
+  //   },
+  //   {
+  //     key: 'submenu-user',
+  //     icon: <UserOutlined />,
+  //     title: 'User',
+  //     label: 'Admin Access',
+  //     children: userItems,
+  //   },
+  //   {
+  //     key: 'submenu-job-posting',
+  //     icon: <UploadOutlined />,
+  //     title: 'Job Posting',
+  //     label: 'Job Posting',
+  //     children: jobPostingItems,
+  //   },
+  // ];
   
   const items = [ {
     key: 'submenu-main-menu',
@@ -68,7 +115,7 @@ export default function DashboardMenu( ){
     label: 'Main Menu',
     
   },
-   user.role === 'admin' ?  {    key: 'submenu-user',    icon: <UserOutlined />,    title: 'User',    label: 'Admin Access',    children: [      { key: 'new-user', label: 'New User' },      { key: 'all-list-user', label: 'View All Users' },    ],
+   isAdmin ?  {    key: 'submenu-user',    icon: <UserOutlined />,    title: 'User',    label: 'Admin Access',    children: [      { key: 'new-user', label: 'New User' },      { key: 'all-list-user', label: 'View All Users' },    ],
 } : null,
 {
   key: 'submenu-job-postin',
@@ -139,7 +186,7 @@ export default function DashboardMenu( ){
     <>
    
     <Layout>
-      <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
+      <Header className='header-mainmenu' style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
    
 
       </Header>
@@ -181,14 +228,17 @@ export default function DashboardMenu( ){
         <Content className='dashboard-content' style={{ margin: '24px 16px 0' }}>
   {selectedOption === 'submenu-main-menu' && (
     <div ref={userContentRef} style={{ display: 'block' }}>
-      <Header style={{ padding: 0, background: colorBgContainer }} />
-   <p>MAIN MENU</p>
-   <Mainmenu/>
+      <Header className='header-mainmenu' style={{ padding: 0, background: colorBgContainer }} >
+    <h2>Main Menu</h2>
+
+      </Header>
+ 
+   <Mainmenu onOptionClick={handleOptionClick} isAdmin={isAdmin} />
     </div>
   )}
   {selectedOption === 'job-posting' && (
     <div ref={jobPostingContentRef} style={{ display: 'block' }}>
-      <Header style={{ padding: 0, background: colorBgContainer }} >
+      <Header className='header-mainmenu' style={{ padding: 0, background: colorBgContainer }} >
         <h2>Job Posting Content</h2>
       </Header>
       <p>This is the content for job posting.</p>
@@ -196,7 +246,7 @@ export default function DashboardMenu( ){
   )}
   {selectedOption === 'new-user' && (
     <div>
-      <Header style={{ padding: 0, background: colorBgContainer }} >
+      <Header  className='header-mainmenu' style={{ padding: 0, background: colorBgContainer }} >
         <h2>New User Content</h2>
       </Header>
      <NewUserPost/>
@@ -204,7 +254,7 @@ export default function DashboardMenu( ){
   )}
   {selectedOption === 'all-list-user' && (
     <div>
-      <Header style={{ padding: 0, background: colorBgContainer }} >
+      <Header className='header-mainmenu' style={{ padding: 0, background: colorBgContainer }} >
         <h2>View All User Content</h2>
       </Header>
      <ListAllUser onClick={handleUserOptionClick}/>
@@ -212,7 +262,7 @@ export default function DashboardMenu( ){
   )}
       {selectedOption === 'edit-user' && (
     <div>
-      <Header style={{ padding: 0, background: colorBgContainer }} >
+      <Header className='header-mainmenu' style={{ padding: 0, background: colorBgContainer }} >
       <Button onClick={() =>setSelectedOption("all-list-user")}>Back</Button>
        
       </Header>
@@ -222,7 +272,7 @@ export default function DashboardMenu( ){
 
   {selectedOption === 'new-job-posting' && (
     <div>
-      <Header style={{ padding: 0, background: colorBgContainer }} >
+      <Header  className='header-mainmenu' style={{ padding: 0, background: colorBgContainer }} >
         <h2>New Job Posting Content</h2>
       </Header>
       <CreateJobPost onClick={handleOptionClick} />
@@ -230,14 +280,15 @@ export default function DashboardMenu( ){
   )}
   {selectedOption === 'all-job-posting' && (
     <div>
-      <Header style={{ padding: 0, background: colorBgContainer }} >
+      <Header className='header-mainmenu' style={{ padding: 0, background: colorBgContainer }} >
+        <h2>All Job Posting</h2>
       </Header>
     < ListJobPosting onClick={handleOptionClick} />
     </div>
   )}
     {selectedOption === 'edit-job-posting' && (
     <div>
-      <Header style={{ padding: 0, background: colorBgContainer }} >
+      <Header  className='header-mainmenu' style={{ padding: 0, background: colorBgContainer }} >
       <Button onClick={() =>setSelectedOption("all-job-posting")}>Back</Button>
        
       </Header>
