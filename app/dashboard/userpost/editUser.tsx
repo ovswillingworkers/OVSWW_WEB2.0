@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { User } from "@prisma/client";
+import { User } from "@/app/components/user";
 
 type SetSelectedOption = (selectedOption: string) => void;
 

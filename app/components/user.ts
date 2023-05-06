@@ -4,5 +4,5 @@ export interface User {
   email: string;
   image: string;
   role: string;
-  emailVerified?:string;
+
 }
