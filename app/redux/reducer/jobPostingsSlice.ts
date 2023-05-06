@@ -1,8 +1,7 @@
 // reducers/jobPostingsSlice.js
 
-import { createSlice } from '@reduxjs/toolkit';
-import { JobPosting } from '../../components/jobpost';
-
+import { createSlice } from "@reduxjs/toolkit";
+import { JobPosting } from "../../components/jobpost";
 
 interface JobState {
   jobPostings: JobPosting[];
@@ -16,9 +15,8 @@ const initialState: JobState = {
   error: null,
 };
 
-
 const jobPostingsSlice = createSlice({
-  name: 'jobPostings',
+  name: "jobPostings",
   initialState,
   reducers: {
     getJobPostingsStart(state) {
@@ -33,7 +31,6 @@ const jobPostingsSlice = createSlice({
       state.error = action.payload;
     },
     setJobPosting(state, action) {
-      console.log("THIS IS JOBPSTOING REDUCER SLICER ")
       state.jobPostings = action.payload;
     },
     clearJobPosting(state) {
@@ -43,6 +40,12 @@ const jobPostingsSlice = createSlice({
   },
 });
 
-export const { getJobPostingsStart, getJobPostingsSuccess, getJobPostingsFailure, setJobPosting, clearJobPosting } = jobPostingsSlice.actions;
+export const {
+  getJobPostingsStart,
+  getJobPostingsSuccess,
+  getJobPostingsFailure,
+  setJobPosting,
+  clearJobPosting,
+} = jobPostingsSlice.actions;
 
 export default jobPostingsSlice.reducer;

@@ -1,13 +1,10 @@
-
-'use client'
+"use client";
 import React, { useEffect } from "react";
 import DashboardMenu from "./dashboardMenu";
 import { Provider } from "react-redux";
 import { appStore } from "../redux/store/store";
 import AdminSession from "./adminsession";
 import useAuthRedux from "../auth/getAuthRedux";
-
-
 
 // import Image from "next/image";
 // import { Footer } from "../Footer";
@@ -19,32 +16,15 @@ import useAuthRedux from "../auth/getAuthRedux";
 // import Link from "next/link";
 // import Login from "../auth/Login";
 
-
 // const { Header, Content } = Layout;
 
 function Dashboard() {
- 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const result = AdminSession()
-  //   console.log( result, " THIS IS THE NE REDIRECT")
-  //     // Do something with the data
-  //   }
-  //   fetchData();
-  // }, []);
-  
-
-
   return (
-<>
-<Provider store={appStore}>
-
-<DashboardMenu />
-
-
-</Provider>
-
- </>
+    <>
+      <Provider store={appStore}>
+        <DashboardMenu />
+      </Provider>
+    </>
   );
 }
 

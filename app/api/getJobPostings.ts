@@ -1,7 +1,6 @@
 // import axios from "axios";
 // import { JobPosting } from "../components/jobpost";
 
-
 // export default async function getJobPostings() {
 //   try {
 //     const res = await axios.get("/api/getPost");
@@ -9,11 +8,9 @@
 //     return data as JobPosting[]; // cast the response data to an array of JobPosting objects
 //   } catch (error) {
 //     console.error(error);
-//     return []; 
+//     return [];
 //   }
 // }
-
-
 
 import axios from "axios";
 import { JobPosting } from "../components/jobpost";
@@ -32,7 +29,7 @@ export default async function getJobPostings() {
         date: postingData.date,
         salary: postingData.salary,
         qualifications: postingData.qualifications,
-        contact:postingData.contact,
+        contact: postingData.contact,
         expirationDate: postingData.expirationDate,
       };
       return jobPosting;

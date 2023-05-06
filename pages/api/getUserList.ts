@@ -5,8 +5,8 @@ interface User {
   id: string;
   name: string;
   email: string;
-  images:string;
-  role:string;
+  images: string;
+  role: string;
 }
 
 interface ErrorResponse {

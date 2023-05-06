@@ -10,7 +10,7 @@ const store = configureStore({
 
 const applystore = configureStore({
   reducer: rootApplyReducer,
-})
+});
 
 export const wrapper = createWrapper(() => store);
 export const appStore = store;

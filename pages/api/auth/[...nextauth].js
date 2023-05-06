@@ -17,35 +17,23 @@ export const authOptions = {
   ],
   callbacks: {
     async signIn(user) {
-
-    
       if (user.account.provider === "google") {
         try {
           const existingUser = await prisma.allowUser.findUnique({
             where: { email: user.profile.email },
           });
 
-
-          
-
-          if (!existingUser){
-            console.log(" User has not been found")
+          if (!existingUser) {
             const AllowUser = await prisma.allowUser.findUnique({
               where: { email: user.profile.email },
             });
 
-            if (!AllowUser){
-              console.log( " USER NOT ON THE LIST")
-              
-              return false
+            if (!AllowUser) {
+              return false;
             }
           }
-          
 
-          
-
-
-          return true
+          return true;
         } catch (error) {
           console.error("Error in signIn callback:", error);
           return false;
@@ -56,7 +44,6 @@ export const authOptions = {
     },
 
     async session(session, user) {
-    
       // Find the user in the database
 
       try {
@@ -66,42 +53,29 @@ export const authOptions = {
           },
         });
 
-
-        if (!['admin', 'moderator'].includes(dbUser.role)) {
+        if (!["admin", "moderator"].includes(dbUser.role)) {
           const existingUser = await prisma.allowUser.findUnique({
             where: { email: session.user.email },
           });
-        
+
           if (existingUser) {
             // Update the User table with the user's name and role
             const updatedUser = await prisma.user.update({
               where: { email: session.user.email },
               data: { name: existingUser.name, role: existingUser.role },
             });
-        
-           
           }
         }
-        
       } catch (error) {
         console.error("Error finding user:", error);
       }
-  
-      return session
-    },
 
+      return session;
+    },
   },
   pages: {
-    error: '/admin'
+    error: "/admin",
   },
 };
 
 export default NextAuth(authOptions);
-
-
-
-
-
-
-
-

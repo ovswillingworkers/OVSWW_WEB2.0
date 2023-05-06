@@ -1,25 +1,20 @@
-'use client'
+"use client";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Logged from "../auth/Logged";
-import ovsww_logo from "../../public/assets/ovs_ww.png"
+import ovsww_logo from "../../public/assets/ovs_ww.png";
 import { connect } from "react-redux";
 
+type User = {
+  image: string;
+  banner: string;
+  email: string;
+};
 
-type User={
-  image:string
-  banner:string;
-  email:string;
-}
-
-
-function AdminNav ({image, banner="", email}: User)  {
+function AdminNav({ image, banner = "", email }: User) {
   const [showMenu, setShowMenu] = useState(false);
   const navMenuRef = useRef<HTMLDivElement>(null); // create a ref for the nav_menu element
-
-
-
 
   const handleLinkClick = () => {
     setShowMenu(false);
@@ -31,7 +26,12 @@ function AdminNav ({image, banner="", email}: User)  {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (showMenu && navMenuRef.current && !navMenuRef.current.contains(event.target as Node)) { // check if the event target is inside the nav_menu element
+      if (
+        showMenu &&
+        navMenuRef.current &&
+        !navMenuRef.current.contains(event.target as Node)
+      ) {
+        // check if the event target is inside the nav_menu element
         setShowMenu(false);
       }
     };
@@ -41,62 +41,51 @@ function AdminNav ({image, banner="", email}: User)  {
     };
   }, [showMenu]);
 
-
-
-
   return (
-    <nav className="admin-nav flex justify-between items-center py-8" >
-   <div className="admin-nav_home">
-   <Link href={"/"}> 
-        <Image
-                  src={ovsww_logo}
-                  alt={"image here"}
-                  className="w-14 rounded-full"
-                  width={50}
-                  height={50}
-                  priority />
-</Link>
-                 <Link href={"/"}> 
-                 
-                  <p>OVS Willing Workers</p>
-                 </Link>
+    <nav className="admin-nav flex justify-between items-center py-8">
+      <div className="admin-nav_home">
+        <Link href={"/"}>
+          <Image
+            src={ovsww_logo}
+            alt={"image here"}
+            className="w-14 rounded-full"
+            width={50}
+            height={50}
+            priority
+          />
+        </Link>
+        <Link href={"/"}>
+          <p>OVS Willing Workers</p>
+        </Link>
       </div>
-      
-      
-
 
       <div className="admin-nav_menu" ref={navMenuRef}>
-      {/* <div className="menu-icon" onClick={toggleMenu}>
+        {/* <div className="menu-icon" onClick={toggleMenu}>
           &#9776;
         </div> */}
         <ul className={showMenu ? "menu-admin show-menu" : "menu-admin"}>
-            
-          
-
-            <><li>
-              <Logged/>
+          <>
+            <li>
+              <Logged />
             </li>
             {image ? (
-            <li>
+              <li>
                 <Image
                   src={image}
                   alt={"image here"}
                   className="w-14 rounded-full"
                   width={50}
                   height={50}
-                  priority />
+                  priority
+                />
               </li>
-              
-          ) : null}
-              </>
-       
+            ) : null}
+          </>
         </ul>
       </div>
-      <div className="about-container-banner mt-4 p-5 bg-primary text-white"   >
-     
-      </div>
+      <div className="about-container-banner mt-4 p-5 bg-primary text-white"></div>
     </nav>
   );
-};
+}
 
 export default AdminNav;

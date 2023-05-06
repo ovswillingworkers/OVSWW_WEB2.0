@@ -1,7 +1,7 @@
 import prisma from "../../prisma/client";
 import { hash } from "bcryptjs";
 import { NextApiRequest, NextApiResponse } from "next";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 interface AddAdminRequest {
   id: string;
@@ -18,12 +18,14 @@ export default async function handler(
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const {  name, email, role } = req.body as AddAdminRequest;
+  const { name, email, role } = req.body as AddAdminRequest;
   const id = uuidv4();
   // Validate the required fields
 
-  if (!email ||  !name) {
-    return res.status(400).json({ error: "Name, email, and password are required" });
+  if (!email || !name) {
+    return res
+      .status(400)
+      .json({ error: "Name, email, and password are required" });
   }
 
   // Check if user already exists with the given email
@@ -46,5 +48,7 @@ export default async function handler(
     },
   });
 
-  res.status(201).json({ message: "Admin user created successfully", user: newUser });
+  res
+    .status(201)
+    .json({ message: "Admin user created successfully", user: newUser });
 }

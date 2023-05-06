@@ -12,22 +12,14 @@ import { setJobPosting } from "../redux/reducer/jobPostingsSlice";
 import { appStore } from "../redux/store/store";
 import CareerList from "./careerlist";
 
-
-
-
 function Career() {
-
   // const [jobPostings, setJobPostings] = useState<JobPosting[]>([]);
   // const [isLoading, setIsLoading] = useState(false);
 
-  
-
   return (
-
-  <Provider store={appStore} >
-<CareerList/>
-  </Provider>
- 
+    <Provider store={appStore}>
+      <CareerList />
+    </Provider>
   );
 }
 

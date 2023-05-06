@@ -1,10 +1,6 @@
-
-import { Provider } from 'react-redux';
-import QueryWrapper from './auth/QueryWrapper'
-import { appStore } from './redux/store/store';
-
-
-
+import { Provider } from "react-redux";
+import QueryWrapper from "./auth/QueryWrapper";
+import { appStore } from "./redux/store/store";
 
 // export const metadata = {
 //   title: 'OVS Willing Workers',
@@ -16,29 +12,17 @@ import { appStore } from './redux/store/store';
 //   // Other options...
 // });
 
-
-export default  function RootLayout({ children, }: {
-  children: any;
-}) {
-  
+export default function RootLayout({ children }: { children: any }) {
   return (
-    
     <html lang="en">
-      <head>
-        {/* Your head content here */}
-      </head>
+      <head>{/* Your head content here */}</head>
 
       <body>
-     
-      {/* <Provider store={appStore}> */}
-          <QueryWrapper>
-            {children}
-          </QueryWrapper>
-{/*  
+        {/* <Provider store={appStore}> */}
+        <QueryWrapper>{children}</QueryWrapper>
+        {/*  
           </Provider> */}
-   
       </body>
-   
     </html>
-  )
+  );
 }
