@@ -16,13 +16,14 @@ export const authOptions = {
     }),
   ],
   callbacks: {
+
     async signIn(user) {
       if (user.account.provider === "google") {
         try {
-          const existingUser = await prisma.allowUser.findUnique({
+          const existingUser = await prisma.user.findUnique({
             where: { email: user.profile.email },
           });
-
+          console.log("user exist on the list", existingUser);
           if (!existingUser) {
             const AllowUser = await prisma.allowUser.findUnique({
               where: { email: user.profile.email },
@@ -72,7 +73,21 @@ export const authOptions = {
 
       return session;
     },
+    async createUser(user, _req) {
+      // Remove the emailVerified field before creating the user
+      const { emailVerified, ...userData } = user;
+      
+      try {
+        return await prisma.user.create({
+          data: userData,
+        });
+      } catch (error) {
+        console.error("Error creating user:", error);
+        return null;
+      }
+    },
   },
+  
   pages: {
     error: "/admin",
   },

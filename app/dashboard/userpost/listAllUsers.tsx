@@ -59,7 +59,7 @@ export default function ListAllUser(props: any) {
     };
   }, []);
 
-  function handleDelete(id: string) {
+  function handleDelete(user: User) {
     // Logic to delete the job posting with the given ID
     // try {
     //   deleteJobPost(id);
@@ -91,7 +91,7 @@ export default function ListAllUser(props: any) {
                 </Button>
                 <Button
                   style={{ background: "red", color: "white" }}
-                  onClick={() => handleDelete(userList.id)}
+                  onClick={() => handleDelete(userList)}
                 >
                   Delete
                 </Button>
