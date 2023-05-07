@@ -133,7 +133,7 @@ const Home = () => {
               <a
                 className="banner-button"
                 onClick={() => {
-                  routeProgramChange("/");
+                  routeProgramChange("/about");
                 }}
               >
                 <div className="donate-banner ">

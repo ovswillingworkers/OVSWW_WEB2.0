@@ -52,7 +52,7 @@ function Nav({ image, banner = "" }: User) {
           />
         </Link>
         <Link href="/">
-          <p>OVS Willing Workers</p>
+          <p className="company-name">OVS Willing Workers</p>
         </Link>
       </div>
 
