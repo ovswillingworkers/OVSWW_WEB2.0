@@ -1,13 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
 interface User {
   id: string;
   name: string;
   email: string;
   role: string;
-  image:string;
+  image: string;
 }
 
 interface UsersState {
@@ -23,7 +21,7 @@ const initialState: UsersState = {
 };
 
 const usersSlice = createSlice({
-  name: 'users',
+  name: "users",
   initialState,
   reducers: {
     setBulkUser: (state, action) => {

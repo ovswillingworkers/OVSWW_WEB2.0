@@ -35,7 +35,7 @@ const USER_FIELDS = {
 
 export default async function AdminSession() {
   const session = await getServerSession(authOptions);
-console.log(" THIS IS SERVER SIDE SESSION")
+
   if (!session) {
     return null;
   }

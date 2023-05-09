@@ -1,13 +1,6 @@
 import prisma from "../../prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  images:string;
-  role:string;
-}
 
 interface ErrorResponse {
   message: string;

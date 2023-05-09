@@ -30,6 +30,9 @@ position:absolute;
     width: 100%;
     height: 200px;
    color: white !important;
+
+
+
     p{
       //font-size: larger;
     }
@@ -56,6 +59,17 @@ position:absolute;
       border-color: yellow;
       //font-size: 0.9em;
     }
+
+    @media (max-width: 425px) {
+      h1{
+        font-size:5em;
+       }
+    
+    }
+    
+
+
+
   }
 }
 

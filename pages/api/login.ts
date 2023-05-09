@@ -3,7 +3,6 @@ import { compare } from "bcryptjs";
 import { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
 
-
 interface LoginRequest {
   email: string;
   password: string;
@@ -22,8 +21,6 @@ export default async function handler(
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-
-
 
     // const passwordMatch = await compare(password, user.password);
 

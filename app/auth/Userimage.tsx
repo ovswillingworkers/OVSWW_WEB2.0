@@ -1,21 +1,21 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 
-import { UploadOutlined, UserOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme , Breadcrumb,} from 'antd';
-import Image from "next/image"
-import Logged from '@/app/auth/Logged';
-import { Button, Space } from 'antd';
-import Link from 'next/link';
-import { Session } from 'next-auth/';
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
-import { redirect } from 'next/navigation';
-import { getSession, GetSessionParams } from 'next-auth/react';
+import { UploadOutlined, UserOutlined } from "@ant-design/icons";
+import { Layout, Menu, theme, Breadcrumb } from "antd";
+import Image from "next/image";
+import Logged from "@/app/auth/Logged";
+import { Button, Space } from "antd";
+import Link from "next/link";
+import { Session } from "next-auth/";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { redirect } from "next/navigation";
+import { getSession, GetSessionParams } from "next-auth/react";
 
 type User = {
   image: string;
   name: string;
-  email:string;
-  role:string;
+  email: string;
+  role: string;
 };
 
 interface UserimageProps {
@@ -29,7 +29,7 @@ export default function Userimage({ user }: UserimageProps): JSX.Element {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const [selectedOption, setSelectedOption] = useState('user');
+  const [selectedOption, setSelectedOption] = useState("user");
   const userContentRef = useRef(null);
   const jobPostingContentRef = useRef(null);
 
@@ -38,15 +38,13 @@ export default function Userimage({ user }: UserimageProps): JSX.Element {
     setSelectedOption(selectedValue);
   };
 
-console.log(user, " THIS IS USER DATA ")
-
   return (
     <>
       <Image
         className="w-14 rounded-full"
         width={100}
         height={100}
-        src={ ''}
+        src={""}
         alt=""
         priority
       />
@@ -54,13 +52,15 @@ console.log(user, " THIS IS USER DATA ")
   );
 }
 
-export const getServerSideProps = async (context: GetSessionParams | undefined) => {
+export const getServerSideProps = async (
+  context: GetSessionParams | undefined
+) => {
   const session = await getSession(context);
-  console.log(session)
+
   if (!session) {
     return {
       redirect: {
-        destination: '/admin',
+        destination: "/admin",
         permanent: false,
       },
     };
@@ -69,7 +69,7 @@ export const getServerSideProps = async (context: GetSessionParams | undefined) 
   return {
     props: {
       user: {
-        image: session.user?.image || '',
+        image: session.user?.image || "",
       },
     },
   };

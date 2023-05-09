@@ -131,7 +131,13 @@ $menu-color2:$color-soft-blue;
     flex: 0 0 calc(100% / 3);
   
     font-size: 1.0em; // for mobile devices
-
+@media (max-width:425){
+    img{
+        width:33px !important;
+        height:30px !important;
+        margin-top:-34;
+       }
+}
     @media (min-width: 768px) { // for tablets
         font-size: 1.5em;
     }
@@ -215,3 +221,24 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+
+@media (max-width: 425px) {
+    .nav_menu .show-menu {
+            margin-left: 20px !important;
+
+    }
+
+
+    .nav_home{
+          img{
+            width:20vw;
+            height:auto;
+            margin-top:-50px !important;
+          }
+    };
+    .company-name{
+      display: none !important;
+    }
+  }
+  

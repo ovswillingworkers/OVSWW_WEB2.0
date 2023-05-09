@@ -1,30 +1,29 @@
-'use client'
-import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
-import { JobPosting } from '../components/jobpost';
-import { useSelector } from 'react-redux';
-import getJobPostings from '../api/getJobPostings';
+"use client";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { JobPosting } from "../components/jobpost";
+import { useSelector } from "react-redux";
+import getJobPostings from "../api/getJobPostings";
 
-export default function DisplayJobList(props: { jobListPostings: JobPosting[]; applyToJobPosting: (isApplying: boolean, jobPosting: JobPosting) => void;  }) {
-console.log(props.jobListPostings, " YOU GOT AND I GOT")
-    
-    const [jobListPostings, setJobListPostings] = useState<JobPosting[]>(props.jobListPostings as JobPosting[]);
-    const [isLoading, setIsLoading] = useState(jobListPostings.length > 0);
-    const [error, setError] = useState("");
+export default function DisplayJobList(props: {
+  jobListPostings: JobPosting[];
+  applyToJobPosting: (isApplying: boolean, jobPosting: JobPosting) => void;
+}) {
+  const [jobListPostings, setJobListPostings] = useState<JobPosting[]>(
+    props.jobListPostings as JobPosting[]
+  );
+  const [isLoading, setIsLoading] = useState(jobListPostings.length > 0);
+  const [error, setError] = useState("");
 
-    console.log(jobListPostings, "  THIS IS THE COMPONENT")
-
-    const handleApplyClick = (jobPosting: JobPosting) => {
-      props.applyToJobPosting(true, jobPosting);
-    };
-
+  const handleApplyClick = (jobPosting: JobPosting) => {
+    props.applyToJobPosting(true, jobPosting);
+  };
 
   return (
-  
     <div className="career-jobpost-container">
       {isLoading ? (
-       jobListPostings.map((jobPosting: any, index: any) => (
-         <div className="job-posting" key={index}>
+        jobListPostings.map((jobPosting: any, index: any) => (
+          <div className="job-posting" key={index}>
             <h2>{jobPosting.title}</h2>
             <h4>{jobPosting.location}</h4>
             <p>Salary: {jobPosting.salary}</p>
@@ -41,17 +40,17 @@ console.log(props.jobListPostings, " YOU GOT AND I GOT")
             <p>Phone: {jobPosting.contact.phone}</p>
           </div>
         ))
-        ):(
+      ) : (
         <div className="no-job-posting">
-       <p>Sorry, no job postings are currently available. Please feel free to&nbsp;
-         <a href="tel:123-456-7890">call</a>&nbsp;or&nbsp;
-         <a href="mailto:jobs@example.com">email</a>&nbsp;
-         us to inquire about future openings.
-       </p>
-     </div>
-     
-     ) }
-
-      </div>
-  )
+          <p>
+            Sorry, no job postings are currently available. Please feel free
+            to&nbsp;
+            <a href="tel:123-456-7890">call</a>&nbsp;or&nbsp;
+            <a href="mailto:jobs@example.com">email</a>&nbsp; us to inquire
+            about future openings.
+          </p>
+        </div>
+      )}
+    </div>
+  );
 }

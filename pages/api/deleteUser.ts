@@ -7,19 +7,35 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === "DELETE") {
-    const { id } = req.body;
+  if (req.method === "POST") {
+    const id = req.body.data.id;
 
     if (!id) {
       return res.status(400).json({ message: "ID is required for deletion." });
     }
 
     try {
-      await prisma.jobPosting.delete({
+      // Find the user data before deleting
+      const user = await prisma.user.findUnique({
         where: { id },
       });
 
-      res.status(200).json({ message: "Job post deleted successfully." });
+      if (!user) {
+        return res.status(404).json({ message: "User not found." });
+      }
+
+      // Delete the user
+      await prisma.user.delete({
+        where: { id },
+      });
+
+      // Delete the allowUser record with the same email
+      const email = user.email;
+      await prisma.allowUser.deleteMany({
+        where: { email },
+      });
+
+      res.status(200).json({ message: "User and allowUser record deleted successfully.", user });
     } catch (err: any) {
       console.error(err);
       res.status(500).json({
