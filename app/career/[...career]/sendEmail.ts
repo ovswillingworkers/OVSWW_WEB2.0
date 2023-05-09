@@ -12,12 +12,13 @@ interface IJobApplication {
     email: string;
     phone: string;
     coverLetter: string;
+    jobpost_id: string;
     resume : File;
    
   }
   
   
-  export async function sendJobApplicationEmail({ name, email, coverLetter}: IJobApplication): Promise<void> {
+  export async function sendJobApplicationEmail({ name, email, coverLetter, jobpost_id}: IJobApplication): Promise<void> {
     try {
       const response = await axios.post('/api/sendEmail', {
       name: name as string,

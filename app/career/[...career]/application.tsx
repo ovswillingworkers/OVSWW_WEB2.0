@@ -101,6 +101,7 @@ function handleFileChange(info: any) {
     formData.append("name", values.name);
     formData.append("email", values.email);
     formData.append("message", values.coverLetter);
+    formData.append("jobpost_id", props.jobPosting.id)
     if (values.resume) {
       formData.append('resume', values.resume.originFileObj);
 
