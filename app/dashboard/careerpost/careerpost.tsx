@@ -178,9 +178,14 @@ export default function CreateJobPost(prop: any) {
 
   return (
     <>
-      <Head>
-        <title>Create Job Post</title>
-      </Head>
+   <div className="">
+
+        <p>
+          
+          Create Job Post
+          </p>
+   </div>
+   
       {/* <div className="career-container-banner mt-4 p-5 bg-primary text-white">
       <h1>Job Posting</h1>
       <p></p>
