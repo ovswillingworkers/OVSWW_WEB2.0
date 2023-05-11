@@ -1,8 +1,8 @@
 import sgMail from "@sendgrid/mail";
 import { NextApiRequest, NextApiResponse } from "next";
 import formidable from "formidable";
-import { Request, Response } from "express";
 import { File } from "formidable";
+import prisma from "@/prisma/client";
 
 export const config = {
   api: {
@@ -21,7 +21,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const sgEmail = process.env.SENDGRID_API_EMAIL as string;
-
   sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
   const form = new formidable.IncomingForm();
@@ -34,10 +33,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         return;
       }
 
-      const { name, email, message } = fields;
+      const { name, email, message, id } = fields;
+      console.log(id)
+      const jobpost = await getJobpost(id as string)
 
+      
       // Use a type guard to check if 'files.resume' is a 'File'
-
       const resumeFile = files.resume as File;
       if (!isFile(resumeFile)) {
         console.error("Invalid resume file:", resumeFile);
@@ -50,12 +51,30 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         .readFileSync(resumeFile.filepath)
         .toString("base64");
 
+      const emailTemplate = `Job Title: 
+Salary: 
+Location:
+
+Contact Information:
+Name: ${name}
+Email: ${email}
+Phone Number: ${fields.phone}
+
+Cover Letter:
+${message}
+
+We will carefully review your application and get in touch with you if we feel you have the necessary skills and experience to move forward in the hiring process. Please note that due to the high volume of applications we receive, we may not be able to respond to each applicant individually.
+
+Thank you for taking the time to apply for this position. We appreciate your interest in our company and wish you the best of luck in your job search.
+
+Best regards,
+[Company Name]`;
+
       const msg = {
         to: sgEmail as string,
         from: sgEmail as string,
-        subject: `Job Application for ${name} ` as string,
-        text: message as string,
-        html: `<p>${message}  || ${email}</p>` as string,
+        subject: `Job Application for ` as string,
+        text: emailTemplate,
         attachments: [
           {
             content: resumeContent,
@@ -67,8 +86,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       };
 
       try {
-        const result = await sgMail.send(msg);
-
+        console.log(msg)
+     //   const result = await sgMail.send(msg);
         res.status(200).send("Message sent successfully.");
       } catch (error) {
         console.error(error);
@@ -80,4 +99,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(500).send("Error sending message.");
     return;
   }
+};
+
+const getJobpost = async (id: string) => {
+  const jobPost = await prisma.jobPosting.findFirst({
+    where: {
+      id,
+    },
+    include: {
+      contact: true,
+    },
+  });
+console.log(jobPost, " GET JOB POST FUNC")
+  return jobPost;
 };
