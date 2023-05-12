@@ -63,16 +63,15 @@ Phone Number: ${fields.phone}
 Cover Letter:
 ${message}
 
-We will carefully review your application and get in touch with you if we feel you have the necessary skills and experience to move forward in the hiring process. Please note that due to the high volume of applications we receive, we may not be able to respond to each applicant individually.
+We kindly request you to review the application and consider the applicant for the position. If you require any additional information or have any questions, please feel free to reach out to the applicant directly using the contact information provided.
 
-Thank you for taking the time to apply for this position. We appreciate your interest in our company and wish you the best of luck in your job search.
-
+Thank you for your time and consideration.
 Best regards,
 [Company Name]`;
 
       const msg = {
-        to: sgEmail as string,
-        from: sgEmail as string,
+        to: "jayceexxiii@gmail.com" as string,
+        from: "jacks23.cee@gmail.com" as string,
         subject: `Job Application for ` as string,
         text: emailTemplate,
         attachments: [
@@ -87,7 +86,7 @@ Best regards,
 
       try {
         console.log(msg)
-     //   const result = await sgMail.send(msg);
+     const result = await sgMail.send(msg);
         res.status(200).send("Message sent successfully.");
       } catch (error) {
         console.error(error);
