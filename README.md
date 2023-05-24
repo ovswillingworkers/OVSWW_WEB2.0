@@ -1,38 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Willing Workers
+
+Willing Workers is a web application that provides comprehensive services for individuals with special needs. It features a career section for job postings, allowing admins and moderators to create and manage listings. Applicants can conveniently submit application forms and resumes online, which are automatically sent to designated hiring managers. The website is built using React, Next.js, TypeScript, JavaScript, PostgreSQL, HTML, Sass, and CSS.
+
+## Features
+
+- **Dashboard with User Roles**: The application includes a dashboard that provides different user roles for admins and moderators. Admins and moderators have specific privileges and access levels for managing job postings and other website functionalities.
+
+- **Job Postings**: Admins and moderators can create and manage job postings. They have the ability to add job details, requirements, and other relevant information. Job postings are displayed on the website for interested applicants to view.
+
+- **User Management**: Admins can create and manage new admins and moderators, granting them specific permissions and access levels.
+
+- **Job Application Submissions**: The web application allows applicants to conveniently submit their application forms and resumes online. Once submitted, the application and resume are automatically sent via email to the designated hiring managers, streamlining the hiring process and providing an efficient way for employers to find their perfect match.
+
+- **Responsive Design**: The website is designed to be responsive, ensuring optimal viewing and interaction across various devices and screen sizes.
+
+- **Interactive Animations**: Interactive animations are incorporated to enhance user engagement and provide a visually appealing experience.
+
+- **Contact Form**: The application includes a contact form for user queries, allowing users to easily reach out for any inquiries or feedback.
 
 ## Getting Started
 
-First, run the development server:
+To run the Willing Workers web application locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone the repository from GitHub: [Willing Workers GitHub](https://github.com/Jay23Cee/WillingWorkersSite-1).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install the necessary dependencies by running the command: `npm install`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up the PostgreSQL database and configure the database connection in the application.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+4. Run the application locally using the command: `npm run dev`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+5. Access the web application through the provided localhost URL.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Demo
 
-## Learn More
+Check out the live demo of the Willing Workers web application: [Willing Workers Demo](https://willingworkers-web2.vercel.app).
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions to the Willing Workers project are welcome! If you find any issues or have suggestions for improvements, please feel free to submit a pull request or open an issue on the GitHub repository.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
