@@ -1,0 +1,107 @@
+// Variables for breakpoint sizes
+$breakpoint-small: 576px;    // Small devices (phones)
+$breakpoint-medium: 768px;   // Medium devices (tablets)
+$breakpoint-large: 992px;    // Large devices (laptops/desktops)
+$breakpoint-xlarge: 1200px;  // Extra large devices (large laptops/desktops)
+
+// Styles for the login container banner
+.career-container-banner {
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Styles for the login form
+.admin-login {
+    color:black;
+    height:500px;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(216,218,216,1) 50%, rgba(149,149,149,1) 100%);
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  form {
+    display: flex;
+    flex-direction: column;
+    label {
+      margin-bottom: 0.5rem;
+    }
+    input[type="email"],
+    input[type="password"] {
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    button[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 0.25rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+      &:hover {
+        background-color: #0062cc;
+      }
+    }
+  }
+}
+
+// Media queries for different screen sizes
+@media screen and (min-width: $breakpoint-small) {
+  .admin-login {
+   
+    form {
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+  .admin-login {
+   
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-large) {
+  .career-container-banner {
+    h1 {
+      font-size: 5rem;
+    }
+  }
+  .admin-login {
+   
+    form {
+      max-width: 500px;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xlarge) {
+  .career-container-banner {
+    h1 {
+      font-size: 7rem;
+    }
+  }
+  .admin-login {
+   
+    form {
+      max-width: 600px;
+    }
+  }
+}

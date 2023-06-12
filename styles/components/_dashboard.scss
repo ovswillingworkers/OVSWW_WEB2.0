@@ -1,0 +1,208 @@
+@import '../basic//colors';
+
+.no-job-postings {
+    
+    width: 100%;
+    height: 200px ;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
+    background: #eaeaea85;
+    font-weight: 500;
+
+   /* Styles for mobile screens */
+   @media only screen and (min-width: 320px) {
+  
+  }
+
+  /* Styles for tablet screens */
+  @media only screen and (min-width: 768px) {
+    width: 50%;
+    height: 400px;
+  }
+
+}
+
+.dashboard-container-banner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgb(7 15 69) 0%, rgb(172, 240, 172) 53%, rgb(3 8 29) 99%);
+  width: 100%;
+  height: 100px;
+ color: white !important;
+  p{
+    //font-size: larger;
+  }
+  justify-content: center;
+  overflow:visible !important;
+
+  h1 {
+    font-family:myfont;
+    color: green;
+    //text-stroke: 2px white;
+    text-shadow: -2px 0 white, 0 4px white, 2px 2px white, 0 -2px white;
+    
+    font-size: 6.5rem;
+    margin-top: 20px;
+    line-height: 1em;
+    overflow: hidden;
+    width:100% !important;
+  }
+
+  button {
+    border-radius: 20px 20px 0 20px;
+    background: transparent;
+    color: yellow;
+    border-color: yellow;
+    //font-size: 0.9em;
+  }
+}
+
+
+
+.ant-space{
+  display:flex;
+  flex-direction: column;
+  margin:20px 0  20px 0;
+}
+
+.adminMenu{
+  width:100%;
+  height:100%;
+
+  .ant-layout{
+    height:100%;
+  }
+}
+
+// span.ant-layout-sider-zero-width-trigger.ant-layout-sider-zero-width-trigger-left {
+//   margin-top: -64px;
+// }
+
+
+
+
+// .ant-layout-content{
+//   margin-top: -64px;
+// }
+
+.ant-layout-sider-zero-width-trigger{
+  margin-top:-64px;
+  z-index: 53;
+}
+.dashboard-content{
+  color:black;
+  // height:100% !important;
+}
+
+
+.dashboard-site-layout{
+  padding:0 !important;
+  height:100% !important;
+  
+  
+}
+
+
+main.ant-layout-content.dashboard-content.css-dev-only-do-not-override-mxhywb {
+  overflow-y: scroll;
+
+}
+
+.list-job-posting {
+  /* Default styles */
+  width: 100%;
+  height: 100% !important;
+  margin:10px;
+  padding:40px;
+  background:rgba(128, 128, 128, 0.121);
+  border: 2px dotted;
+  /* Styles for mobile screens */
+  @media only screen and (min-width: 320px) {
+    width: 90%;
+    height: auto;
+  }
+
+  /* Styles for tablet screens */
+  @media only screen and (min-width: 768px) {
+    width: 50%;
+    height: 400px;
+  }
+
+  /* Styles for laptop screens */
+  @media only screen and (min-width: 1024px) {
+    width: 45%;
+    height: 400px;
+  
+    font-size: large;
+  }
+
+
+}
+
+
+
+
+.list-jobpost-container {
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  overflow-y: scroll;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgb(197, 197, 197) 100%);
+  color: black;
+  
+
+
+}
+
+
+
+.jobpost-icon, .user-icon{
+  svg{
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  background:$color-deep-blue;
+}
+
+
+.mainmenu{
+  display:block;
+  height:100%;
+}
+.menu-option{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 100px;
+  height:100%;
+  @media only screen and (max-width: 425px) {
+  flex-direction: column;
+  }
+  
+}
+
+.mainmenu-jobpost ,.mainmenu-user{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.header-mainmenu{
+  display:flex !important;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}

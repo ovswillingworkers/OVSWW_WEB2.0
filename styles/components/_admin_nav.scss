@@ -1,0 +1,281 @@
+@import '../basic/colors';
+
+
+
+
+
+
+/* Define font-face */
+@font-face {
+    font-family: myfont;
+    src: url("../../public/assets/fonts/Ramadhan_Mubarak.ttf");
+  }
+  .menu-admin {
+      
+  
+      list-style: none;
+      padding: 0;
+      margin: -20px 0 0 0 ;
+      text-align: center;
+      display:flex;
+      flex-direction: row;
+      font-weight:800;
+      justify-content: end;
+      align-items: end;
+
+    li{
+
+        margin:20px;
+
+        :hover{
+
+           
+            color:$color-light-gray;
+           
+
+           
+        }
+    }
+}
+  /* Base styles for navigation bar */
+  .admin-nav {
+    position: absolute;
+    z-index: 10;
+    // background: #dc0a0afa;
+    width: 100%;
+    height:65px !important;
+    color: rgb(1, 136, 163);
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    text-shadow: #0ca80900;
+    
+    /* Make .nav_home take up one-third of the available space */
+    flex: 1 0 auto;
+  
+    /* Media query for tablet and laptop/desktop devices */
+    @media only screen and (min-width: 768px) {
+      height: 8%;
+      font-size: medium !important;
+        
+      .menu-icon {
+        display: none;
+      }
+    }
+  
+    /* Media query for mobile devices */
+    @media only screen and (max-width: 767px) {
+      height: auto;
+    //   flex-direction: column;
+        
+     
+
+  
+      .menu-icon {
+        display: block;
+        font-size: 30px;
+        color: rgb(255, 255, 255);
+        cursor: pointer !important;
+      
+        margin:10px;
+        justify-self: end;
+        align-self: end;
+      }
+  
+      .menu-admin {
+        
+      //  background-color:$color-deep-blue;
+        list-style: none;
+        padding: 0;
+       
+        text-align: center;
+        display:flex;
+        flex-direction: row;
+
+        li {
+            margin: 10px;
+        }
+        
+        a {
+            color: #FFFFFF;
+       
+            text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, $color-light-gray 0px 0px 20px, $color-light-gray 0px 0px 30px, $color-light-gray 0px 0px 40px, $color-light-gray 0px 0px 50px, $color-light-gray 0px 0px 75px;
+            text-decoration: none;
+            font-size: large;
+            font-weight: 500;
+        }
+    }
+    
+    .show-menu {
+        display: block;
+
+    }
+}
+}
+
+/* Styles for .nav_home */
+.admin-nav_home {
+    font-size: 1.5em;
+    color: #FFFFFF;
+    margin-left: 20px;
+    text-shadow: 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #FFF, 0 0 20px $color-deep-blue, 0 0 30px $color-deep-blue, 0 0 40px $color-deep-blue, 0 0 55px $color-deep-blue, 0 0 75px $color-deep-blue;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: space-between;
+    
+    &:hover {
+        // color:$color-light-gray;
+      text-shadow: 0 0 15px $color-light-gray, 0 0 10px $color-light-gray, 0 0 15px #FFF, 0 0 20px $color-deep-blue, 0 0 30px $color-deep-blue, 0 0 40px $color-deep-blue, 0 0 55px $color-deep-blue, 0 0 75px $color-deep-blue;
+        border-radius: 20px;
+    }
+    
+    // Apply font-size for mobile devices
+    @media only screen and (max-width: 767px) {
+        font-size: 1.0em;
+        text-shadow: 0 0 2px $color-light-gray, 0 0 5px $color-light-gray, 0 0 7px #FFF, 0 0 10px $color-deep-blue, 0 0 10px $color-deep-blue, 0 0 40px $color-deep-blue;
+
+    }
+    
+    // Apply font-size for tablet devices
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        font-size: 1.3em;
+    }
+    
+    // Apply font-size for laptop/desktop devices
+    @media only screen and (min-width: 1024px) {
+        font-size: 1.5em;
+    }
+}
+
+/* Styles for navigation menu items */
+.admin-nav_menu {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    color: #FFFFFF;
+    justify-content: center;
+    text-shadow: 0 0 5px #000000, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px $color-deep-blue, 0 0 30px $color-deep-blue, 0 0 20px $color-deep-blue, 0 0 35px $color-deep-blue, 0 0 55px $color-deep-blue;
+    padding-top: 10px;
+
+
+    @media only screen and (max-width: 767px) {
+        // margin-top: 20px;
+        color: green;
+        font-size: large;
+        justify-content:center;
+        text-align: end;
+        flex-direction: column;
+        // .menu-admin{
+        //     display:flex;
+        //     flex-direction: column;
+        //     // display:none;
+        //     opacity: 0;
+        //     transform: translateY(-10px);
+        //     transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+        //   }
+
+        .show-menu{
+            
+        //    background:$color-deep-blue;
+            border-top: 7px ridge $color-light-gray;
+            border-right: 4px ridge $color-light-gray;
+            border-bottom: 4px ridge $color-light-gray;
+            border-left: 4px ridge $color-light-gray;
+            border-radius: 0px 10px 10px 10px;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease-out, transform 0.35s ease-out 0.1s;
+            :hover{
+                color:black;
+                font-weight: 650;
+                text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, $color-light-gray 0px 0px 10px, $color-light-gray 0px 0px 20px, $color-light-gray 0px 0px 20px, $color-light-gray 0px 0px 25px, $color-light-gray 0px 0px 45px;
+
+            }
+            li{
+                border-bottom:1px ridge $color-light-gray;
+            }
+        }
+
+        a {
+            margin: 0 20px;
+        }
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+
+
+.admin-site-layout{
+    padding:0 !important;
+}
+
+
+
+
+
+/* Define font-face */
+@font-face {
+    font-family: myfont;
+    src: url("../../public/assets/fonts/Ramadhan_Mubarak.ttf");
+  }
+  .menu-admin {
+      
+  
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      display:flex;
+      flex-direction: row;
+      font-weight:800;
+      justify-content: center;
+      align-items: center;
+    li{
+
+        margin:20px;
+
+        &:hover{
+
+           
+            color:$color-light-gray;
+           
+
+           
+        }
+    }
+}
+
+.ant-space-item, .ant-btn{
+    background:$color-deep-blue !important;
+    color:white !important;
+    border-radius: 250px;
+   :hover{
+    color:$color-soft-blue !important;
+    
+    border-color: $color-vibrant-blue !important;
+   }
+}
+
+
+// .ant-layout-sider-children, nav.admin-nav.flex.justify-between.items-center.py-8, :where(.css-dev-only-do-not-override-htwhyh).ant-menu-inline.ant-menu-root .ant-menu-item, :where(.css-dev-only-do-not-override-htwhyh).ant-menu-inline.ant-menu-root .ant-menu-submenu-title{
+//     background: $color-soft-blue !important;
+// }
+
+
+// ul#rc-menu-uuid-15182-2-submenu-user-popup,ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark.css-dev-only-do-not-override-htwhyh {
+//     background: $color-soft-blue;
+
+// }
+// .ul#rc-menu-uuid-87207-2-submenu-user-popup {
+
+// background : $color-soft-blue;
+
+// }
