@@ -1,6 +1,6 @@
 # Willing Workers
 
-Willing Workers is an organization that supports adults with special needs. Their website includes a job listing section for individuals interested in working in this field, allowing for easy submission of applications and resumes. The site is developed using React, Next.js, TypeScript, and PostgreSQL, among other technologies.
+Willing Workers is an organization that supports adults with special needs. Their website includes a job listing section for individuals interested in working in this field, allowing for easy submission of applications and resumes. The site is developed using React, Next.js, TypeScript, and PostgreSQL, HTML, Sass, and CSS.
 
 ## Features
 
