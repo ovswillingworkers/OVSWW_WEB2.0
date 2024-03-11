@@ -31,12 +31,22 @@ function CareerList() {
 
   useEffect(() => {
     let isMounted = true;
+    
+    // Set isLoading to true initially
+    setIsLoading(true);
     async function fetchData() {
-      const data = await getJobPostings();
-      if (data && isMounted) {
-        setIsLoading(true);
-
-        setJobListPostings(data as JobPosting[]);
+      try {
+        const data = await getJobPostings();
+        if (data && isMounted) {
+          setJobListPostings(data as JobPosting[]);
+        }
+      } catch (error) {
+        setError('Error fetching job postings');
+      } finally {
+        // Set isLoading to false once data is fetched
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     }
 
@@ -48,6 +58,7 @@ function CareerList() {
       isMounted = false;
     };
   }, []);
+
 
   dispatch(setJobPosting(jobListPostings as JobPosting[]));
 
@@ -97,21 +108,22 @@ function CareerList() {
           </h3>
           <h3>Email: info@willingworkers.org</h3>
         </div>
-
         <div className="Career-holder">
-          {isLoading && !isApplying ? (
-            <DisplayJobList
-              jobListPostings={jobListPostings}
-              applyToJobPosting={applyToJobPosting}
-            />
-          ) : null}
-          {isApplying ? (
-            <Application
-              jobPosting={selectedJobPosting as JobPosting}
-              applyToJobPosting={applyToJobPosting}
-            />
-          ) : null}
-        </div>
+        {isLoading ? (
+          // This is where the loading animation will be displayed
+          <div>Loading...</div> // You can replace this with a spinner or a progress bar
+        ) : isApplying ? (
+          <Application
+            jobPosting={selectedJobPosting as JobPosting}
+            applyToJobPosting={applyToJobPosting}
+          />
+        ) : (
+          <DisplayJobList
+            jobListPostings={jobListPostings}
+            applyToJobPosting={applyToJobPosting}
+          />
+        )}
+      </div>
         <Footer />
       </div>
     </>
