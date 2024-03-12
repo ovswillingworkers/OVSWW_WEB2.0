@@ -15,8 +15,7 @@ const nextConfig = {
     domains:["lh3.googleusercontent.com", "avatars.githubusercontent.com"]
   },
   experimental: {
-    appDir:false,
-    
+    appDir: true,
   },
 };
 
