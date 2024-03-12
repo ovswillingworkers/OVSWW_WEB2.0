@@ -1,6 +1,6 @@
 //import axios from "axios";
-import { useEffect, useRef, useState } from "react";
-import toast from "react-hot-toast";
+//import { useEffect, useRef, useState } from "react";
+//import toast from "react-hot-toast";
 
 interface JobPosting {
   title: string;
