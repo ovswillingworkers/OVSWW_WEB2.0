@@ -1,244 +1,134 @@
 @import '../basic/colors';
 
-
+/* Variable Definitions */
 $border-color: $color-deep-blue;
-$menu-color:rgba(136, 255, 0, 0);
-$menu-color2:$color-soft-blue;
+$menu-color: rgba(136, 255, 0, 0);
+$menu-color2: $color-soft-blue;
+$menu-bg-color: rgba(0, 51, 102, 0.8); // Semi-transparent blue background for mobile
+$color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
 
-/* Define font-face */
+/* Global font face definition */
 @font-face {
-    font-family: myfont;
-    src: url("../../public/assets/fonts/Ramadhan_Mubarak.ttf");
-  }
-  .menu {
-      
-  
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      text-align: center;
-      display:flex;
-      flex-direction: row;
-      font-weight:800;
-      justify-content: center;
-      align-items: center;
-    li{
-
-        margin:20px;
-
-        :hover{
-
-           
-            color:$menu-color2;
-           
-
-           
-        }
-    }
+    font-family: 'myfont';
+    src: url('../../public/assets/fonts/Ramadhan_Mubarak.ttf');
 }
-  /* Base styles for navigation bar */
-  .nav {
+
+/* Desktop base styles for navigation bar */
+.nav {
     position: absolute;
     z-index: 10;
-    background: #dc0a0a00;
+    background: #dc0a0a00; // Transparent background from old version
     width: 100%;
-    height: 10% !important;
+    height: 10%;
     color: rgb(1, 136, 163);
     font-weight: 500;
     display: flex;
     justify-content: space-between;
     text-shadow: #0ca80900;
-    
-    /* Make .nav_home take up one-third of the available space */
-    flex: 1 0 auto;
-  
-    /* Media query for tablet and laptop/desktop devices */
+
+    /* Media query for desktop, overriding some properties if necessary */
     @media only screen and (min-width: 768px) {
-      height: 8%;
-      font-size: medium !important;
-        
-      .menu-icon {
-        display: none;
-      }
+        height: 8%;
+        font-size: medium;
+        .menu-icon {
+            display: none;
+        }
     }
-  
-    /* Media query for mobile devices */
-    @media only screen and (max-width: 767px) {
-      height: auto;
-    //   flex-direction: column;
-        
-     
+}
 
-  
-      .menu-icon {
-        display: block;
-        font-size: 30px;
-        color: rgb(255, 255, 255);
-        cursor: pointer;
-        margin-left: 50vw !important;
-        margin:10px;
-        justify-self: end;
-        align-self: end;
-      }
-  
-      .menu {
-        
-        background-color: #f6f6f600;
+/* Desktop menu styles, ensuring it remains as per the old version */
+.menu {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    font-weight: 800;
+
+    li {
+        margin: 20px;
+        &:hover {
+            color: $menu-color2;
+        }
+    }
+
+    /* Desktop anchor tag styles */
+    a {
+        color: $color-light-gray;
+        text-decoration: none;
+        font-size: large;
+        font-weight: 500;
+    }
+}
+
+/* Mobile-specific styles */
+@media only screen and (max-width: 767px) {
+    .nav {
+        height: auto;
+
+        .menu-icon {
+            display: block;
+            font-size: 30px;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    }
+
+    .menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        display: none;
+        opacity: 0;
         list-style: none;
-        padding: 0;
-        margin-left:40vw;
-        text-align: center;
-        display:flex;
-        flex-direction: row;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: visibility 0s linear 0.5s, opacity 0.5s ease, transform 0.5s ease;
+        background-color: $menu-bg-color;
+        border-radius: 10px;
+        margin-top: 0.5em;
+        z-index: 5;
+        width: 100%;
+        max-width: 300px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 
-
-        ul{
-            margin-top:70px;
-        }
         li {
-            margin: 10px;
+            margin: 0;
+            color: $color-light-gray;
+            &:hover {
+                background-color: lighten($menu-bg-color, 10%);
+            }
         }
-        
+
         a {
             color: $color-light-gray;
-       
-            text-shadow: $color-light-gray 0px 0px 5px, $color-light-gray 0px 0px 10px, $color-light-gray 0px 0px 15px, $menu-color 0px 0px 20px, $menu-color 0px 0px 30px, $menu-color 0px 0px 40px, $menu-color 0px 0px 50px, $menu-color 0px 0px 75px;
             text-decoration: none;
             font-size: large;
             font-weight: 500;
+            display: block;
+            padding: 0.75em 1em;
+            transition: color 0.3s ease, background-color 0.3s ease;
+
+            &:hover {
+                color: $menu-color2;
+            }
         }
     }
-    
+
+    /* Show menu on mobile when triggered */
     .show-menu {
         display: block;
-
-    }
-}
-}
-
-/* Styles for .nav_home */
-.nav_home {
-    // font-family: myfont;
-    color:$color-deep-blue;
-    color: $color-light-gray;
-    display:flex;
-   margin-top:50px;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    text-shadow: 0 0 5px #000000, 0 0 2px #000000, 0 0 5px $color-light-gray, 0 0 5px $border-color, 0 0 8px $border-color, 0 0 8px $border-color, 0 0 2px $border-color, 0 0 2px $border-color;
-    /* Make .nav_home take up one-third of the available space */
-    flex: 0 0 calc(100% / 3);
-  
-    font-size: 1.0em; // for mobile devices
-@media (max-width:425){
-    img{
-        width:33px !important;
-        height:30px !important;
-        margin-top:-34;
-       }
-}
-    @media (min-width: 768px) { // for tablets
-        font-size: 1.5em;
-    }
-
-    @media (min-width: 992px) { // for laptops
-        font-size: 1.8em;
-    }
-
-    @media (min-width: 1200px) { // for desktops
-        font-size: 2em;
-    }
-
-    :hover{
-        // color:rgb(0, 0, 0);
-        // text-shadow: 0 0 5px $menu-color, 0 0 10px $menu-color, 0 0 15px $color-light-gray, 0 0 20px $border-color, 0 0 30px $border-color, 0 0 40px $border-color, 0 0 55px $border-color, 0 0 75px $border-color;
-        // border-radius: 20px;
-        cursor:pointer
-        
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        transition-delay: 0s;
+        top: 50px; // Adjusted for mobile menu visibility
     }
 }
 
-
-/* Styles for navigation menu items */
-.nav_menu {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    color: $color-light-gray !important;
-    justify-content: end;
-    text-shadow: 0 0 5px #000000, 0 0 10px $color-light-gray, 0 0 15px $color-light-gray, 0 0 20px $border-color, 0 0 30px $border-color, 0 0 20px $border-color, 0 0 35px $border-color, 0 0 55px $border-color;
-    cursor: pointer;
-    @media only screen and (max-width: 767px) {
-        margin-top: 20px;
-        color: $border-color;
-        font-size: large;
-        justify-content:start;
-        text-align: end;
-        flex-direction: column;
-        .menu{
-           display:none;
-            // display:none;
-            
-            opacity:0;
-            transform: translateY(-10px);
-            transition: opacity 0.35s ease-out, transform 0.35s ease-out;
-          }
-
-        .show-menu{
-            
-            display:flex;
-            flex-direction:column;
-
-            background:rgba(97, 96, 96, 0.837);
-            border-top: 7px ridge $border-color;
-            border-right: 4px ridge $border-color;
-            border-bottom: 4px ridge $border-color;
-            border-left: 4px ridge $border-color;
-            border-radius: 0px 10px 10px 10px;
-            opacity: 1;
-            z-index: 5;
-            transform: translateY(0);
-            transition: opacity 0.5s ease-out, transform 0.35s ease-out 0.1s;
-            :hover{
-                color:black;
-                font-weight: 650;
-                text-shadow: $color-light-gray 0px 0px 5px, $color-light-gray 0px 0px 10px, $color-light-gray 0px 0px 15px, $menu-color2 0px 0px 10px, $menu-color2 0px 0px 20px, $menu-color2 0px 0px 20px, $menu-color2 0px 0px 25px, $menu-color2 0px 0px 45px;
-
-            }
-            li{
-                border-bottom:1px ridge $border-color;
-            }
-        }
-
-        a {
-            margin: 0 20px;
-        }
-    }
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-
-@media (max-width: 425px) {
-    .nav_menu .show-menu {
-            margin-left: 20px !important;
-
-    }
-
-
-    .nav_home{
-          img{
-            width:20vw;
-            height:auto;
-            margin-top:-50px !important;
-          }
-    };
-    .company-name{
-      display: none !important;
-    }
-  }
-  
+/* Additional global styles and overrides can be added below */
