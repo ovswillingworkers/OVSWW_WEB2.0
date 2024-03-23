@@ -33,7 +33,7 @@
     overflow: hidden;
     position: relative;
     margin-bottom: 2rem; // Consistent spacing
-
+    
     img {
       width: 100%;
       height: 100%;
@@ -44,6 +44,7 @@
       font-family: 'myfont', sans-serif; // Fallback to sans-serif
       color: $color-deep-blue;
       text-stroke: 1px white;
+      top:65px;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
       font-size: 4rem; // Reduced font size for consistency
       line-height: 1.2;
@@ -61,7 +62,7 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   justify-content: center; // Center items in the grid
   gap: 1rem; // Spacing between cards
-  align-items: stretch; // Stretch cards to fill grid
+  align-items: center; // Stretch cards to fill grid
 
   .program-card {
     display: flex;
@@ -103,12 +104,14 @@
 // Responsive breakpoints
 @media (max-width: 768px) {
   .program-description-container,
+  
   .program-description {
     padding: 1rem;
+    top:65px !important;
   }
 
   .program-container-banner h1 {
     font-size: 3rem; // Smaller font size for smaller screens
-    top:65px;
+  
   }
 }

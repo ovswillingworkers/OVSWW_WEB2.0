@@ -21,34 +21,35 @@ const Programs = () => {
     {
       name: "Behavioral Support Program",
       description:
-        "This program is designed to help adults manage their behavioral issues and improve their social skills. Participants will work with trained professionals to develop individualized behavior management plans, and will have the opportunity to participate in group activities and therapy sessions to help them learn new coping strategies and communication skills.",
+        "Our Behavioral Support Program offers a path to mastering behavioral challenges, emphasizing the cultivation of social skills through professional guidance. Participants engage in crafting personalized behavior management plans, complemented by group activities and therapeutic sessions aimed at fostering coping strategies and enhancing communication abilities.",
       imageUrl: behaviorTherapy,
     },
     {
       name: "Creative Expression and Art Therapy Program",
       description:
-        "This program is designed to help adults explore their creativity and emotions through various forms of art. Participants will have the opportunity to work with art therapists and other creative professionals to develop their artistic skills and self-expression, and will engage in a range of activities such as painting, drawing, sculpture, and more.",
+        "Dive into the world of creativity with our Art Therapy Program, where adults rediscover their creative spark and emotional depth through art. With the support of art therapists and creative experts, participants explore a spectrum of artistic endeavors including painting, drawing, and sculpture, nurturing artistic talent and personal expression in a supportive environment.",
       imageUrl: artsProgram,
     },
     {
       name: "Communication and Language Development Program",
       description:
-        "This program is designed to help adults improve their communication skills and expand their vocabulary. Participants will work with speech therapists and other language specialists to develop personalized language development plans, and will have the opportunity to participate in group activities and therapy sessions to help them learn new words and improve their social interactions.",
+        "Enhance your communicative prowess with our Communication and Language Development Program, tailored for adults aiming to enrich their communication skills and vocabulary. Through personalized plans developed in collaboration with speech therapists and language specialists, participants engage in group sessions and activities designed to introduce new vocabulary and bolster social interaction skills.",
       imageUrl: communication,
     },
     {
       name: "Recreational Activities and Leisure Skills Development Program",
       description:
-        "This program is designed to provide adults with a range of fun and engaging activities to enjoy in their free time, while also helping them develop important leisure skills. Options may include sports leagues, arts and crafts classes, and outdoor adventures, as well as special events and trips. Activities will be tailored to the individual needs and abilities of each participant.",
+        "Our Recreational Program offers a plethora of engaging activities, from sports leagues to arts and crafts, and exhilarating outdoor adventures. Tailored to meet individual needs and interests, this program is your gateway to not only leisure and enjoyment but also to developing key leisure skills through specially curated events and trips.",
       imageUrl: transportation,
     },
     {
       name: "Life Skills and Independence Training Program",
       description:
-        "This program is designed to help adults develop the skills and knowledge needed to live independently and manage their daily tasks and responsibilities. Participants will have the opportunity to learn about a range of topics, including budgeting, cooking, and personal hygiene, and will receive hands-on training to help them build confidence and competence in these areas.",
+        "Embark on a journey towards independence with our Life Skills Training Program, designed to empower adults with the essential skills for daily living. From budgeting and cooking to personal hygiene, participants receive comprehensive, hands-on training, laying the foundation for a confident and competent independent life.",
       imageUrl: lifeSkill,
     },
   ];
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

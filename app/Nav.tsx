@@ -1,4 +1,4 @@
-
+"use client";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
@@ -45,7 +45,7 @@ function Nav({ image, banner = "" }: User) {
           <Image
             src={ovsww_logo}
             alt={"image here"}
-            className="w-14 rounded-full"
+            className={`w-14 rounded-full image-hover-effect`} // Add the `image-hover-effect` class
             width={100}
             height={100}
             priority
