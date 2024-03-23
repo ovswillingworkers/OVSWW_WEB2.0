@@ -17,18 +17,18 @@ $color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
 .nav {
     position: absolute;
     z-index: 10;
-    background: #dc0a0a00; // Transparent background from old version
+    background-color: rgba(50, 50, 50, 0.9); // Dark gray background with some transparency
     width: 100%;
     height: 10%;
     color: rgb(1, 136, 163);
-    font-weight: 500;
     display: flex;
     justify-content: space-between;
-    text-shadow: #0ca80900;
+    text-shadow: rgba(12, 168, 9, 0);
 
     /* Media query for desktop, overriding some properties if necessary */
     @media only screen and (min-width: 768px) {
         height: 8%;
+        font-size: 1.2em;
         font-size: medium;
         .menu-icon {
             display: none;
@@ -46,22 +46,47 @@ $color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
     padding: 0;
     margin: 0;
     font-weight: 800;
+    font-size: 1.1em;
 
     li {
         margin: 20px;
+        transition: transform 0.3s ease; // Add transition for smooth scaling
         &:hover {
             color: $menu-color2;
+            transform: scale(1.05); // Slight increase in size
+        }
+        a {
+            position: relative; // Needed for underline animation
+            &::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                transform: scaleX(0);
+                height: 2px;
+                bottom: -5px;
+                left: 0;
+                background-color: $menu-color2;
+                transform-origin: bottom right;
+                transition: transform 0.25s ease-out;
+            }
+            &:hover::after {
+                transform: scaleX(1);
+                transform-origin: bottom left;
+            }
         }
     }
-
-    /* Desktop anchor tag styles */
+    /* Existing styles for a */
     a {
         color: $color-light-gray;
         text-decoration: none;
-        font-size: large;
+        font-size: 1.2em;
         font-weight: 500;
+        transition: color 0.3s ease; // Ensure this remains for smooth color transition
     }
 }
+
+/* For mobile menu items, you might adjust or keep these effects minimal due to the different interaction model */
+
 
 /* Mobile-specific styles */
 @media only screen and (max-width: 767px) {
@@ -71,7 +96,7 @@ $color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
         .menu-icon {
             display: block;
             font-size: 30px;
-            color: rgb(255, 255, 255);
+            color: #fff;
             cursor: pointer;
             position: absolute;
             right: 10px;
@@ -131,4 +156,12 @@ $color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
     }
 }
 
-/* Additional global styles and overrides can be added below */
+/* Assuming global CSS or CSS module import */
+.image-hover-effect {
+    transition: transform 0.3s ease-in-out; /* Smooth transition for the transform */
+    display: inline-block; /* Ensures the transform applies correctly */
+}
+
+.image-hover-effect:hover {
+    transform: scale(1.1) rotate(5deg); /* Slightly enlarges and rotates the image */
+}
