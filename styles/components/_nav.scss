@@ -20,7 +20,7 @@ $color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
   
     width: 100%;
    
-    color: rgb(1, 136, 163);
+
     display: flex;
     justify-content: space-between;
     
@@ -48,6 +48,7 @@ $color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
     font-weight: 800;
     font-size: 1.1em;
     text-shadow:1px 1px 2px rgba(212, 39, 8, 0);
+   
     li {
         margin: 20px;
         transition: transform 0.3s ease; // Add transition for smooth scaling
@@ -65,7 +66,7 @@ $color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
                 height: 2px;
                 bottom: -5px;
                 left: 0;
-                background-color: $menu-color2;
+           
                 transform-origin: bottom right;
                 transition: transform 0.25s ease-out;
             }
@@ -82,7 +83,7 @@ $color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
         font-size: 1.2em;
         font-weight: 500;
         transition: color 0.3s ease; // Ensure this remains for smooth color transition
-        background-color: rgba(1, 36, 69, 0.332);
+     //   background-color: rgba(1, 36, 69, 0.332);
         border-radius: 40%;
         padding: 0.5em 1em; // Adjust padding as needed
         
@@ -90,7 +91,7 @@ $color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
         text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); // Adjust shadow color and intensity as needed
         
         &:hover {
-            color: $menu-color2;
+            color: rgb(250, 37, 0);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); // Increase shadow intensity on hover
         }
     }

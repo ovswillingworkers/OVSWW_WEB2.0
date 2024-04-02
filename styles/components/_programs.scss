@@ -59,7 +59,7 @@
   list-style-type: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   justify-content: center; // Center items in the grid
   gap: 1rem; // Spacing between cards
   align-items: center; // Stretch cards to fill grid
@@ -108,6 +108,10 @@
   .program-description {
     padding: 1rem;
     top:65px !important;
+  }
+  .program-list {
+
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 
   .program-container-banner h1 {
