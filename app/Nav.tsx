@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Logged from "./auth/Logged";
+
 import ovsww_logo from "../public/assets/ovs_ww.png";
 type User = {
   image: string;
