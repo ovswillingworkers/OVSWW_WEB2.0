@@ -20,6 +20,7 @@ $color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
   
     width: 100%;
    
+    background: linear-gradient(to bottom, rgba(61, 61, 61, 0.54), rgba(61, 61, 61, 0));
 
     display: flex;
     justify-content: space-between;
@@ -102,6 +103,9 @@ $color-light-gray: #D3D3D3; // Assuming a light gray color for menu items
 
 /* Mobile-specific styles */
 @media only screen and (max-width: 767px) {
+    .company-name{
+        display: none;
+    }
     .nav {
         height: auto;
 
