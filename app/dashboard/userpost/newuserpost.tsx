@@ -1,8 +1,6 @@
-
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-
 
 export default function NewUserPost() {
   const [admin, setAdmin] = useState({
@@ -21,8 +19,7 @@ export default function NewUserPost() {
       setAdmin((prevAdmin) => ({ ...prevAdmin, [name]: value }));
     }
   };
-  
- 
+
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     try {
@@ -68,6 +65,7 @@ export default function NewUserPost() {
 
           <div className="form-group">
             <label htmlFor="role">Role:</label>
+           
             <select
               id="role"
               name="role"
@@ -81,6 +79,11 @@ export default function NewUserPost() {
               <option value="admin">Admin</option>
               <option value="moderator">Moderator</option>
             </select>
+            <br/><p>
+              <strong>Admin</strong> has full access including creating and deleting users.
+              <br />
+              <strong>Moderator</strong> can only create job posts.
+            </p>
           </div>
           <button type="submit">Create Admin User</button>
         </form>
