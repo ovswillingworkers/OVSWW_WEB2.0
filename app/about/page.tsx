@@ -46,31 +46,29 @@ function About() {
 
                 <p>
                   <h1>"Our Mission"</h1>
-                  At Willing Workers our mission is to empower individuals with
-                  intellectual and developmental disabilities to lead fulfilling
-                  and independent lives. Through community integration training
-                  and the development of healthy habits, we promote
-                  independence, self-advocacy, and overall well-being. We focus
-                  on improving the quality of life by addressing areas such as
-                  safety, personal health and hygiene, nutrition, physical
-                  fitness, and emergency preparedness. We believe in the
-                  inherent worth and potential of every individual and are
-                  committed to helping them reach their highest potential and
-                  become full participants in their communities.
+                  Willing Workers is dedicated to the empowerment of people who have intellectual and 
+                  developmental disabilities so that they may lead productive and self-reliant lives. 
+                  By means of all-encompassing community integration initiatives and the promotion of health-conscious behaviors, 
+                  we advocate for autonomy, self-determination, and holistic health. We improve quality of life 
+                  by addressing safety, personal health, nutrition, physical fitness, and emergency preparedness. 
+                  We are dedicated to helping people achieve their goals and become valued members of their communities.
                 </p>
               </div>
               <div className="about-container-text-values-image">
-                <div className="about-container-text-values">
+                <div className="about-container-text-values ">
                   <h1>"Our Values"</h1>
                   <p>
-                    Our values guide everything we do at Willing Workers. We put
-                    individuals first, empower them to grow, and strive for
-                    inclusivity. We work closely with families and the
-                    community, continuously seeking improvement while being
-                    transparent and accountable. Our values of compassion,
-                    dignity, diversity, excellence, and honesty form the
-                    foundation of our mission to support and empower those we
-                    serve.
+                  We base everything that we do at Willing Workers on our core values. 
+                  Our conduct and choices are guided by a set of guiding principles that are rooted in compassion, 
+                  dignity, diversity, excellence, and honesty. Cultivating an atmosphere that promotes 
+                  development and empowerment, we place the requirements and aspirations of every individual 
+                  we assist as our top priority. With active engagement with families and the wider community, 
+                  inclusivity is not merely an objective but a fundamental component of our methodology. 
+                  Maintaining a commitment to excellence and transparency in every aspect of our operations is 
+                  of the utmost importance to us. The dedication we have to these principles serves as the 
+                  foundation of our work, driving us towards our objective of assisting and enabling the 
+                  individuals we assist.
+
                   </p>
                 </div>
                 <div className="about-container-text-image">

@@ -23,7 +23,7 @@ export const authOptions = {
           const existingUser = await prisma.user.findUnique({
             where: { email: user.profile.email },
           });
-          console.log("user exist on the list", existingUser);
+          
           if (!existingUser) {
             const AllowUser = await prisma.allowUser.findUnique({
               where: { email: user.profile.email },
