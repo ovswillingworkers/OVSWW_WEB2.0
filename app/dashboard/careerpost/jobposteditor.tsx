@@ -1,82 +1,47 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
-import Head from "next/head";
-import "../../../styles/global.scss";
 import axios from "axios";
-import { JobPosting } from "@/app/components/jobpost";
-import { v4 as uuidv4 } from "uuid";
-import { toast } from "react-hot-toast";
-import { error } from "console";
-import { RootState } from "@/app/redux/reducer/rootReducer";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { clearJobPosting } from "@/app/redux/reducer/jobPostingsSlice";
+import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 
-type SetSelectedOption = (selectedOption: string) => void;
+interface JobPosting {
+  title: string;
+  location: string;
+  salary: string;
+  date: string;
+  expirationDate?: string;
+  description: string;
+  qualifications: string[];
+  contact: {
+    name: string;
+    email: string;
+    phone: string;
+  };
+}
 
 interface EditJobPostProps {
   prop: JobPosting;
-  setSelectedOption: SetSelectedOption;
+  setSelectedOption: (selectedOption: string) => void;
 }
 
 export default function JobPostingEditor({
   prop,
   setSelectedOption,
 }: EditJobPostProps) {
-  const dispatch = useDispatch();
-
-  const someData = useSelector((state: RootState) => state.users);
-
   const textareaDescription = useRef<HTMLTextAreaElement | null>(null);
-  const pacificTimezone = "en-US";
   const now = new Date();
   const expirationDate = new Date(now);
-
   expirationDate.setMonth(expirationDate.getMonth() + 1); // add 1 month
 
   useEffect(() => {
     if (textareaDescription.current) {
-      textareaDescription.current.style.height = "auto"; // Reset height to auto to get the correct scrollHeight
-      textareaDescription.current.style.height = `${textareaDescription.current.scrollHeight}px`; // Set the height to the content's scrollHeight
+      textareaDescription.current.style.height = "auto";
+      textareaDescription.current.style.height = `${textareaDescription.current.scrollHeight}px`;
     }
   }, [textareaDescription.current?.value]);
 
-  const deleteCustomQualification = (id: string) => {
-    const customQualificationIndex = customQualifications.findIndex(
-      (q) => q.id === id
-    );
-    const deletedCustomQualification =
-      customQualifications[customQualificationIndex];
-    const updatedCustomQualifications = [...customQualifications];
-    updatedCustomQualifications.splice(customQualificationIndex, 1);
-    setCustomQualifications(updatedCustomQualifications);
-    setJobPosting((prevState) => ({
-      ...prevState,
-      qualifications: prevState.qualifications.filter(
-        (q) => q !== deletedCustomQualification.id
-      ),
-    }));
-  };
-
-  const handleDeleteCustomQualification = (id: string) => {
-    const confirmDeletion = window.confirm(
-      "Are you sure you want to delete this custom qualification?"
-    );
-    if (confirmDeletion) {
-      deleteCustomQualification(id);
-    }
-  };
-
-  const expirationDateString = expirationDate.toISOString().substr(0, 10); // convert to yyyy-mm-dd format
-
-  const [savedCustomQualifications, setSavedCustomQualifications] = useState<
-    Array<{ id: string; text: string }>
-  >([]);
-
   const [jobPosting, setJobPosting] = useState<JobPosting>(() => ({
-    ...prop, // set the initial value of jobPosting to the prop passed to the component
-    date: prop.date || now.toISOString().substr(0, 10), // if prop.date is undefined, use current date
-    expirationDate: prop.expirationDate || expirationDateString, // if prop.expirationDate is undefined, use 1 month from now
+    ...prop,
+    date: prop.date || now.toISOString().substr(0, 10),
+    expirationDate: prop.expirationDate || expirationDate.toISOString().substr(0, 10),
     qualifications: prop.qualifications || [],
     contact: prop.contact || {
       name: "",
@@ -85,57 +50,20 @@ export default function JobPostingEditor({
     },
   }));
 
-  const [customQualifications, setCustomQualifications] = useState<
-    Array<{ id: string; text: string; isSaved: boolean }>
-  >([]);
-  const [isCustomQualificationsSaved, setIsCustomQualificationsSaved] =
-    useState<boolean>(false);
-
-  const addCustomQualification = () => {
-    setCustomQualifications((prevQualifications) => [
-      ...prevQualifications,
-      { id: uuidv4(), text: "", isSaved: false },
-    ]);
-  };
-
-  const handleCustomQualificationChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    id: string
-  ) => {
-    const { value } = event.target;
-    setCustomQualifications((prevQualifications) =>
-      prevQualifications.map((q) => (q.id === id ? { ...q, text: value } : q))
-    );
-    handleQualificationsChange(event, id);
-  };
-
-  const handleQualificationsChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    customId?: string
-  ): void => {
-    const { name, checked } = event.target;
-    const qualification = customId || name;
-
-    if (checked) {
-      setJobPosting((prevState) => ({
-        ...prevState,
-        qualifications: [...prevState.qualifications, qualification],
-      }));
-    } else {
-      setJobPosting((prevState) => ({
-        ...prevState,
-        qualifications: prevState.qualifications.filter(
-          (q) => q !== qualification
-        ),
-      }));
-    }
-  };
-
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
     const { name, value } = event.target;
-    if (name === "name" || name === "email" || name === "phone") {
+
+    if (name === "description") {
+      if (value.length > 500) {
+        return; // Do nothing if the description exceeds 500 characters
+      }
+      setJobPosting((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    } else if (name === "name" || name === "email" || name === "phone") {
       setJobPosting((prevState) => ({
         ...prevState,
         contact: {
@@ -143,15 +71,8 @@ export default function JobPostingEditor({
           [name]: value,
         },
       }));
-    } else if (name === "date") {
-      const expirationDate = new Date(value);
-      expirationDate.setMonth(expirationDate.getMonth() + 1); // add 1 month
-      setJobPosting((prevState) => ({
-        ...prevState,
-        [name]: value,
-        expirationDate: expirationDate.toISOString().substr(0, 10), // convert to yyyy-mm-dd format
-      }));
     } else {
+      console.log(name,"||\n", value)
       setJobPosting((prevState) => ({
         ...prevState,
         [name]: value,
@@ -159,64 +80,72 @@ export default function JobPostingEditor({
     }
   };
 
-  const handleSaveCustomQualification = (id: string) => {
-    const qualification = customQualifications.find(
-      (customQualification) => customQualification.id === id
-    );
-    if (qualification && qualification.text) {
-      setSavedCustomQualifications((prevQualifications) => [
-        ...prevQualifications,
-        qualification,
-      ]);
-      setCustomQualifications((prevQualifications) =>
-        prevQualifications.map((customQualification) =>
-          customQualification.id === id
-            ? { ...customQualification, isSaved: true }
-            : customQualification
-        )
-      );
+  const handleQualificationsChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const { name, checked } = event.target;
+    if (checked) {
+      setJobPosting((prevState) => ({
+        ...prevState,
+        qualifications: [...prevState.qualifications, name],
+      }));
+    } else {
+      setJobPosting((prevState) => ({
+        ...prevState,
+        qualifications: prevState.qualifications.filter((q) => q !== name),
+      }));
     }
+  };
+
+  const handleSalaryChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const { value } = event.target;
+    const formattedSalary = value.replace(/[^0-9.]/g, ""); // Remove non-numeric characters
+    setJobPosting((prevState) => ({
+      ...prevState,
+      salary: formattedSalary,
+    }));
+  };
+
+  const handleSalaryBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
+    const { value } = event.target;
+    const formattedSalary = value ? parseFloat(value).toFixed(2) : "";
+    setJobPosting((prevState) => ({
+      ...prevState,
+      salary: formattedSalary,
+    }));
   };
 
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     event.preventDefault();
-    const postId = jobPosting.id; // generate a unique ID
-    const jobPostingWithId = { ...jobPosting, id: postId }; // add the ID to the jobPosting object
-
     try {
-      // const response = await axios.post("/api/editPost", jobPostingWithId);
-      const response = await axios.post("/api/editPost", jobPostingWithId);
+      const response = await axios.post("/api/editPost", jobPosting);
       if (response.status === 200) {
-        const data = response.data;
+        toast.success("Edit has been saved");
+    
+        setTimeout(() => {
+            window.alert("The page will now refresh");
+            window.location.reload();
+        }, 2000); // 2000 milliseconds = 2 seconds
 
-        setSelectedOption("all-job-posting");
-        dispatch(clearJobPosting()); // add this line
-        toast.success("Edit has been saved ");
-
-        // Display a success message to the user
       } else {
-        toast.error("Error saving ");
+        toast.error("Error saving");
         throw new Error("Error creating job post");
       }
     } catch (error) {
-      toast.error("Error saving ");
+      toast.error("Error saving");
       console.error(error);
-      // Display an error message to the user
     }
   };
 
   return (
     <>
-      {/* <div className="career-container-banner mt-4 p-5 bg-primary text-white">
-      <h1>Job Posting</h1>
-      <p></p>
-    </div> */}
       <div className="form-container">
         <div className="form-container-content">
           <h2>Edit Job Post</h2>
-
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="title">Title:</label>
@@ -249,7 +178,8 @@ export default function JobPostingEditor({
                 id="salary"
                 name="salary"
                 value={jobPosting.salary}
-                onChange={handleInputChange}
+                onChange={handleSalaryChange}
+                onBlur={handleSalaryBlur}
                 required
               />
             </div>
@@ -288,11 +218,13 @@ export default function JobPostingEditor({
                 onChange={handleInputChange}
                 required
                 rows={4}
+                maxLength={500} // Limit input to 500 characters
               />
+              <p>{jobPosting.description.length}/500 characters</p>
             </div>
 
             <div className="form-group qualification">
-              <label htmlFor="qualifications">Qualifications:</label>
+              <label>Qualifications:</label>
               <ul>
                 <li>
                   <input
@@ -330,99 +262,7 @@ export default function JobPostingEditor({
                   />
                   <label htmlFor="bachelor_degree">Bachelor's Degree</label>
                 </li>
-                {customQualifications.map((customQualification) => {
-                  if (customQualification.isSaved) {
-                    return (
-                      <li key={customQualification.id}>
-                        <input
-                          type="checkbox"
-                          id={customQualification.id}
-                          name={customQualification.text}
-                          checked={jobPosting.qualifications.includes(
-                            customQualification.id
-                          )}
-                          onChange={(event) =>
-                            handleQualificationsChange(
-                              event,
-                              customQualification.id
-                            )
-                          }
-                        />
-                        <label htmlFor={customQualification.id}>
-                          {customQualification.text}
-                        </label>
-                        <button
-                          type="button"
-                          className="delete"
-                          onClick={() =>
-                            handleDeleteCustomQualification(
-                              customQualification.id
-                            )
-                          }
-                        >
-                          X
-                        </button>
-                      </li>
-                    );
-                  } else {
-                    return (
-                      <li key={customQualification.id}>
-                        <div>
-                          <input
-                            type="checkbox"
-                            id={customQualification.id}
-                            name={customQualification.text}
-                            checked={jobPosting.qualifications.includes(
-                              customQualification.id
-                            )}
-                            onChange={(event) =>
-                              handleQualificationsChange(
-                                event,
-                                customQualification.id
-                              )
-                            }
-                          />
-                          <input
-                            type="text"
-                            value={customQualification.text}
-                            onChange={(event) =>
-                              handleCustomQualificationChange(
-                                event,
-                                customQualification.id
-                              )
-                            }
-                          />
-                          <button
-                            type="button"
-                            className="checkbox-newcustomButton save"
-                            onClick={() =>
-                              handleSaveCustomQualification(
-                                customQualification.id
-                              )
-                            }
-                          >
-                            Save
-                          </button>
-                          <button
-                            type="button"
-                            className="checkbox-newcustomButton delete"
-                            onClick={() =>
-                              handleDeleteCustomQualification(
-                                customQualification.id
-                              )
-                            }
-                          >
-                            Delete
-                          </button>
-                        </div>
-                      </li>
-                    );
-                  }
-                })}
               </ul>
-              <button type="button" onClick={addCustomQualification}>
-                Add More +
-              </button>
             </div>
 
             <div className="form-group">

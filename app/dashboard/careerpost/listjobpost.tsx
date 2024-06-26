@@ -56,6 +56,13 @@ export default function ListJobPosting(props: any) {
         )
       );
       toast.success("Job post deleted");
+
+  
+  
+      setTimeout(() => {
+        window.alert("The page will now refresh");
+        window.location.reload();
+      }, 2000); // 2000 milliseconds = 2 seconds
     } catch (error: any) {
       console.error(error.message);
       toast.error("Error deleting job post");

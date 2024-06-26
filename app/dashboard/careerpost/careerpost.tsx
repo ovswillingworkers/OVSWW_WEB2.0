@@ -13,9 +13,12 @@ export default function CreateJobPost(prop: any) {
   const textareaDescription = useRef<HTMLTextAreaElement | null>(null);
   const pacificTimezone = "en-US";
   const now = new Date();
+  const formattedDate = now.toISOString().slice(0, 10);
   const expirationDate = new Date(now);
+  expirationDate.setMonth(expirationDate.getMonth() + 2); // Add 2 months
+  
 
-  expirationDate.setMonth(expirationDate.getMonth() + 1); // add 1 month
+; // add 1 month
 
   useEffect(() => {
     if (textareaDescription.current) {
@@ -50,7 +53,7 @@ export default function CreateJobPost(prop: any) {
     }
   };
 
-  const expirationDateString = expirationDate.toISOString().substr(0, 10); // convert to yyyy-mm-dd format
+  const expirationDateString = expirationDate.toISOString().slice(0, 10); // convert to yyyy-mm-dd format
 
   const [savedCustomQualifications, setSavedCustomQualifications] = useState<
     Array<{ id: string; text: string }>
@@ -60,14 +63,14 @@ export default function CreateJobPost(prop: any) {
     id: "",
     title: "Behavior Coach",
     location: "Los Angeles",
-    salary: "$15.00/hr",
+    salary: "",
     date: now.toISOString().substr(0, 10),
     description: "This is a test description",
     qualifications: [],
     contact: {
-      name: "jay",
-      email: "jay@gmail.com",
-      phone: "2135465894",
+      name: "",
+      email: "",
+      phone: "",
     },
     expirationDate: expirationDateString,
   }));
@@ -122,7 +125,15 @@ export default function CreateJobPost(prop: any) {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
     const { name, value } = event.target;
-    if (name === "name" || name === "email" || name === "phone") {
+    if (name === "description") {
+      if (value.length > 500) {
+        return; // Do nothing if the description exceeds 500 characters
+      }
+      setJobPosting((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    } else if (name === "name" || name === "email" || name === "phone") {
       setJobPosting((prevState) => ({
         ...prevState,
         contact: {
@@ -144,6 +155,28 @@ export default function CreateJobPost(prop: any) {
         [name]: value,
       }));
     }
+  };
+  
+  
+
+  const handleSalaryChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const { value } = event.target;
+    const formattedSalary = value.replace(/[^0-9.]/g, ""); // Remove non-numeric characters
+    setJobPosting((prevState) => ({
+      ...prevState,
+      salary: formattedSalary,
+    }));
+  };
+
+  const handleSalaryBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
+    const { value } = event.target;
+    const formattedSalary = value ? parseFloat(value).toFixed(2) : "";
+    setJobPosting((prevState) => ({
+      ...prevState,
+      salary: formattedSalary,
+    }));
   };
 
   const handleSaveCustomQualification = (id: string) => {
@@ -169,30 +202,32 @@ export default function CreateJobPost(prop: any) {
     event: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     event.preventDefault();
-    const postId = uuidv4(); // generate a unique ID
-    const jobPostingWithId = { ...jobPosting, id: postId }; // add the ID to the jobPosting object
-    addJobPost(jobPostingWithId);
-    dispatch(clearJobPosting()); // add this line
-    prop.onClick("all-job-posting");
+    
+    try {
+      const postId = uuidv4(); // generate a unique ID
+      const jobPostingWithId = { ...jobPosting, id: postId }; // add the ID to the jobPosting object
+      await addJobPost(jobPostingWithId); // ensure addJobPost completes
+      toast.success("New job post has been saved");
+  
+      setTimeout(() => {
+        window.alert("The page will now refresh");
+        window.location.reload();
+      }, 2000); // 2000 milliseconds = 2 seconds
+      dispatch(clearJobPosting());
+      
+   
+    } catch (error) {
+      console.log(error)
+    }
   };
+  
 
   return (
     <>
-   <div className="">
-
-        <p>
-          
-          Create Job Post
-          </p>
-   </div>
-   
-      {/* <div className="career-container-banner mt-4 p-5 bg-primary text-white">
-      <h1>Job Posting</h1>
-      <p></p>
-    </div> */}
+      <div className=""></div>
       <div className="form-container">
         <div className="form-container-content">
-          <h1>Create Job Post</h1>
+          <h1>Job Posting</h1>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="title">Title:</label>
@@ -211,6 +246,7 @@ export default function CreateJobPost(prop: any) {
                 type="text"
                 id="location"
                 name="location"
+                value="Los Angeles"
                 onChange={handleInputChange}
                 required
               />
@@ -222,7 +258,9 @@ export default function CreateJobPost(prop: any) {
                 type="text"
                 id="salary"
                 name="salary"
-                onChange={handleInputChange}
+                value={jobPosting.salary}
+                onChange={handleSalaryChange}
+                onBlur={handleSalaryBlur}
                 required
               />
             </div>
@@ -233,6 +271,7 @@ export default function CreateJobPost(prop: any) {
                 type="date"
                 id="date"
                 name="date"
+                value={formattedDate}
                 onChange={handleInputChange}
                 required
               />
@@ -244,22 +283,25 @@ export default function CreateJobPost(prop: any) {
                 type="date"
                 id="expirationDate"
                 name="expirationDate"
+                value={expirationDateString}
                 onChange={handleInputChange}
               />
             </div>
 
             <div className="form-group job-description">
-              <label htmlFor="description">Description:</label>
-              <textarea
-                ref={textareaDescription}
-                id="description"
-                name="description"
-                className="description"
-                onChange={handleInputChange}
-                required
-                rows={4}
-              />
-            </div>
+  <label htmlFor="description">Description:</label>
+  <textarea
+    ref={textareaDescription}
+    id="description"
+    name="description"
+    className="description"
+    onChange={handleInputChange}
+    required
+    rows={4}
+    maxLength={500} // This limits the input to 500 characters
+  />
+  <p>{jobPosting.description.length}/500 characters</p>
+</div>
 
             <div className="form-group qualification">
               <label htmlFor="qualifications">Qualifications:</label>
@@ -422,6 +464,7 @@ export default function CreateJobPost(prop: any) {
                 type="tel"
                 id="phone"
                 name="phone"
+               value="(323) 937-5950"
                 onChange={handleInputChange}
                 required
               />
@@ -434,6 +477,7 @@ export default function CreateJobPost(prop: any) {
     </>
   );
 }
+
 function dispatch(arg0: any) {
   throw new Error("Function not implemented.");
 }

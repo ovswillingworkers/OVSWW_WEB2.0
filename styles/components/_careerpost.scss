@@ -1,106 +1,3 @@
-// .form-container {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     margin: 2rem auto;
-//     width: 90%;
-  
-//     h1 {
-//       margin-bottom: 2rem;
-//     }
-  
-//     .form-group {
-//       display: flex;
-//       flex-direction: column;
-//       margin-bottom: 2rem;
-//       width: 100%;
-  
-//       label {
-//         font-size: 1.2rem;
-//         font-weight: bold;
-//         margin-bottom: 0.5rem;
-//       }
-  
-//       input,
-//       textarea {
-//         border: 1px solid #ccc;
-//         border-radius: 0.5rem;
-//         font-size: 1.2rem;
-//         padding: 0.5rem;
-//         width: 100%;
-//       }
-//     }
-  
-//     button {
-//       background-color: #0070f3;
-//       border: none;
-//       border-radius: 0.5rem;
-//       color: white;
-//       cursor: pointer;
-//       font-size: 1.2rem;
-//       font-weight: bold;
-//       padding: 1rem;
-//       transition: background-color 0.3s ease;
-//       display:flex;
-//       &:hover {
-//         background-color: #0056b3;
-//       }
-//     }
-//   }
-  
-
-
-//   .qualification ul {
-//     display: flex;
-//     flex-wrap: wrap;
-//     gap: 1rem;
-//     list-style: none;
-//    label{
-//     color:red;
-//     font-size: medium !important;
-// }
-
-// button{
-//   width:40px;
-//   height:20px;
-//   display: flex;;
-//   align-items: center;
-//   font-size: small;
-// color:red;
-// border: 2px solid #f02406;
-// padding:0 !important;
-// text-align: center;
-// justify-content: center;
-// }
-//   }
-  
-//   .qualification label {
-//     margin-left: 0.5rem;
-//   }
-  
-
-//   .checkbox-newcustomButton{
-//     width:60px !important;
-
-//   }
-//   .save{
-//     background:green !important;
-//     color: black !important;
-//     border: 2px solid #000000 !important;
-//     margin-bottom: 5px;
-//    }
-   .delete{
-     background:rgb(255, 0, 0) !important;
-     margin-bottom: 5px;
-   }
-
-
-
-
-
-
-
 $primary-color: #007bff;
 $secondary-color: #6c757d;
 
@@ -112,122 +9,105 @@ $secondary-color: #6c757d;
     margin-top: 0;
   }
 }
+
 .form-container {
   background-color: rgb(223, 217, 217);
-}
-.form-container-content {
-  background-color: rgb(217, 216, 216);
-  border-radius: 4px;
-  margin: 0 100px ;
-  padding:60px 100px 100px 100px;
-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  width: 90%;
 
-
-
-
-  h2 {
-    margin-top: 0;
-    text-align: center;
-  }
-
-  label {
-    font-weight: bold;
-  }
-
-  button[type="submit"] {
-    background-color: $primary-color;
-    color: white;
-    border: none;
+  &-content {
+    background-color: rgb(217, 216, 216);
     border-radius: 4px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
+    padding: 40px;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    h1 {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.5rem;
+      width: 100%;
+
+      input,
+      textarea {
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        padding: 0.5rem;
+        width: 100%;
+        background: white;
+        color: black;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    button[type="submit"] {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+
+    button[type="button"] {
+      background-color: $secondary-color;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .delete {
+      color: red;
+      background-color: white;
+      border: 1px solid red;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
   }
 
-  button[type="button"] {
-    background-color: $secondary-color;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-
-  button.checkbox-newcustomButton {
-    margin-left: 1rem;
-  }
-
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-
-  .delete {
-    color: red;
-    background-color: white;
-    border: 1px solid red;
-    border-radius: 4px;
-    margin-left: 0.5rem;
-    cursor: pointer;
-  }
-
- /* Styles for mobile screens */
-
- 
-  /* Styles for mobile screens */
   @media (max-width: 767px) {
     margin: 0;
     padding: 0;
   }
 
-  /* Styles for tablet screens */
   @media (min-width: 768px) and (max-width: 991px) {
     margin: 0 50px;
     padding: 0 50px;
   }
- 
- 
-
-
-
 }
-
-
-.form-group {
-  // margin: 20px 40px;
-
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    background:white;
-    color:black;
-
-  }
-  
- 
-  // @media only screen and (min-width: 320px) {
-  //   margin:0;
-  //   padding:30px 0;
-    
-  //    }
-     
-     /* Styles for tablet screens */
-    //  @media only screen and (min-width: 768px) {
-    //    margin:0 50px;
-    //  }
-}
-
-.edit-user-form{
-  input{
-    background:gray !important;
-  }
-}
-
 
 .form-group.qualification {
   display: flex;
@@ -238,6 +118,8 @@ color: black;
   }
 
   li {
+    display: flex;
+    align-items: center;
     margin-bottom: 0.5rem;
 
     input[type="checkbox"] {
@@ -273,75 +155,75 @@ color: black;
     margin-top: 0.5rem;
     align-self: flex-start;
   }
-
-
-
 }
 
+.qualification ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
 
-.form-group qualification {
-  label {
-    font-weight: bold;
-  }
-  ul {
-    margin-top: 8px;
-    margin-bottom: 0;
-    list-style-type: none;
-    li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 4px;
-      position: relative;
-      .delete {
-        position: absolute;
-        right: 0;
-        top: -5px;
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    position: relative;
+
+    .delete {
+      position: absolute;
+      right: 0;
+      top: -5px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 6px 8px;
+      font-size: 14px;
+      line-height: 1;
+      &:hover {
+        background-color: #da190b;
+      }
+    }
+
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    input[type="text"] {
+      margin-left: 8px;
+    }
+
+    .checkbox-newcustomButton {
+      margin-left: 8px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1;
+      &:hover {
+        background-color: #449d44;
+      }
+
+      &.delete {
         background-color: #f44336;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        padding: 6px 8px;
-        font-size: 14px;
-        line-height: 1;
         &:hover {
           background-color: #da190b;
         }
       }
-      input[type="checkbox"] {
-        margin-right: 8px;
-      }
-      input[type="text"] {
-        margin-left: 8px;
-      }
-      .checkbox-newcustomButton {
-        margin-left: 8px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        padding: 6px 12px;
-        font-size: 14px;
-        line-height: 1;
+
+      &.save {
+        background-color: #337ab7;
         &:hover {
-          background-color: #449d44;
-        }
-        &.delete {
-          background-color: #f44336;
-          &:hover {
-            background-color: #da190b;
-          }
-        }
-        &.save {
-          background-color: #337ab7;
-          &:hover {
-            background-color: #2e6da4;
-          }
+          background-color: #2e6da4;
         }
       }
     }
   }
+
   button {
     margin-top: 8px;
     background-color: #4caf50;
@@ -357,7 +239,6 @@ color: black;
     }
   }
 }
-
 
 .checkbox-newcustomButton {
   border: none;
@@ -401,14 +282,7 @@ color: black;
   }
 }
 
-
-// .job-description {
-//   height: auto !important;
-
-// }
-
-
-.jobposting-container{
-  height:100%;
+.jobposting-container {
+  height: 100%;
   overflow: scroll;
 }

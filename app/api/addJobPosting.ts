@@ -10,7 +10,7 @@ export async function addJobPost(jobPostingWithId: JobPosting) {
     if (response.status === 200) {
       const data = response.data;
 
-      toast.success("Job Post has been created");
+     
 
       // Display a success message to the user
     } else {
