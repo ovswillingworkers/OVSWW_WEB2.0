@@ -2,6 +2,9 @@
 import "./globals.css";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import fb from "../public/assets/footer/fb.png";
+import instagram from "../public/assets/footer/insta.png";
 
 export const Footer = () => {
   return (
@@ -43,6 +46,23 @@ export const Footer = () => {
                 <i className="me-4 fas fa-envelope" />
                 info@willingworkers.com
               </p>
+    
+    <a href="https://www.facebook.com/profile.php?id=100087648068663">
+              <Image
+          src={fb}
+          alt="fb logo"
+          width={60}
+          height={60}
+        /> </a>
+
+          <a href="https://www.instagram.com/ovswillingworkers?fbclid=IwAR3UzOrEDw1CSp5CQgLaNnw4L3BZIo0d6R1fAVx6zNjtd8UJalzIuVAB_7A_aem_AUF2YT7kIZ1j-D3u8vCY56v1YcSatNZx_JqXhSoScmX1ROF_0iMCR67L5b30GjngChuHTt8hOuXeu00WV7NR3S9k">
+               <Image
+          src={instagram}
+          alt="fb logo"
+          width={60}
+          height={60}
+        />
+           </a>    
             </div>
           </div>
         </div>

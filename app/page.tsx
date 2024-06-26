@@ -1,13 +1,14 @@
 "use client";
+import w2 from "../public/assets/w2.jpg";
+import w3 from "../public/assets/w3.jpg";
+import w4 from "../public/assets/w4.jpg";
+import w1 from "../public/assets/welcome.jpg";
 import { CSSProperties, useEffect, useState } from "react";
 import "../styles/global.scss";
 import { Bus, CoachIcon, HandsIcon } from "../public/assets/page";
 import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import w2 from "../public/assets/w2.jpg";
-import w3 from "../public/assets/w3.jpg";
-import w4 from "../public/assets/w4.jpg";
-import w1 from "../public/assets/welcome.jpg";
+
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -64,7 +65,7 @@ const Home = () => {
 
   return (
     <div>
-      <Nav image={""} banner={""} />
+      <Nav image={""} banner={"Home"} />
       <div className="home-container">
         <div className="overlay mt-4 p-5 bg-primary text-white">
           <AnimatePresence initial={false}>
@@ -84,8 +85,8 @@ const Home = () => {
             >
               <Image
                 src={images[currentSlide].src}
-                layout="fill"
-                objectFit="cover"
+                priority={true}
+                fill={true}
                 alt={""}
               />
             </motion.div>
