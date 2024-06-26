@@ -32,7 +32,7 @@ export default function ListJobPosting(props: any) {
       const data = await getJobPostings();
       if (data && isMounted) {
         dispatch(setJobPosting(data as JobPosting[]));
-        setIsLoading(true);
+        setIsLoading(false);
 
         setJobListPostings(data as JobPosting[]);
       }
@@ -57,8 +57,6 @@ export default function ListJobPosting(props: any) {
       );
       toast.success("Job post deleted");
 
-  
-  
       setTimeout(() => {
         window.alert("The page will now refresh");
         window.location.reload();
@@ -71,7 +69,7 @@ export default function ListJobPosting(props: any) {
 
   return (
     <div className="list-jobpost-container">
-      {isLoading ? (
+      {jobListPostings.length > 0 ? (
         jobListPostings.map((jobPosting, index) => (
           <div className="list-job-posting" key={index}>
             <h2>{jobPosting.title}</h2>
