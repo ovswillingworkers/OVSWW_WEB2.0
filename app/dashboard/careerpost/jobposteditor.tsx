@@ -124,7 +124,6 @@ export default function JobPostingEditor({
     try {
       const response = await axios.post("/api/editPost", jobPosting);
       if (response.status === 200) {
-<<<<<<< HEAD
         toast.success("Edit has been saved");
     
         setTimeout(() => {
@@ -132,10 +131,6 @@ export default function JobPostingEditor({
             window.location.reload();
         }, 2000); // 2000 milliseconds = 2 seconds
 
-=======
-        setSelectedOption("all-job-posting");
-        toast.success("Edit has been saved");
->>>>>>> 47a718d35deefcdd1732fcdc317732ec1e1ab252
       } else {
         toast.error("Error saving");
         throw new Error("Error creating job post");
