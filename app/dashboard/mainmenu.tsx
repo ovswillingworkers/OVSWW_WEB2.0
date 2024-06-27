@@ -5,9 +5,11 @@ type SetSelectedOption = (selectedOption: string) => void;
 interface MainmenuProps {
   isAdmin: boolean;
   onOptionClick: SetSelectedOption;
+  jobLimit: boolean;
+  userLimit: boolean;
 }
 
-const Mainmenu = ({ onOptionClick, isAdmin }: MainmenuProps) => {
+const Mainmenu = ({ onOptionClick, isAdmin, jobLimit, userLimit }: MainmenuProps) => {
   const handleClick = (option: string) => {
     onOptionClick(option);
   };
@@ -19,7 +21,26 @@ const Mainmenu = ({ onOptionClick, isAdmin }: MainmenuProps) => {
           <h2>Job Post</h2>
           <UploadOutlined className="jobpost-icon" />
           <div>
-            <a href="#" onClick={() => handleClick("new-job-posting")}>
+            {jobLimit ? (
+              <div>
+                <p style={{ color: 'red', fontWeight: 'bold' }}>
+                  Job Post Limit Reached (6/6)<br/> 
+                  Delete a Job Post to Add More
+                </p>
+              
+              </div>
+            ) : (
+              <p style={{ color: 'green', fontWeight: 'bold' }}>Only 6 job posts allowed.</p>
+            )}
+            <a
+              href="#"
+              onClick={() => !jobLimit && handleClick("new-job-posting")}
+              style={{
+                color: jobLimit ? 'gray' : 'black',
+                pointerEvents: jobLimit ? 'none' : 'auto',
+                textDecoration: jobLimit ? 'none' : 'underline'
+              }}
+            >
               <h1>Create New Job Post</h1>
             </a>
             <a href="#" onClick={() => handleClick("all-job-posting")}>
@@ -33,7 +54,27 @@ const Mainmenu = ({ onOptionClick, isAdmin }: MainmenuProps) => {
             <h2>Admin Access</h2>
             <UserOutlined className="user-icon" />
             <div>
-              <a href="#" onClick={() => handleClick("new-user")}>
+              {userLimit ? (
+                <div>
+                  <p style={{ color: 'red', fontWeight: 'bold' }}>
+                    User limit is reached. (5/5 admin users allowed)
+                    <br/>
+                    Delete a User to Add More
+                  </p>
+                
+                </div>
+              ) : (
+                <p style={{ color: 'green', fontWeight: 'bold' }}>Only 5 admin users allowed.</p>
+              )}
+              <a
+                href="#"
+                onClick={() => !userLimit && handleClick("new-user")}
+                style={{
+                  color: userLimit ? 'gray' : 'black',
+                  pointerEvents: userLimit ? 'none' : 'auto',
+                  textDecoration: userLimit ? 'none' : 'underline'
+                }}
+              >
                 <h1>Create New User</h1>
               </a>
               <a href="#" onClick={() => handleClick("all-list-user")}>

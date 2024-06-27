@@ -1,7 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import Link from "next/link";
 import { Button } from "antd";
 import getJobPostings from "../../../app/api/getJobPostings";
 import { JobPosting } from "../../../app/components/jobpost";
@@ -24,7 +22,7 @@ export default function ListJobPosting(props: any) {
   const [isLoading, setIsLoading] = useState(
     JobPostings_list.jobPostings.length > 0
   );
-  const [error, setError] = useState("");
+
 
   useEffect(() => {
     let isMounted = true;

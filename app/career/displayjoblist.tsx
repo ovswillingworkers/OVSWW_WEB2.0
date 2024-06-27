@@ -1,9 +1,8 @@
 "use client";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
 import { JobPosting } from "../components/jobpost";
-import { useSelector } from "react-redux";
-import getJobPostings from "../api/getJobPostings";
+
 
 export default function DisplayJobList(props: {
   jobListPostings: JobPosting[];

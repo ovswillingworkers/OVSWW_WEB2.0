@@ -1,8 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Head from "next/head";
 import "../../../styles/global.scss";
-import axios from "axios";
 import { JobPosting } from "@/app/components/jobpost";
 import { v4 as uuidv4 } from "uuid";
 import { addJobPost } from "@/app/api/addJobPosting";

@@ -13,21 +13,7 @@ import { getSession } from "next-auth/react";
 import { User } from "../components/user";
 import { RootState } from "../redux/reducer/rootReducer";
 
-async function getLoginSession(): Promise<{ session: any; user: User | null }> {
-  const session = await getSession();
-  if (session) {
-    const email = session.user?.email as string;
-    const userResponse = (await getUser(email)) as User;
 
-    return { session, user: userResponse };
-  } else {
-    return { session: null, user: null };
-  }
-}
-
-// this get SERVERSSION. from the Login.
-// The procceeds to check the database. we are able to get login.
-// maybe create a checking if it's admin or w.e role it needs to be to be clear.?
 export default function getAuth(roles: string[]) {
   const [users, setUsers] = useState<User | null>(null);
   const [validate, setValidate] = useState(false);

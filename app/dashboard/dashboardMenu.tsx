@@ -18,14 +18,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { setReduxUser } from "../redux/reducer/userSlice";
 import EditUserPost from "./userpost/editUser";
 import Mainmenu from "./mainmenu";
-
+import { getCounts } from "../api/getCounts";
 // const { Header, Content } = Layout;
 const { Header, Content, Sider } = Layout;
 
 export default function DashboardMenu() {
   const user = useSelector((state: any) => state.user.user);
   const isAdmin = user.role === "admin";
-
+  const [counts, setCounts] = useState();
+  const [userLimit, setUserLimit] = useState(false);
+  const [jobLimit, setJobLimit] = useState(false);
   const dispatch = useDispatch();
   const [editJobSession, setEditJobSession] = useState<JobPosting>({
     id: "",
@@ -58,88 +60,12 @@ export default function DashboardMenu() {
   const [selectedOption, setSelectedOption] = useState("submenu-main-menu");
   const userContentRef = useRef(null);
   const jobPostingContentRef = useRef(null);
-  // const jobPostingItems = [
-  //   {
-  //     key: 'new-job-posting',
-  //     label: 'New Job Posting',
-  //   },
-  //   {
-  //     key: 'all-job-posting',
-  //     label: 'All Job Posting',
-  //   },
-  // ];
-
-  // const userItems = isAdmin
-  //   ? [
-  //       {
-  //         key: 'new-user',
-  //         label: 'New User',
-  //       },
-  //       {
-  //         key: 'all-list-user',
-  //         label: 'View All Users',
-  //       },
-  //     ]
-  //   : [];
-
-  // const items = [
-  //   {
-  //     key: 'submenu-main-menu',
-  //     title: 'Main Menu',
-  //     label: 'Main Menu',
-  //   },
-  //   {
-  //     key: 'submenu-user',
-  //     icon: <UserOutlined />,
-  //     title: 'User',
-  //     label: 'Admin Access',
-  //     children: userItems,
-  //   },
-  //   {
-  //     key: 'submenu-job-posting',
-  //     icon: <UploadOutlined />,
-  //     title: 'Job Posting',
-  //     label: 'Job Posting',
-  //     children: jobPostingItems,
-  //   },
-  // ];
-
-  const items = [
-    {
-      key: "submenu-main-menu",
-
-      title: "Main Menu",
-      label: "Main Menu",
-    },
-    isAdmin
-      ? {
-          key: "submenu-user",
-          icon: <UserOutlined />,
-          title: "User",
-          label: "Admin Access",
-          children: [
-            { key: "new-user", label: "New User" },
-            { key: "all-list-user", label: "View All Users" },
-          ],
-        }
-      : null,
-    {
-      key: "submenu-job-postin",
-      icon: <UploadOutlined />,
-      title: "Job Posting",
-      label: "Job Posting",
-      children: [
-        { key: "new-job-posting", label: "New Job Posting" },
-        { key: "all-job-posting", label: "All Job Posting" },
-      ],
-    },
-  ];
 
   useEffect(() => {
     let isMounted = true;
-    async function fetchUser() {
-      let valid = await getAuthRedux(user);
 
+    async function fetchUser() {
+      const valid = await getAuthRedux(user);
       if (valid && isMounted) {
         dispatch(setReduxUser(valid as User));
       }
@@ -147,6 +73,29 @@ export default function DashboardMenu() {
 
     fetchUser();
 
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function fetchCounts() {
+      try {
+        const data = await getCounts();
+        if (isMounted) {
+          console.log(data, "Data fetched from getCounts"); // Verify the data structure
+          setCounts(data);
+          setJobLimit(data.jobPostingLimitReached);
+          setUserLimit(data.userLimitReached);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    fetchCounts();
     return () => {
       isMounted = false;
     };
@@ -170,6 +119,53 @@ export default function DashboardMenu() {
     }
   };
 
+  const items = [
+    {
+      key: "submenu-main-menu",
+      title: "Main Menu",
+      label: "Main Menu",
+    },
+    isAdmin
+      ? {
+          key: "submenu-user",
+          icon: <UserOutlined />,
+          title: "User",
+          label: "Admin Access",
+          children:  userLimit
+          ? [ {
+                key: "submenu-main-menu",
+                label: <span style={{ color: 'red', fontWeight: 'bold' }}>Admin List is Full</span>,
+              },
+              { key: "all-job-posting", label: "All Job Posting" },
+             
+            ]
+          : [
+              { key: "new-job-posting", label: "New Job Posting" },
+              { key: "all-job-posting", label: "All Job Posting" },
+            ],
+        }
+      : null,
+    {
+      key: "submenu-job-postin",
+      icon: <UploadOutlined />,
+      title: "Job Posting",
+      label: "Job Posting",
+      children: jobLimit
+        ? [ {
+              key: "submenu-main-menu",
+              label: <span style={{ color: 'red', fontWeight: 'bold' }}>Job List is Full</span>,
+            },
+            { key: "all-job-posting", label: "All Job Posting" },
+           
+          ]
+        : [
+            { key: "new-job-posting", label: "New Job Posting" },
+            { key: "all-job-posting", label: "All Job Posting" },
+          ],
+    },
+  ].filter(Boolean);
+
+  console.log(!jobLimit);
   return (
     <>
       <Layout>
@@ -219,6 +215,8 @@ export default function DashboardMenu() {
                         <Mainmenu
                           onOptionClick={handleOptionClick}
                           isAdmin={isAdmin}
+                          jobLimit={jobLimit}
+                          userLimit={userLimit}
                         />
                       </div>
                     )}

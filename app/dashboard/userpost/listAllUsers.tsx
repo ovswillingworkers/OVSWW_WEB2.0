@@ -1,20 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import Link from "next/link";
 import { Button } from "antd";
-
-import getJobPostings from "../../api/getJobPostings";
-import { JobPosting } from "../../components/jobpost";
 import { User } from "../../components/user";
-import { deleteJobPost } from "../../api/deleteJobPosting";
 import toast from "react-hot-toast";
 import { getUserList } from "@/app/api/getUserList";
-
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "@/app/redux/store/store";
 import { setBulkUser } from "@/app/redux/reducer/usersSlice";
 import { deleteUser } from "@/app/api/deleteUser";
+
 
 export default function ListAllUser(props: any) {
   const user = useSelector((state: AppState) => state.user.user);
@@ -23,8 +17,8 @@ export default function ListAllUser(props: any) {
     users.length > 0 ? (users as User[]) : []
   );
   const [isLoading, setIsLoading] = useState<boolean>(userList.length > 0);
-  const [error, setError] = useState("");
   const dispatch = useDispatch();
+  const [usercount, setUsercount] = useState('')
 
   useEffect(() => {
     let isMounted = true;
@@ -34,6 +28,7 @@ export default function ListAllUser(props: any) {
 
         if (data && isMounted) {
           dispatch(setBulkUser(data));
+        
           setUserList(data as User[]);
           setIsLoading(true);
           // setUserList(data as User[]);
@@ -42,7 +37,7 @@ export default function ListAllUser(props: any) {
         }
       } catch (error) {
         console.error(error);
-        setError("Error fetching job postings. Please try again later.");
+       
         setIsLoading(false);
       }
     }

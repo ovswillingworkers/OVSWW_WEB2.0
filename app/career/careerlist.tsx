@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import "../../styles/global.scss";
 import { Footer } from "../Footer";
-import Link from "next/link";
 import { JobPosting } from "../components/jobpost";
 import Nav from "../Nav";
 import getJobPostings from "../api/getJobPostings";

@@ -1,8 +1,6 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import prisma from "@/prisma/client";
 import { getServerSession } from "next-auth";
-import { getUser } from "../api/getUser";
-import { getSession } from "next-auth/react";
+
 
 const USER_FIELDS = {
   select: {
