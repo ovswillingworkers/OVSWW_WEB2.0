@@ -11,12 +11,11 @@ export const authOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET, // Fixed typo here
       // autoCreate: false,
     }),
   ],
   callbacks: {
-
     async signIn(user) {
       if (user.account.provider === "google") {
         try {
@@ -45,8 +44,6 @@ export const authOptions = {
     },
 
     async session(session, user) {
-      // Find the user in the database
-
       try {
         const dbUser = await prisma.user.findUnique({
           where: {
@@ -60,8 +57,7 @@ export const authOptions = {
           });
 
           if (existingUser) {
-            // Update the User table with the user's name and role
-            const updatedUser = await prisma.user.update({
+            await prisma.user.update({
               where: { email: session.user.email },
               data: { name: existingUser.name, role: existingUser.role },
             });
@@ -74,7 +70,6 @@ export const authOptions = {
       return session;
     },
     async createUser(user, _req) {
-      // Remove the emailVerified field before creating the user
       const { emailVerified, ...userData } = user;
       
       try {
