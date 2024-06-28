@@ -5,3 +5,4 @@ node_modules
 .next/*
 .next/trace
 migration.sql
+README.md
